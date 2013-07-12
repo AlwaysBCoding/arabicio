@@ -33,29 +33,41 @@ describe WordParser do
 
 		context "Form X" do
 
-			it "parses the root on a 'regular root'" do
-				character_array = %w[i s t k sh f]
-				root = WordParser.parse_root(character_array)
+			it "parses the root on the regular root (k sh f)" do
+				arabic_word = %w[y s t k sh f]
+				root = WordParser.parse_root(arabic_word)
 				root.should eq %w[k sh f]
 			end
 
-			# it "parses the form on a 'regular root'" do
-			# 	character_array = [1575, 1587, 1578, 1603, 1588, 1601]
-			# 	word_form = WordParser.parse_word_form(character_array)
-			# 	word_form.should eq 10
-			# end
+			it "parses the form on the regular root (k sh f)" do
+				arabic_word = %w[y s t k sh f]
+				word_form = WordParser.parse_word_form(arabic_word)
+				word_form.should eq 10
+			end
 
-			# it "parses the root on a 'doubled root'" do
-			# 	character_array = [1575, 1587, 1578, 1590, 1605, 1575, 1605]
-			# 	root = WordParser.parse_root(character_array)
-			# 	root.should eq [1590, 1605, 1605]
-			# end
+			it "parses the root on the regular root (kh d m)" do
+				arabic_word = %w[a s t kh d m]
+				root = WordParser.parse_root(arabic_word)
+				root.should eq %w[kh d m]
+			end
 
-			# it "parses the form on a 'doubled root'" do
-			# 	character_array = [1575, 1587, 1578, 1590, 1605, 1575, 1605]
-			# 	word_form = WordParser.parse_word_form(character_array)
-			# 	word_form.should eq 10
-			# end
+			it "parses the form on the regular root (kh d m)" do
+				arabic_word = %w[a s t kh d m]
+				word_form = WordParser.parse_word_form(arabic_word)
+				word_form.should eq 10
+			end
+
+			it "parses the root on the doubled root (D m m)" do
+				arabic_word = %w[i s t D m aa m]
+				root = WordParser.parse_root(arabic_word)
+				root.should eq %w[D m m]
+			end
+
+			it "parses the form on the doubled root (D m m)" do
+				arabic_word = %w[i s t D m aa m]
+				word_form = WordParser.parse_word_form(arabic_word)
+				word_form.should eq 10
+			end
 
 		end
 
@@ -63,6 +75,7 @@ describe WordParser do
 
 end
 
+# HELPER METHODS
 def create_ascii_from_arabizi(arabizi=[])
 	return arabizi.map { |letter| ArabicLetter.find_by_english_symbol(letter).ascii_value }
 end
