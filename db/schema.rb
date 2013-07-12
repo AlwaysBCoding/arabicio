@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20130712192148) do
     t.string   "ascii_value"
     t.string   "unicode_value"
     t.string   "english_value"
-    t.string   "arabic_value"
+    t.string   "english_symbol"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

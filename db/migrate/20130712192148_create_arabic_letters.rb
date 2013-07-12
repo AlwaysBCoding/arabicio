@@ -4,7 +4,7 @@ class CreateArabicLetters < ActiveRecord::Migration
     	t.string :ascii_value
     	t.string :unicode_value
     	t.string :english_value
-    	t.string :arabic_value
+    	t.string :english_symbol
       t.timestamps
     end
   end
