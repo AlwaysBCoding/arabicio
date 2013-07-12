@@ -4,9 +4,47 @@ describe WordParser do
 
 	describe "#parse_root" do
 
-		it "runs the test correctly" do
-			parser = WordParser.new
-			parser.parse_root(50).should eq 5
+		context "Form I" do
+		end
+
+		context "Form II" do
+		end
+
+		context "Form III" do
+		end
+
+		context "Form IV" do
+		end
+
+		context "Form V" do
+		end
+
+		context "Form VI" do
+		end
+
+		context "Form VII" do
+		end
+
+		context "Form VIII" do
+		end
+
+		context "Form IX" do
+		end
+
+		context "Form X" do
+
+			it "parses the root on a 'doubled root'" do
+				character_array = [1575, 1587, 1578, 1590, 1605, 1575, 1605]
+				root = WordParser.parse_root(character_array)
+				root.should eq [1590, 1605, 1605]
+			end
+
+			it "parses the form on a 'doubled root'" do
+				character_array = [1575, 1587, 1578, 1590, 1605, 1575, 1605]
+				word_form = WordParser.parse_word_form(character_array)
+				word_form.should eq 10
+			end
+
 		end
 
 	end
