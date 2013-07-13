@@ -222,7 +222,8 @@ ArabicLetter.create!({
 ArabicLetter.create!({
 	ascii_value: "1611",
 	unicode_value: "U+064B",
-	english_value: "tanween fatha"
+	english_value: "tanween fatha",
+	english_symbol: "an"
 	})
 
 ArabicLetter.create!({
@@ -234,7 +235,8 @@ ArabicLetter.create!({
 ArabicLetter.create!({
 	ascii_value: "1612",
 	unicode_value: "U+064C",
-	english_value: "tanween damma"
+	english_value: "tanween damma",
+	english_symbol: "on"
 	})
 
 ArabicLetter.create!({
@@ -246,7 +248,8 @@ ArabicLetter.create!({
 ArabicLetter.create!({
 	ascii_value: "1613",
 	unicode_value: "U+064D",
-	english_value: "tanween kasra"
+	english_value: "tanween kasra",
+	english_symbol: "in"
 	})
 
 ArabicLetter.create!({
