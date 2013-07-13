@@ -23,17 +23,71 @@ describe WordParser do
 				end
 
 				context "ism mafool" do
+					it "parses the root for singular" do
+						arabic_word = %w[m k t w b]
+						root = WordParser.parse_root(arabic_word)
+						root.should eq %w[k t b]
+					end
 				end
 
 				context "masdar" do
 				end
 
 				context "present tense" do
+					it "parses the root for i" do
+						arabic_word = %w[a H m 3]
+						root = WordParser.parse_root(arabic_word)
+						root.should eq %w[H m 3]
+					end
+
+					it "parses the root for you(s-m) / she" do
+						arabic_word = %w[t H m 3]
+						root = WordParser.parse_root(arabic_word)
+						root.should eq %w[H m 3]
+					end
+
+					it "parses the root for you(s-f)" do
+						arabic_word = %w[t H m 3 y n]
+						root = WordParser.parse_root(arabic_word)
+						root.should eq %w[H m 3]
+					end
+
 					it "parses the root for he" do
 						arabic_word = %w[y H m 3]
 						root = WordParser.parse_root(arabic_word)
 						root.should eq %w[H m 3]
 					end
+
+					it "parses the root for we" do
+						arabic_word = %w[n H m 3]
+						root = WordParser.parse_root(arabic_word)
+						root.should eq %w[H m 3]
+					end
+
+					it "parses the root for you(p-m)" do
+						arabic_word = %w[t H m 3 w n]
+						root = WordParser.parse_root(arabic_word)
+						root.should eq %w[H m 3]
+					end
+
+					it "parses the root for you(p-f)" do
+						arabic_word = %w[t H m 3 n]
+						root = WordParser.parse_root(arabic_word)
+						root.should eq %w[H m 3]
+					end
+
+					it "parses the root for they(m)" do
+						arabic_word = %w[y H m 3 w n]
+						root = WordParser.parse_root(arabic_word)
+						root.should eq %w[H m 3]
+					end
+
+					it "parses the root for they(f)" do
+						arabic_word = %w[y H m 3 n]
+						root = WordParser.parse_root(arabic_word)
+						root.should eq %w[H m 3]
+					end
+
 				end
 
 				context "past tense" do
