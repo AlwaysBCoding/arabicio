@@ -45,13 +45,40 @@ class WordParser
 	def self.parse_subform_from_root(root=[])
 
 		if root[0] == "hi"
-			return "hamzated-initial"
+			if %w[w y].include?(root[2])
+				return "hamzated-defective"
+			else
+				return "hamzated-initial"
+			end
 
 		elsif root[1] == "hi"
-			return "hamzated-medial"
+			if %w[w y].include?(root[2])
+				return "hamzated-defective"
+			else
+				return "hamzated-medial"
+			end
 
 		elsif root[2] == "hi"
-			return "hamzated-final"
+			if %w[w y].include?(root[1])
+				return "hollow-hamzated"
+			else
+				return "hamzated-final"
+			end
+
+		elsif %w[w y].include?(root[2])
+			if %w[w y].include?(root[0])
+				return "assimilated-defective"
+			elsif %w[w y].include?(root[1])
+				return "hollow-defective"
+			else
+				return "defective"
+			end
+
+		elsif %w[w y].include?(root[0])
+			return "assimilated"
+
+		elsif %w[w y].include?(root[1])
+			return "hollow"
 
 		elsif root[1] == root[2]
 			return "doubled"
@@ -60,14 +87,6 @@ class WordParser
 			return "regular"
 		end
 
-		# return "assimilated"
-		# return "hollow"
-		# return "defective"
-		# # MIXED
-		# return "hollow-hamzated"
-		# return "hamzated-defective"
-		# return "assimilated-defective"
-		# return "hollow-defective"
 	end
 
 end
