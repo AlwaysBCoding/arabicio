@@ -22,22 +22,52 @@ class WordParser
 			WordParser.parse_root(parsed_word, original_word)
 
 		when 3
-			return parsed_word
+			if %w[a y n t].include?(parsed_word.first)
+				return [ parsed_word[1], parsed_word[2], parsed_word[2] ]
+			elsif %w[t w].include?(parsed_word.last)
+				return [ parsed_word[0], parsed_word[1], parsed_word[1] ]
+			else
+				return parsed_word
+			end
+
+		when 2
+			return [ parsed_word[0], parsed_word[1], parsed_word[1] ]
 
 		else
-			return original_word
+			return parsed_word
 
 		end
 	end
 
-	# def self.parse_word_form(arabic_word)
+	def self.parse_word_form
+	end
 
-	# 	if arabic_word.length < 6
-	# 		return 1
-	# 	else
-	# 		return 10
-	# 	end
+	def self.parse_subform_from_root(root=[])
 
-	# end
+		if root[0] == "hi"
+			return "hamzated-initial"
+
+		elsif root[1] == "hi"
+			return "hamzated-medial"
+
+		elsif root[2] == "hi"
+			return "hamzated-final"
+
+		elsif root[1] == root[2]
+			return "doubled"
+
+		else
+			return "regular"
+		end
+
+		# return "assimilated"
+		# return "hollow"
+		# return "defective"
+		# # MIXED
+		# return "hollow-hamzated"
+		# return "hamzated-defective"
+		# return "assimilated-defective"
+		# return "hollow-defective"
+	end
 
 end
