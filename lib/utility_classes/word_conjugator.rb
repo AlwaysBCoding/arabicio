@@ -4,29 +4,29 @@ class WordConjugator
 		{
 
 			present: {
-				ana: %w[a k t b],
-				enta: %w[t k t b],
-				enti: %w[t k t b y n],
-				hooa: %w[y k t b],
-				heea: %w[t k t b],
-				nahn: %w[n k t b],
-				entum: %w[t k t b w n],
-				entun: %w[t k t b n],
-				hoom: %w[y k t b w n],
-				hoon: %w[y k t b n]
+				ana: ['a', root[0], root[1], root[2]],
+				enta: ['t', root[0], root[1], root[2]],
+				enti: ['t', root[0], root[1], root[2], 'y', 'n'],
+				hooa: ['y', root[0], root[1], root[2]],
+				heea: ['t', root[0], root[1], root[2]],
+				nahn: ['n', root[0], root[1], root[2]],
+				entum: ['t', root[0], root[1], root[2], 'w', 'n'],
+				entun: ['t', root[0], root[1], root[2], 'n'],
+				hoom: ['y', root[0], root[1], root[2], 'w', 'n'],
+				hoon: ['y', root[0], root[1], root[2], 'n']
 			},
 
 			past: {
-				ana: %w[k t b t],
-				enta: %w[k t b t],
-				enti: %w[k t b t],
-				hooa: %w[k t b],
-				heea: %w[k t b t],
-				nahn: %w[k t b n aa],
-				entum: %w[k t b t m],
-				entun: %w[k t b t n],
-				hoom: %w[k t b w aa],
-				hoon: %w[k t b n]
+				ana: [root[0], root[1], root[2], 't'],
+				enta: [root[0], root[1], root[2], 't'],
+				enti: [root[0], root[1], root[2], 't'],
+				hooa: [root[0], root[1], root[2]],
+				heea: [root[0], root[1], root[2], 't'],
+				nahn: [root[0], root[1], root[2], 'n', 'aa'],
+				entum: [root[0], root[1], root[2], 't', 'm'],
+				entun: [root[0], root[1], root[2], 't', 'n'],
+				hoom: [root[0], root[1], root[2], 'w', 'aa'],
+				hoon: [root[0], root[1], root[2], 'n']
 			}
 
 		}

@@ -1,8 +1,30 @@
-= form_tag parse_subform_url do
+= form_tag parse_subform_url, remote: true, class: "conjugate-root-form" do
 	= text_field_tag :word, nil, class: "word-to-parse"
 	= submit_tag "Submit"
 
 / = form_tag parse_word_url do
+- perspectives = %w[ana enta enti hooa heea nahn entum entun hoom hoon]
+
+%table
+	%thead
+		%tr
+			%th.word-root3 ROOT3
+			%th.word-root2 ROOT2
+			%th.word-root1 ROOT1
+		%tr
+			%th.word-form{colspan: 3} FORM
+		%tr
+			%th.word-subform{colspan: 3} SUBFORM
+		%tr
+			%th
+			%th PRESENT
+			%th PAST
+	%tbody
+		- perspectives.each do |perspective|
+			%tr
+				%td{data: {perspective: perspective} }= perspective
+				%td conjugation
+				%td conjugation
 
 :sass
 	.word-to-parse
