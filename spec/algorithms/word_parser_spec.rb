@@ -382,12 +382,12 @@ describe WordParser do
 		context "regular" do
 			it "parses subform (k t b)" do
 				root = %w[k t b]
-				subform_of(root).should eq "regular"
+				subform_of(root).should eq "sound"
 			end
 
 			it "parses suboform (m l k)" do
 				root = %w[m l k]
-				subform_of(root).should eq "regular"
+				subform_of(root).should eq "sound"
 			end
 		end
 

@@ -216,7 +216,8 @@ ArabicLetter.create!({
 ArabicLetter.create!({
 	ascii_value: "1614",
 	unicode_value: "U+064E",
-	english_value: "fatha"
+	english_value: "fatha",
+	english_symbol: "fa"
 	})
 
 ArabicLetter.create!({
@@ -229,7 +230,8 @@ ArabicLetter.create!({
 ArabicLetter.create!({
 	ascii_value: "1615",
 	unicode_value: "U+064F",
-	english_value: "damma"
+	english_value: "damma",
+	english_symbol: "da"
 	})
 
 ArabicLetter.create!({
@@ -242,7 +244,8 @@ ArabicLetter.create!({
 ArabicLetter.create!({
 	ascii_value: "1616",
 	unicode_value: "U+0650",
-	english_value: "kasra"
+	english_value: "kasra",
+	english_symbol: "ka"
 	})
 
 ArabicLetter.create!({
@@ -255,13 +258,15 @@ ArabicLetter.create!({
 ArabicLetter.create!({
 	ascii_value: "1617",
 	unicode_value: "U+0651",
-	english_value: "shadda"
+	english_value: "shadda",
+	english_symbol: "dd"
 	})
 
 ArabicLetter.create!({
 	ascii_value: "1618",
 	unicode_value: "U+0652",
-	english_value: "sukkun"
+	english_value: "sukkun",
+	english_symbol: "sk"
 	})
 
 ArabicLetter.create!({
