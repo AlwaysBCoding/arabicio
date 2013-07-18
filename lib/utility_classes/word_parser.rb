@@ -44,21 +44,21 @@ class WordParser
 
 	def self.parse_subform_from_root(root=[])
 
-		if root[0] == "hi"
+		if root[0] == "hi" || root[0] == "a"
 			if %w[w y].include?(root[2])
 				return "hamzated-defective"
 			else
 				return "hamzated-initial"
 			end
 
-		elsif root[1] == "hi"
+		elsif root[1] == "hi" || root[0] == "a"
 			if %w[w y].include?(root[2])
 				return "hamzated-defective"
 			else
 				return "hamzated-medial"
 			end
 
-		elsif root[2] == "hi"
+		elsif root[2] == "hi" || root[0] == "a"
 			if %w[w y].include?(root[1])
 				return "hollow-hamzated"
 			else

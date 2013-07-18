@@ -15,9 +15,6 @@ describe WordConjugator do
 				end
 
 				it "returns the correct conjugations" do
-					# conjugations = []
-					# conjugations.format_for_test
-					# conjugations.should eq expected
 				end
 
 			end
