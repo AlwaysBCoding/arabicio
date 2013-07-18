@@ -5,23 +5,29 @@
 
 - perspectives = %w[ana enta enti hooa heea nahn entum entun hoom hoon]
 
-%table.conjugation-table
-	%thead
-		%tr
-			%th.word-root3 ROOT3
-			%th.word-root2 ROOT2
-			%th.word-root1 ROOT1
-		%tr
-			%th.word-form{colspan: 3} FORM
-		%tr
-			%th.word-subform{colspan: 3} SUBFORM
-		%tr
-			%th
-			%th PRESENT
-			%th PAST
-	%tbody
-		- perspectives.each do |perspective|
-			%tr{data: {perspective: perspective} }
-				%td= perspective
-				%td.present-tense-conjugation conjugation
-				%td.past-tense-conjugation conjugation
+.information-modules
+	.root-information-module
+		.word-root.row
+			%span.word-root1field ROOT1
+			%span.word-root2field ROOT2
+			%span.word-root3field ROOT3
+		.word-form.row
+			%span.word-form-field FORM
+		.word-subform.row
+			%span.word-subform-field SUBFORM
+
+	.conjugation-constants-module
+
+.conjugation-table-module
+	%table.conjugation-table
+		%thead
+			%tr
+				%th
+				%th PRESENT
+				%th PAST
+		%tbody
+			- perspectives.each do |perspective|
+				%tr{data: {perspective: perspective} }
+					%td= perspective
+					%td.conjugation.present-tense-conjugation conjugation
+					%td.conjugation.past-tense-conjugation conjugation

@@ -3,11 +3,11 @@ $ ->
 		update_conjugation_table(data)
 
 	update_conjugation_table = (data) ->
-		$(".word-root1").text data['root'][0]
-		$(".word-root2").text data['root'][1]
-		$(".word-root3").text data['root'][2]
-		$(".word-form").text "FORM " + data['form']
-		$(".word-subform").text data['subform'] + " root"
+		$(".word-root1field").text data['root'][0]
+		$(".word-root2field").text data['root'][1]
+		$(".word-root3field").text data['root'][2]
+		$(".word-form-field").text "FORM " + data['form']
+		$(".word-subform-field").text data['subform'] + " root"
 
 		present_tense_conjugations = data["conjugations"]["present"]
 		past_tense_conjugations = data["conjugations"]["past"]
