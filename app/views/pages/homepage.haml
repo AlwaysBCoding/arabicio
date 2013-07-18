@@ -1,11 +1,11 @@
 / = form_tag parse_word_url, class: "conjugate-root-form" do
 = form_tag parse_subform_url, remote: true, class: "conjugate-root-form" do
-	= text_field_tag :word, nil, class: "word-to-parse"
-	= submit_tag "Submit"
+	= text_field_tag :word, nil, class: "word-to-parse", autocomplete: "off"
+	= submit_tag "Submit", class: "parse-word-submit-button"
 
 - perspectives = %w[ana enta enti hooa heea nahn entum entun hoom hoon]
 
-%table
+%table.conjugation-table
 	%thead
 		%tr
 			%th.word-root3 ROOT3
@@ -25,13 +25,3 @@
 				%td= perspective
 				%td.present-tense-conjugation conjugation
 				%td.past-tense-conjugation conjugation
-
-:sass
-	body
-		font-family: arial
-	.word-to-parse
-		width: 300px
-		height: 50px
-		border: 2px solid black
-		font-size: 32px
-		padding-left: 10px
