@@ -8,6 +8,8 @@ guard :rspec do
 
   watch('lib/utility_classes/word_parser.rb') { 'spec/algorithms/word_parser_spec.rb'}
   watch('lib/utility_classes/word_conjugator.rb') { 'spec/algorithms/word_conjugator_spec.rb'}
+  watch('lib/utility_classes/arabic_conjugation.rb') { 'spec/algorithms/word_conjugator_spec.rb'}
+  watch('lib/utility_classes/arabic_word.rb') { 'spec/algorithms/word_conjugator_spec.rb'}
 
   # Rails example
   watch(%r{^app/(.+)\.rb$})                           { |m| "spec/#{m[1]}_spec.rb" }

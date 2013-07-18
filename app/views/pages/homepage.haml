@@ -21,10 +21,10 @@
 			%th PAST
 	%tbody
 		- perspectives.each do |perspective|
-			%tr
-				%td{data: {perspective: perspective} }= perspective
-				%td conjugation
-				%td conjugation
+			%tr{data: {perspective: perspective} }
+				%td= perspective
+				%td.present-tense-conjugation conjugation
+				%td.past-tense-conjugation conjugation
 
 :sass
 	.word-to-parse
