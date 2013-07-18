@@ -51,14 +51,14 @@ class WordParser
 				return "hamzated-initial"
 			end
 
-		elsif root[1] == "hi" || root[0] == "a"
+		elsif root[1] == "hi" || root[1] == "a"
 			if %w[w y].include?(root[2])
 				return "hamzated-defective"
 			else
 				return "hamzated-medial"
 			end
 
-		elsif root[2] == "hi" || root[0] == "a"
+		elsif root[2] == "hi" || root[2] == "a"
 			if %w[w y].include?(root[1])
 				return "hollow-hamzated"
 			else

@@ -1,3 +1,4 @@
+/ = form_tag parse_word_url, class: "conjugate-root-form" do
 = form_tag parse_subform_url, remote: true, class: "conjugate-root-form" do
 	= text_field_tag :word, nil, class: "word-to-parse"
 	= submit_tag "Submit"

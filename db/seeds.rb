@@ -304,4 +304,11 @@ ArabicLetter.create!({
 	english_symbol: "amd"
 	})
 
+ArabicLetter.create!({
+	ascii_value: "1574",
+	unicode_value: "U+0626",
+	english_value: "hamza-yaa",
+	english_symbol: "hy"
+	})
+
 puts "Created Arabic Letters"

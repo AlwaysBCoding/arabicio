@@ -54,41 +54,92 @@ class WordConjugator
 					ArabicConjugation.new( 'hoon', :past, [root[0], root[1], root[2], 'n'], ['fa', 'fa', 'sk', 'fa'] )
 				]
 			when "hollow"
-				[
-					ArabicConjugation.new( 'ana', :present, ['a', root[0], root[1], root[2]], ['fa', 'sk', 'fa', nil] ),
-					ArabicConjugation.new( 'enta', :present, ['t', root[0], root[1], root[2]], ['fa', 'sk', 'fa', nil] ),
-					ArabicConjugation.new( 'enti', :present, ['t', root[0], root[1], root[2], 'y', 'n'], ['fa', 'sk', 'fa', nil, nil, nil] ),
-					ArabicConjugation.new( 'hooa', :present, ['y', root[0], root[1], root[2]], ['fa', 'sk', 'fa', nil] ),
-					ArabicConjugation.new( 'heea', :present, ['t', root[0], root[1], root[2]], ['fa', 'sk', 'fa', nil] ),
-					ArabicConjugation.new( 'nahn', :present, ['n', root[0], root[1], root[2]], ['fa', 'sk', 'fa', nil] ),
-					ArabicConjugation.new( 'entum', :present, ['t', root[0], root[1], root[2], 'w', 'n'], ['fa', 'sk', 'fa', nil, nil, nil] ),
-					ArabicConjugation.new( 'entun', :present, ['t', root[0], root[1], root[2], 'n'], ['fa', 'sk', 'fa', 'sk', 'fa'] ),
-					ArabicConjugation.new( 'hoom', :present, ['y', root[0], root[1], root[2], 'w', 'n'], ['fa', 'sk', 'fa', nil, nil, nil] ),
-					ArabicConjugation.new( 'hoon', :present, ['y', root[0], root[1], root[2], 'n'], ['fa', 'sk', 'fa', 'sk', 'fa'] ),
+				case root[1]
+				when "w"
+					[
+						ArabicConjugation.new( 'ana', :present, ['a', root[0], root[1], root[2]], ['fa', nil, nil, nil] ),
+						ArabicConjugation.new( 'enta', :present, ['t', root[0], root[1], root[2]], ['fa', nil, nil, nil] ),
+						ArabicConjugation.new( 'enti', :present, ['t', root[0], root[1], root[2], 'y', 'n'], ['fa', nil, nil, nil, nil, nil] ),
+						ArabicConjugation.new( 'hooa', :present, ['y', root[0], root[1], root[2]], ['fa', nil, nil, nil] ),
+						ArabicConjugation.new( 'heea', :present, ['t', root[0], root[1], root[2]], ['fa', nil, nil, nil] ),
+						ArabicConjugation.new( 'nahn', :present, ['n', root[0], root[1], root[2]], ['fa', nil, nil, nil] ),
+						ArabicConjugation.new( 'entum', :present, ['t', root[0], root[1], root[2], 'w', 'n'], ['fa', nil, nil, nil, nil, nil] ),
+						ArabicConjugation.new( 'entun', :present, ['t', root[0], root[2], 'n'], ['fa', 'da', 'sk', 'fa'] ),
+						ArabicConjugation.new( 'hoom', :present, ['y', root[0], root[1], root[2], 'w', 'n'], ['fa', nil, nil, nil, nil, nil] ),
+						ArabicConjugation.new( 'hoon', :present, ['y', root[0], root[2], 'n'], ['fa', 'da', 'sk', 'fa'] ),
 
-					ArabicConjugation.new( 'ana', :past, [root[0], root[1], root[2], 't'], ['fa', 'fa', 'sk', 'da'] ),
-					ArabicConjugation.new( 'enta', :past, [root[0], root[1], root[2], 't'], ['fa', 'fa', 'sk', 'fa'] ),
-					ArabicConjugation.new( 'enti', :past, [root[0], root[1], root[2], 't'], ['fa', 'fa', 'sk', 'ka'] ),
-					ArabicConjugation.new( 'hooa', :past, [root[0], root[1], root[2]], ['fa', 'fa', 'fa'] ),
-					ArabicConjugation.new( 'heea', :past, [root[0], root[1], root[2], 't'], ['fa', 'fa', 'fa', 'sk'] ),
-					ArabicConjugation.new( 'nahn', :past, [root[0], root[1], root[2], 'n', 'aa'], ['fa', 'fa', 'sk', nil, nil] ),
-					ArabicConjugation.new( 'entum', :past, [root[0], root[1], root[2], 't', 'm'], ['fa', 'fa', 'sk', 'da', nil] ),
-					ArabicConjugation.new( 'entun', :past, [root[0], root[1], root[2], 't', 'n'], ['fa', 'fa', 'sk', 'da', 'dd'] ),
-					ArabicConjugation.new( 'hoom', :past, [root[0], root[1], root[2], 'w', 'aa'], ['fa', 'fa', nil, nil, nil] ),
-					ArabicConjugation.new( 'hoon', :past, [root[0], root[1], root[2], 'n'], ['fa', 'fa', 'sk', 'fa'] )
-				]
+						ArabicConjugation.new( 'ana', :past, [root[0], root[2], 't'], ['da', 'sk', 'da'] ),
+						ArabicConjugation.new( 'enta', :past, [root[0], root[2], 't'], ['da', 'sk', 'fa'] ),
+						ArabicConjugation.new( 'enti', :past, [root[0], root[2], 't'], ['da', 'sk', 'ka'] ),
+						ArabicConjugation.new( 'hooa', :past, [root[0], 'aa', root[2]], [nil, nil, 'fa'] ),
+						ArabicConjugation.new( 'heea', :past, [root[0], 'aa', root[2], 't'], [nil, nil, 'fa', 'sk'] ),
+						ArabicConjugation.new( 'nahn', :past, [root[0], root[2], 'n', 'aa'], ['da', 'sk', nil, nil] ),
+						ArabicConjugation.new( 'entum', :past, [root[0], root[2], 't', 'm'], ['da', 'sk', 'da', nil] ),
+						ArabicConjugation.new( 'entun', :past, [root[0], root[2], 't', 'n'], ['da', 'sk', 'da', 'dd'] ),
+						ArabicConjugation.new( 'hoom', :past, [root[0], 'aa', root[2], 'w', 'aa'], [nil, nil, nil, nil, nil] ),
+						ArabicConjugation.new( 'hoon', :past, [root[0], root[2], 'n'], ['da', 'sk', 'fa'] )
+					]
+				when "y"
+					[
+						ArabicConjugation.new( 'ana', :present, ['a', root[0], root[1], root[2]], ['fa', nil, nil, nil] ),
+						ArabicConjugation.new( 'enta', :present, ['t', root[0], root[1], root[2]], ['fa', nil, nil, nil] ),
+						ArabicConjugation.new( 'enti', :present, ['t', root[0], root[1], root[2], 'y', 'n'], ['fa', nil, nil, nil, nil, nil] ),
+						ArabicConjugation.new( 'hooa', :present, ['y', root[0], root[1], root[2]], ['fa', nil, nil, nil] ),
+						ArabicConjugation.new( 'heea', :present, ['t', root[0], root[1], root[2]], ['fa', nil, nil, nil] ),
+						ArabicConjugation.new( 'nahn', :present, ['n', root[0], root[1], root[2]], ['fa', nil, nil, nil] ),
+						ArabicConjugation.new( 'entum', :present, ['t', root[0], root[1], root[2], 'w', 'n'], ['fa', nil, nil, nil, nil, nil] ),
+						ArabicConjugation.new( 'entun', :present, ['t', root[0], root[2], 'n'], ['fa', 'ka', 'sk', 'fa'] ),
+						ArabicConjugation.new( 'hoom', :present, ['y', root[0], root[1], root[2], 'w', 'n'], ['fa', nil, nil, nil, nil, nil] ),
+						ArabicConjugation.new( 'hoon', :present, ['y', root[0], root[2], 'n'], ['fa', 'ka', 'sk', 'fa'] ),
+
+						ArabicConjugation.new( 'ana', :past, [root[0], root[2], 't'], ['ka', 'sk', 'da'] ),
+						ArabicConjugation.new( 'enta', :past, [root[0], root[2], 't'], ['ka', 'sk', 'fa'] ),
+						ArabicConjugation.new( 'enti', :past, [root[0], root[2], 't'], ['ka', 'sk', 'ka'] ),
+						ArabicConjugation.new( 'hooa', :past, [root[0], 'aa', root[2]], [nil, nil, 'fa'] ),
+						ArabicConjugation.new( 'heea', :past, [root[0], 'aa', root[2], 't'], [nil, nil, 'fa', 'sk'] ),
+						ArabicConjugation.new( 'nahn', :past, [root[0], root[2], 'n', 'aa'], ['ka', 'sk', nil, nil] ),
+						ArabicConjugation.new( 'entum', :past, [root[0], root[2], 't', 'm'], ['ka', 'sk', 'da', nil] ),
+						ArabicConjugation.new( 'entun', :past, [root[0], root[2], 't', 'n'], ['ka', 'sk', 'da', 'dd'] ),
+						ArabicConjugation.new( 'hoom', :past, [root[0], 'aa', root[2], 'w', 'aa'], [nil, nil, nil, nil, nil] ),
+						ArabicConjugation.new( 'hoon', :past, [root[0], root[2], 'n'], ['ka', 'sk', 'fa'] )
+					]
+				when "aa"
+					[
+						ArabicConjugation.new( 'ana', :present, ['a', root[0], root[1], root[2]], ['fa', nil, nil, nil] ),
+						ArabicConjugation.new( 'enta', :present, ['t', root[0], root[1], root[2]], ['fa', nil, nil, nil] ),
+						ArabicConjugation.new( 'enti', :present, ['t', root[0], root[1], root[2], 'y', 'n'], ['fa', nil, nil, nil, nil, nil] ),
+						ArabicConjugation.new( 'hooa', :present, ['y', root[0], root[1], root[2]], ['fa', nil, nil, nil] ),
+						ArabicConjugation.new( 'heea', :present, ['t', root[0], root[1], root[2]], ['fa', nil, nil, nil] ),
+						ArabicConjugation.new( 'nahn', :present, ['n', root[0], root[1], root[2]], ['fa', nil, nil, nil] ),
+						ArabicConjugation.new( 'entum', :present, ['t', root[0], root[1], root[2], 'w', 'n'], ['fa', nil, nil, nil, nil, nil] ),
+						ArabicConjugation.new( 'entun', :present, ['t', root[0], root[2], 'n'], ['fa', 'fa', 'sk', 'fa'] ),
+						ArabicConjugation.new( 'hoom', :present, ['y', root[0], root[1], root[2], 'w', 'n'], ['fa', nil, nil, nil, nil, nil] ),
+						ArabicConjugation.new( 'hoon', :present, ['y', root[0], root[2], 'n'], ['fa', 'fa', 'sk', 'fa'] ),
+
+						ArabicConjugation.new( 'ana', :past, [root[0], root[2], 't'], ['ka', 'sk', 'da'] ),
+						ArabicConjugation.new( 'enta', :past, [root[0], root[2], 't'], ['ka', 'sk', 'fa'] ),
+						ArabicConjugation.new( 'enti', :past, [root[0], root[2], 't'], ['ka', 'sk', 'ka'] ),
+						ArabicConjugation.new( 'hooa', :past, [root[0], 'aa', root[2]], [nil, nil, 'fa'] ),
+						ArabicConjugation.new( 'heea', :past, [root[0], 'aa', root[2], 't'], [nil, nil, 'fa', 'sk'] ),
+						ArabicConjugation.new( 'nahn', :past, [root[0], root[2], 'n', 'aa'], ['ka', 'sk', nil, nil] ),
+						ArabicConjugation.new( 'entum', :past, [root[0], root[2], 't', 'm'], ['ka', 'sk', 'da', nil] ),
+						ArabicConjugation.new( 'entun', :past, [root[0], root[2], 't', 'n'], ['ka', 'sk', 'da', 'dd'] ),
+						ArabicConjugation.new( 'hoom', :past, [root[0], 'aa', root[2], 'w', 'aa'], [nil, nil, nil, nil, nil] ),
+						ArabicConjugation.new( 'hoon', :past, [root[0], root[2], 'n'], ['ka', 'sk', 'fa'] )
+					]
+				end
 			when "assimilated"
 				[
-					ArabicConjugation.new( 'ana', :present, ['a', root[0], root[1], root[2]], ['fa', 'sk', 'fa', nil] ),
-					ArabicConjugation.new( 'enta', :present, ['t', root[0], root[1], root[2]], ['fa', 'sk', 'fa', nil] ),
-					ArabicConjugation.new( 'enti', :present, ['t', root[0], root[1], root[2], 'y', 'n'], ['fa', 'sk', 'fa', nil, nil, nil] ),
-					ArabicConjugation.new( 'hooa', :present, ['y', root[0], root[1], root[2]], ['fa', 'sk', 'fa', nil] ),
-					ArabicConjugation.new( 'heea', :present, ['t', root[0], root[1], root[2]], ['fa', 'sk', 'fa', nil] ),
-					ArabicConjugation.new( 'nahn', :present, ['n', root[0], root[1], root[2]], ['fa', 'sk', 'fa', nil] ),
-					ArabicConjugation.new( 'entum', :present, ['t', root[0], root[1], root[2], 'w', 'n'], ['fa', 'sk', 'fa', nil, nil, nil] ),
-					ArabicConjugation.new( 'entun', :present, ['t', root[0], root[1], root[2], 'n'], ['fa', 'sk', 'fa', 'sk', 'fa'] ),
-					ArabicConjugation.new( 'hoom', :present, ['y', root[0], root[1], root[2], 'w', 'n'], ['fa', 'sk', 'fa', nil, nil, nil] ),
-					ArabicConjugation.new( 'hoon', :present, ['y', root[0], root[1], root[2], 'n'], ['fa', 'sk', 'fa', 'sk', 'fa'] ),
+					ArabicConjugation.new( 'ana', :present, ['a', root[1], root[2]], ['fa', 'fa', nil] ),
+					ArabicConjugation.new( 'enta', :present, ['t', root[1], root[2]], ['fa', 'fa', nil] ),
+					ArabicConjugation.new( 'enti', :present, ['t', root[1], root[2], 'y', 'n'], ['fa', 'fa', nil, nil, nil] ),
+					ArabicConjugation.new( 'hooa', :present, ['y', root[1], root[2]], ['fa', 'fa', nil] ),
+					ArabicConjugation.new( 'heea', :present, ['t', root[1], root[2]], ['fa', 'fa', nil] ),
+					ArabicConjugation.new( 'nahn', :present, ['n', root[1], root[2]], ['fa', 'fa', nil] ),
+					ArabicConjugation.new( 'entum', :present, ['t', root[1], root[2], 'w', 'n'], ['fa', 'fa', nil, nil, nil] ),
+					ArabicConjugation.new( 'entun', :present, ['t', root[1], root[2], 'n'], ['fa', 'fa', 'sk', 'fa'] ),
+					ArabicConjugation.new( 'hoom', :present, ['y', root[1], root[2], 'w', 'n'], ['fa', 'fa', nil, nil, nil] ),
+					ArabicConjugation.new( 'hoon', :present, ['y', root[1], root[2], 'n'], ['fa', 'fa', 'sk', 'fa'] ),
 
 					ArabicConjugation.new( 'ana', :past, [root[0], root[1], root[2], 't'], ['fa', 'fa', 'sk', 'da'] ),
 					ArabicConjugation.new( 'enta', :past, [root[0], root[1], root[2], 't'], ['fa', 'fa', 'sk', 'fa'] ),
@@ -199,51 +250,51 @@ class WordConjugator
 				]
 			when "hamzated-medial"
 				[
-					ArabicConjugation.new( 'ana', :present, ['a', root[0], root[1], root[2]], ['fa', 'sk', 'fa', nil] ),
-					ArabicConjugation.new( 'enta', :present, ['t', root[0], root[1], root[2]], ['fa', 'sk', 'fa', nil] ),
-					ArabicConjugation.new( 'enti', :present, ['t', root[0], root[1], root[2], 'y', 'n'], ['fa', 'sk', 'fa', nil, nil, nil] ),
-					ArabicConjugation.new( 'hooa', :present, ['y', root[0], root[1], root[2]], ['fa', 'sk', 'fa', nil] ),
-					ArabicConjugation.new( 'heea', :present, ['t', root[0], root[1], root[2]], ['fa', 'sk', 'fa', nil] ),
-					ArabicConjugation.new( 'nahn', :present, ['n', root[0], root[1], root[2]], ['fa', 'sk', 'fa', nil] ),
-					ArabicConjugation.new( 'entum', :present, ['t', root[0], root[1], root[2], 'w', 'n'], ['fa', 'sk', 'fa', nil, nil, nil] ),
-					ArabicConjugation.new( 'entun', :present, ['t', root[0], root[1], root[2], 'n'], ['fa', 'sk', 'fa', 'sk', 'fa'] ),
-					ArabicConjugation.new( 'hoom', :present, ['y', root[0], root[1], root[2], 'w', 'n'], ['fa', 'sk', 'fa', nil, nil, nil] ),
-					ArabicConjugation.new( 'hoon', :present, ['y', root[0], root[1], root[2], 'n'], ['fa', 'sk', 'fa', 'sk', 'fa'] ),
+					ArabicConjugation.new( 'ana', :present, ['a', root[0], 'a', root[2]], ['fa', 'sk', 'fa', nil] ),
+					ArabicConjugation.new( 'enta', :present, ['t', root[0], 'a', root[2]], ['fa', 'sk', 'fa', nil] ),
+					ArabicConjugation.new( 'enti', :present, ['t', root[0], 'a', root[2], 'y', 'n'], ['fa', 'sk', 'fa', nil, nil, nil] ),
+					ArabicConjugation.new( 'hooa', :present, ['y', root[0], 'a', root[2]], ['fa', 'sk', 'fa', nil] ),
+					ArabicConjugation.new( 'heea', :present, ['t', root[0], 'a', root[2]], ['fa', 'sk', 'fa', nil] ),
+					ArabicConjugation.new( 'nahn', :present, ['n', root[0], 'a', root[2]], ['fa', 'sk', 'fa', nil] ),
+					ArabicConjugation.new( 'entum', :present, ['t', root[0], 'a', root[2], 'w', 'n'], ['fa', 'sk', 'fa', nil, nil, nil] ),
+					ArabicConjugation.new( 'entun', :present, ['t', root[0], 'a', root[2], 'n'], ['fa', 'sk', 'fa', 'sk', 'fa'] ),
+					ArabicConjugation.new( 'hoom', :present, ['y', root[0], 'a', root[2], 'w', 'n'], ['fa', 'sk', 'fa', nil, nil, nil] ),
+					ArabicConjugation.new( 'hoon', :present, ['y', root[0], 'a', root[2], 'n'], ['fa', 'sk', 'fa', 'sk', 'fa'] ),
 
-					ArabicConjugation.new( 'ana', :past, [root[0], root[1], root[2], 't'], ['fa', 'fa', 'sk', 'da'] ),
-					ArabicConjugation.new( 'enta', :past, [root[0], root[1], root[2], 't'], ['fa', 'fa', 'sk', 'fa'] ),
-					ArabicConjugation.new( 'enti', :past, [root[0], root[1], root[2], 't'], ['fa', 'fa', 'sk', 'ka'] ),
-					ArabicConjugation.new( 'hooa', :past, [root[0], root[1], root[2]], ['fa', 'fa', 'fa'] ),
-					ArabicConjugation.new( 'heea', :past, [root[0], root[1], root[2], 't'], ['fa', 'fa', 'fa', 'sk'] ),
-					ArabicConjugation.new( 'nahn', :past, [root[0], root[1], root[2], 'n', 'aa'], ['fa', 'fa', 'sk', nil, nil] ),
-					ArabicConjugation.new( 'entum', :past, [root[0], root[1], root[2], 't', 'm'], ['fa', 'fa', 'sk', 'da', nil] ),
-					ArabicConjugation.new( 'entun', :past, [root[0], root[1], root[2], 't', 'n'], ['fa', 'fa', 'sk', 'da', 'dd'] ),
-					ArabicConjugation.new( 'hoom', :past, [root[0], root[1], root[2], 'w', 'aa'], ['fa', 'fa', nil, nil, nil] ),
-					ArabicConjugation.new( 'hoon', :past, [root[0], root[1], root[2], 'n'], ['fa', 'fa', 'sk', 'fa'] )
+					ArabicConjugation.new( 'ana', :past, [root[0], 'a', root[2], 't'], ['fa', 'fa', 'sk', 'da'] ),
+					ArabicConjugation.new( 'enta', :past, [root[0], 'a', root[2], 't'], ['fa', 'fa', 'sk', 'fa'] ),
+					ArabicConjugation.new( 'enti', :past, [root[0], 'a', root[2], 't'], ['fa', 'fa', 'sk', 'ka'] ),
+					ArabicConjugation.new( 'hooa', :past, [root[0], 'a', root[2]], ['fa', 'fa', 'fa'] ),
+					ArabicConjugation.new( 'heea', :past, [root[0], 'a', root[2], 't'], ['fa', 'fa', 'fa', 'sk'] ),
+					ArabicConjugation.new( 'nahn', :past, [root[0], 'a', root[2], 'n', 'aa'], ['fa', 'fa', 'sk', nil, nil] ),
+					ArabicConjugation.new( 'entum', :past, [root[0], 'a', root[2], 't', 'm'], ['fa', 'fa', 'sk', 'da', nil] ),
+					ArabicConjugation.new( 'entun', :past, [root[0], 'a', root[2], 't', 'n'], ['fa', 'fa', 'sk', 'da', 'dd'] ),
+					ArabicConjugation.new( 'hoom', :past, [root[0], 'a', root[2], 'w', 'aa'], ['fa', 'fa', nil, nil, nil] ),
+					ArabicConjugation.new( 'hoon', :past, [root[0], 'a', root[2], 'n'], ['fa', 'fa', 'sk', 'fa'] )
 				]
 			when "hamzated-final"
 				[
-					ArabicConjugation.new( 'ana', :present, ['a', root[0], root[1], root[2]], ['fa', 'sk', 'fa', nil] ),
-					ArabicConjugation.new( 'enta', :present, ['t', root[0], root[1], root[2]], ['fa', 'sk', 'fa', nil] ),
-					ArabicConjugation.new( 'enti', :present, ['t', root[0], root[1], root[2], 'y', 'n'], ['fa', 'sk', 'fa', nil, nil, nil] ),
-					ArabicConjugation.new( 'hooa', :present, ['y', root[0], root[1], root[2]], ['fa', 'sk', 'fa', nil] ),
-					ArabicConjugation.new( 'heea', :present, ['t', root[0], root[1], root[2]], ['fa', 'sk', 'fa', nil] ),
-					ArabicConjugation.new( 'nahn', :present, ['n', root[0], root[1], root[2]], ['fa', 'sk', 'fa', nil] ),
-					ArabicConjugation.new( 'entum', :present, ['t', root[0], root[1], root[2], 'w', 'n'], ['fa', 'sk', 'fa', nil, nil, nil] ),
-					ArabicConjugation.new( 'entun', :present, ['t', root[0], root[1], root[2], 'n'], ['fa', 'sk', 'fa', 'sk', 'fa'] ),
-					ArabicConjugation.new( 'hoom', :present, ['y', root[0], root[1], root[2], 'w', 'n'], ['fa', 'sk', 'fa', nil, nil, nil] ),
-					ArabicConjugation.new( 'hoon', :present, ['y', root[0], root[1], root[2], 'n'], ['fa', 'sk', 'fa', 'sk', 'fa'] ),
+					ArabicConjugation.new( 'ana', :present, ['a', root[0], root[1], 'a'], ['fa', 'sk', 'fa', nil] ),
+					ArabicConjugation.new( 'enta', :present, ['t', root[0], root[1], 'a'], ['fa', 'sk', 'fa', nil] ),
+					ArabicConjugation.new( 'enti', :present, ['t', root[0], root[1], 'hy', 'y', 'n'], ['fa', 'sk', 'fa', 'ka', nil, nil] ),
+					ArabicConjugation.new( 'hooa', :present, ['y', root[0], root[1], 'a'], ['fa', 'sk', 'fa', nil] ),
+					ArabicConjugation.new( 'heea', :present, ['t', root[0], root[1], 'a'], ['fa', 'sk', 'fa', nil] ),
+					ArabicConjugation.new( 'nahn', :present, ['n', root[0], root[1], 'a'], ['fa', 'sk', 'fa', nil] ),
+					ArabicConjugation.new( 'entum', :present, ['t', root[0], root[1], 'o', 'w', 'n'], ['fa', 'sk', 'fa', 'da', nil, nil] ),
+					ArabicConjugation.new( 'entun', :present, ['t', root[0], root[1], 'a', 'n'], ['fa', 'sk', 'fa', 'sk', 'fa'] ),
+					ArabicConjugation.new( 'hoom', :present, ['y', root[0], root[1], 'o', 'w', 'n'], ['fa', 'sk', 'fa', 'da', nil, nil] ),
+					ArabicConjugation.new( 'hoon', :present, ['y', root[0], root[1], 'a', 'n'], ['fa', 'sk', 'fa', 'sk', 'fa'] ),
 
-					ArabicConjugation.new( 'ana', :past, [root[0], root[1], root[2], 't'], ['fa', 'fa', 'sk', 'da'] ),
-					ArabicConjugation.new( 'enta', :past, [root[0], root[1], root[2], 't'], ['fa', 'fa', 'sk', 'fa'] ),
-					ArabicConjugation.new( 'enti', :past, [root[0], root[1], root[2], 't'], ['fa', 'fa', 'sk', 'ka'] ),
-					ArabicConjugation.new( 'hooa', :past, [root[0], root[1], root[2]], ['fa', 'fa', 'fa'] ),
-					ArabicConjugation.new( 'heea', :past, [root[0], root[1], root[2], 't'], ['fa', 'fa', 'fa', 'sk'] ),
-					ArabicConjugation.new( 'nahn', :past, [root[0], root[1], root[2], 'n', 'aa'], ['fa', 'fa', 'sk', nil, nil] ),
-					ArabicConjugation.new( 'entum', :past, [root[0], root[1], root[2], 't', 'm'], ['fa', 'fa', 'sk', 'da', nil] ),
-					ArabicConjugation.new( 'entun', :past, [root[0], root[1], root[2], 't', 'n'], ['fa', 'fa', 'sk', 'da', 'dd'] ),
-					ArabicConjugation.new( 'hoom', :past, [root[0], root[1], root[2], 'w', 'aa'], ['fa', 'fa', nil, nil, nil] ),
-					ArabicConjugation.new( 'hoon', :past, [root[0], root[1], root[2], 'n'], ['fa', 'fa', 'sk', 'fa'] )
+					ArabicConjugation.new( 'ana', :past, [root[0], root[1], 'a', 't'], ['fa', 'fa', 'sk', 'da'] ),
+					ArabicConjugation.new( 'enta', :past, [root[0], root[1], 'a', 't'], ['fa', 'fa', 'sk', 'fa'] ),
+					ArabicConjugation.new( 'enti', :past, [root[0], root[1], 'a', 't'], ['fa', 'fa', 'sk', 'ka'] ),
+					ArabicConjugation.new( 'hooa', :past, [root[0], root[1], 'a'], ['fa', 'fa', 'fa'] ),
+					ArabicConjugation.new( 'heea', :past, [root[0], root[1], 'a', 't'], ['fa', 'fa', 'fa', 'sk'] ),
+					ArabicConjugation.new( 'nahn', :past, [root[0], root[1], 'a', 'n', 'aa'], ['fa', 'fa', 'sk', nil, nil] ),
+					ArabicConjugation.new( 'entum', :past, [root[0], root[1], 'a', 't', 'm'], ['fa', 'fa', 'sk', 'da', nil] ),
+					ArabicConjugation.new( 'entun', :past, [root[0], root[1], 'a', 't', 'n'], ['fa', 'fa', 'sk', 'da', 'dd'] ),
+					ArabicConjugation.new( 'hoom', :past, [root[0], root[1], 'o', 'w', 'aa'], ['fa', 'fa', 'da', nil, nil] ),
+					ArabicConjugation.new( 'hoon', :past, [root[0], root[1], 'a', 'n'], ['fa', 'fa', 'sk', 'fa'] )
 				]
 			when "hollow-hamzated"
 				[
