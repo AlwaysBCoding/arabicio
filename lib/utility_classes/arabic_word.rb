@@ -31,8 +31,8 @@ private
 		present_tense_conjugations = arabic_conjugations.select { |conjugation| conjugation.tense == :present }
 		past_tense_conjugations = arabic_conjugations.select { |conjugation| conjugation.tense == :past }
 
-		present_tense_conjugations.each { |conjugation| present_tense_json[conjugation.perspective] = conjugation.vowels.zip(conjugation.consonants).flatten.compact.join("") }
-		past_tense_conjugations.each { |conjugation| past_tense_json[conjugation.perspective] = conjugation.vowels.zip(conjugation.consonants).flatten.compact.join("") }
+		present_tense_conjugations.each { |conjugation| present_tense_json[conjugation.perspective] = conjugation.consonants.zip(conjugation.vowels).flatten.compact.join("") }
+		past_tense_conjugations.each { |conjugation| past_tense_json[conjugation.perspective] = conjugation.consonants.zip(conjugation.vowels).flatten.compact.join("") }
 
 		return { present: present_tense_json, past: past_tense_json }
 	end
