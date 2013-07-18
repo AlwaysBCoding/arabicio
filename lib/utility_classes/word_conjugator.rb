@@ -27,7 +27,11 @@ class WordConjugator
 					ArabicConjugation.new( 'entum', :past, [root[0], root[1], root[2], 't', 'm'], ['fa', 'fa', 'sk', 'da', nil] ),
 					ArabicConjugation.new( 'entun', :past, [root[0], root[1], root[2], 't', 'n'], ['fa', 'fa', 'sk', 'da', 'dd'] ),
 					ArabicConjugation.new( 'hoom', :past, [root[0], root[1], root[2], 'w', 'aa'], ['fa', 'fa', nil, nil, nil] ),
-					ArabicConjugation.new( 'hoon', :past, [root[0], root[1], root[2], 'n'], ['fa', 'fa', 'sk', 'fa'] )
+					ArabicConjugation.new( 'hoon', :past, [root[0], root[1], root[2], 'n'], ['fa', 'fa', 'sk', 'fa'] ),
+
+					ArabicConjugation.new( nil, :active_participle, [root[0], 'aa', root[1], root[2]], [nil, nil, 'ka', nil] ),
+					ArabicConjugation.new( nil, :passive_participle, ['m', root[0], root[1], 'w', root[2]], ['fa', 'sk', nil, nil, nil] )
+
 				]
 			when "doubled"
 				[
@@ -51,7 +55,10 @@ class WordConjugator
 					ArabicConjugation.new( 'entum', :past, [root[0], root[1], root[2], 't', 'm'], ['fa', 'fa', 'sk', 'da', nil] ),
 					ArabicConjugation.new( 'entun', :past, [root[0], root[1], root[2], 't', 'n'], ['fa', 'fa', 'sk', 'da', 'dd'] ),
 					ArabicConjugation.new( 'hoom', :past, [root[0], root[1], 'w', 'aa'], ['fa', 'dd', nil, nil] ),
-					ArabicConjugation.new( 'hoon', :past, [root[0], root[1], root[2], 'n'], ['fa', 'fa', 'sk', 'fa'] )
+					ArabicConjugation.new( 'hoon', :past, [root[0], root[1], root[2], 'n'], ['fa', 'fa', 'sk', 'fa'] ),
+
+					ArabicConjugation.new( nil, :active_participle, [root[0], 'aa', root[1]], [nil, nil, 'dd'] ),
+					ArabicConjugation.new( nil, :passive_participle, ['m', root[0], root[1], 'w', root[2]], ['fa', 'sk', nil, nil, nil] )
 				]
 			when "hollow"
 				case root[1]
@@ -77,7 +84,10 @@ class WordConjugator
 						ArabicConjugation.new( 'entum', :past, [root[0], root[2], 't', 'm'], ['da', 'sk', 'da', nil] ),
 						ArabicConjugation.new( 'entun', :past, [root[0], root[2], 't', 'n'], ['da', 'sk', 'da', 'dd'] ),
 						ArabicConjugation.new( 'hoom', :past, [root[0], 'aa', root[2], 'w', 'aa'], [nil, nil, nil, nil, nil] ),
-						ArabicConjugation.new( 'hoon', :past, [root[0], root[2], 'n'], ['da', 'sk', 'fa'] )
+						ArabicConjugation.new( 'hoon', :past, [root[0], root[2], 'n'], ['da', 'sk', 'fa'] ),
+
+						ArabicConjugation.new( nil, :active_participle, [root[0], 'aa', 'hy', root[2]], [nil, nil, 'ka', nil] ),
+						ArabicConjugation.new( nil, :passive_participle, ['m', root[0], root[1], root[2]], ['fa', nil, nil, nil] )
 					]
 				when "y"
 					[
@@ -101,7 +111,10 @@ class WordConjugator
 						ArabicConjugation.new( 'entum', :past, [root[0], root[2], 't', 'm'], ['ka', 'sk', 'da', nil] ),
 						ArabicConjugation.new( 'entun', :past, [root[0], root[2], 't', 'n'], ['ka', 'sk', 'da', 'dd'] ),
 						ArabicConjugation.new( 'hoom', :past, [root[0], 'aa', root[2], 'w', 'aa'], [nil, nil, nil, nil, nil] ),
-						ArabicConjugation.new( 'hoon', :past, [root[0], root[2], 'n'], ['ka', 'sk', 'fa'] )
+						ArabicConjugation.new( 'hoon', :past, [root[0], root[2], 'n'], ['ka', 'sk', 'fa'] ),
+
+						ArabicConjugation.new( nil, :active_participle, [root[0], 'aa', 'hy', root[2]], [nil, nil, 'ka', nil] ),
+						ArabicConjugation.new( nil, :passive_participle, ['m', root[0], root[1], root[2]], ['fa', nil, nil, nil] )
 					]
 				when "aa"
 					[
@@ -125,7 +138,10 @@ class WordConjugator
 						ArabicConjugation.new( 'entum', :past, [root[0], root[2], 't', 'm'], ['ka', 'sk', 'da', nil] ),
 						ArabicConjugation.new( 'entun', :past, [root[0], root[2], 't', 'n'], ['ka', 'sk', 'da', 'dd'] ),
 						ArabicConjugation.new( 'hoom', :past, [root[0], 'aa', root[2], 'w', 'aa'], [nil, nil, nil, nil, nil] ),
-						ArabicConjugation.new( 'hoon', :past, [root[0], root[2], 'n'], ['ka', 'sk', 'fa'] )
+						ArabicConjugation.new( 'hoon', :past, [root[0], root[2], 'n'], ['ka', 'sk', 'fa'] ),
+
+						ArabicConjugation.new( nil, :active_participle, [root[0], 'aa', 'hy', root[2]], [nil, nil, 'ka', nil] ),
+						ArabicConjugation.new( nil, :passive_participle, ['m', root[0], 'w', root[2]], ['fa', nil, nil, nil] )
 					]
 				end
 			when "assimilated"
@@ -150,7 +166,10 @@ class WordConjugator
 					ArabicConjugation.new( 'entum', :past, [root[0], root[1], root[2], 't', 'm'], ['fa', 'fa', 'sk', 'da', nil] ),
 					ArabicConjugation.new( 'entun', :past, [root[0], root[1], root[2], 't', 'n'], ['fa', 'fa', 'sk', 'da', 'dd'] ),
 					ArabicConjugation.new( 'hoom', :past, [root[0], root[1], root[2], 'w', 'aa'], ['fa', 'fa', nil, nil, nil] ),
-					ArabicConjugation.new( 'hoon', :past, [root[0], root[1], root[2], 'n'], ['fa', 'fa', 'sk', 'fa'] )
+					ArabicConjugation.new( 'hoon', :past, [root[0], root[1], root[2], 'n'], ['fa', 'fa', 'sk', 'fa'] ),
+
+					ArabicConjugation.new( nil, :active_participle, [root[0], 'aa', root[1], root[2]], [nil, nil, 'ka', nil] ),
+					ArabicConjugation.new( nil, :passive_participle, ['m', root[0], root[1], 'w', root[2]], ['fa', 'sk', nil, nil, nil] )
 				]
 			when "defective"
 				[
@@ -246,7 +265,10 @@ class WordConjugator
 					ArabicConjugation.new( 'entum', :past, ['a', root[1], root[2], 't', 'm'], ['fa', 'fa', 'sk', 'da', nil] ),
 					ArabicConjugation.new( 'entun', :past, ['a', root[1], root[2], 't', 'n'], ['fa', 'fa', 'sk', 'da', 'dd'] ),
 					ArabicConjugation.new( 'hoom', :past, ['a', root[1], root[2], 'w', 'aa'], ['fa', 'fa', nil, nil, nil] ),
-					ArabicConjugation.new( 'hoon', :past, ['a', root[1], root[2], 'n'], ['fa', 'fa', 'sk', 'fa'] )
+					ArabicConjugation.new( 'hoon', :past, ['a', root[1], root[2], 'n'], ['fa', 'fa', 'sk', 'fa'] ),
+
+					ArabicConjugation.new( nil, :active_participle, ['amd', root[1], root[2]], [nil, 'ka', nil] ),
+					ArabicConjugation.new( nil, :passive_participle, ['m', 'a', root[1], 'w', root[2]], ['fa', 'sk', nil, nil, nil] )
 				]
 			when "hamzated-medial"
 				[
@@ -270,7 +292,10 @@ class WordConjugator
 					ArabicConjugation.new( 'entum', :past, [root[0], 'a', root[2], 't', 'm'], ['fa', 'fa', 'sk', 'da', nil] ),
 					ArabicConjugation.new( 'entun', :past, [root[0], 'a', root[2], 't', 'n'], ['fa', 'fa', 'sk', 'da', 'dd'] ),
 					ArabicConjugation.new( 'hoom', :past, [root[0], 'a', root[2], 'w', 'aa'], ['fa', 'fa', nil, nil, nil] ),
-					ArabicConjugation.new( 'hoon', :past, [root[0], 'a', root[2], 'n'], ['fa', 'fa', 'sk', 'fa'] )
+					ArabicConjugation.new( 'hoon', :past, [root[0], 'a', root[2], 'n'], ['fa', 'fa', 'sk', 'fa'] ),
+
+					ArabicConjugation.new( nil, :active_participle, [root[0], 'aa', 'hy', root[2]], [nil, nil, nil, nil] ),
+					ArabicConjugation.new( nil, :passive_participle, ['m', root[0], 'o', 'w', root[2]], ['fa', 'sk', nil, nil, nil] )
 				]
 			when "hamzated-final"
 				[
@@ -294,7 +319,10 @@ class WordConjugator
 					ArabicConjugation.new( 'entum', :past, [root[0], root[1], 'a', 't', 'm'], ['fa', 'fa', 'sk', 'da', nil] ),
 					ArabicConjugation.new( 'entun', :past, [root[0], root[1], 'a', 't', 'n'], ['fa', 'fa', 'sk', 'da', 'dd'] ),
 					ArabicConjugation.new( 'hoom', :past, [root[0], root[1], 'o', 'w', 'aa'], ['fa', 'fa', 'da', nil, nil] ),
-					ArabicConjugation.new( 'hoon', :past, [root[0], root[1], 'a', 'n'], ['fa', 'fa', 'sk', 'fa'] )
+					ArabicConjugation.new( 'hoon', :past, [root[0], root[1], 'a', 'n'], ['fa', 'fa', 'sk', 'fa'] ),
+
+					ArabicConjugation.new( nil, :active_participle, [root[0], 'aa', root[1], 'hy'], [nil, nil, 'ka', nil] ),
+					ArabicConjugation.new( nil, :passive_participle, ['m', root[0], root[1], 'w', 'hi'], ['fa', 'sk', nil, nil, nil] )
 				]
 			when "hollow-hamzated"
 				[
