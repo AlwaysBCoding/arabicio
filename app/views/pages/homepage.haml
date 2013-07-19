@@ -3,7 +3,7 @@
 	= text_field_tag :word, nil, class: "word-to-parse", autocomplete: "off"
 	= submit_tag "Submit", class: "parse-word-submit-button"
 
-- perspectives = %w[ana enta enti hooa heea nahn entum entun hoom hoon]
+- perspectives = [ ["ana", "انا"], ["enta", "انتَ"], ["enti", "انتِ"], ["hooa", "هو"], ["heea", "هي"], ["nahn", "نحن"], ["entum", "انتم"], ["entun", "انتن"], ["hoom", "هم"], ["hoon", "هن"] ]
 
 .information-modules
 	.root-information-module
@@ -33,7 +33,7 @@
 				%th PAST
 		%tbody
 			- perspectives.each do |perspective|
-				%tr{data: {perspective: perspective} }
-					%td= perspective
+				%tr{data: {perspective: perspective[0]} }
+					%td.conjugation.perspective= perspective[1]
 					%td.conjugation.present-tense-conjugation conjugation
 					%td.conjugation.past-tense-conjugation conjugation

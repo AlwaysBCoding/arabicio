@@ -13,7 +13,7 @@ $ ->
 
 		$(".word-active-participle-field").text data["conjugations"]["participles"]["active_participle"]
 		$(".word-passive-participle-field").text data["conjugations"]["participles"]["passive_participle"]
-		$(".word-verbal-noun-field").text data["participles"]["verbal_noun"]
+		# $(".word-verbal-noun-field").text data["participles"]["verbal_noun"]
 
 		present_tense_conjugations = data["conjugations"]["present"]
 		past_tense_conjugations = data["conjugations"]["past"]
