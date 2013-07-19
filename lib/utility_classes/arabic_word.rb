@@ -25,16 +25,17 @@ private
 
 	def format_conjugations_as_json(conjugations)
 		arabic_conjugations = convert_conjugations_to_arabic(conjugations)
-		past_tense_json = {}
-		present_tense_json = {}
+		past_tense_json, present_tense_json, participle_json = {}, {}, {}
 
 		present_tense_conjugations = arabic_conjugations.select { |conjugation| conjugation.tense == :present }
 		past_tense_conjugations = arabic_conjugations.select { |conjugation| conjugation.tense == :past }
+		participle_conjugations = arabic_conjugations.select { |conjugation| [:active_participle, :passive_participle, :verbal_noun].include?(conjugation.tense) }
 
 		present_tense_conjugations.each { |conjugation| present_tense_json[conjugation.perspective] = conjugation.consonants.zip(conjugation.vowels).flatten.compact.join("") }
 		past_tense_conjugations.each { |conjugation| past_tense_json[conjugation.perspective] = conjugation.consonants.zip(conjugation.vowels).flatten.compact.join("") }
+		participle_conjugations.each { |conjugation| participle_json[conjugation.tense] = conjugation.consonants.zip(conjugation.vowels).flatten.compact.join("") }
 
-		return { present: present_tense_json, past: past_tense_json }
+		return { present: present_tense_json, past: past_tense_json, participles: participle_json }
 	end
 
 	def convert_conjugations_to_arabic(conjugations)

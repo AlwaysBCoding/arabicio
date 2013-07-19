@@ -29,8 +29,17 @@
 	text-align: center;
 }
 
-.conjugation-constants-module {
+.root-participles-module {
 	width: 100%;
 	height: 240px;
 	background-color: yellow;
+
+	.row {
+		height: 80px;
+		text-align: center;
+		line-height: 80px;
+		font-weight: bold;
+		font-size: 1.5em;
+	}
+
 }
