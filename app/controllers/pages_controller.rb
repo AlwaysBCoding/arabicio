@@ -16,4 +16,21 @@ class PagesController < ApplicationController
 		render json: ArabicWord.new(root, "I").to_json
 	end
 
+	def new_root
+	end
+
+	def create_root
+		root = ArabicRoot.new
+		root.root = [ params[:root1].strip, params[:root2].strip, params[:root3].strip ]
+		root.forms = params[:word_forms].values.map { |value| value.strip }
+
+		if root.save
+			flash[:success] = "Root successfully added"
+			redirect_to new_root_url
+		else
+			flash[:error] = "ROOT WAS NOT SAVED"
+			redirect_to new_root_url
+		end
+	end
+
 end

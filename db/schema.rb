@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130712192148) do
+ActiveRecord::Schema.define(version: 20130720040559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,13 @@ ActiveRecord::Schema.define(version: 20130712192148) do
     t.string   "unicode_value"
     t.string   "english_value"
     t.string   "english_symbol"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "arabic_roots", force: true do |t|
+    t.string   "root",       array: true
+    t.string   "forms",      array: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end

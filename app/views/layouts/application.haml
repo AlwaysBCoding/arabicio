@@ -7,4 +7,5 @@
 		= csrf_meta_tags
 	%body
 		.wrapper{class: "#{controller.controller_name}-#{controller.action_name}"}
+			= render "shared/notifications"
 			= yield

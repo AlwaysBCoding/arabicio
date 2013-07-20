@@ -1,0 +1,49 @@
+%p.last-root= "LAST ROOT: #{ArabicRoot.last.root.map { |letter| ArabicLetter.find_by_english_symbol(letter).ascii_value.to_i.chr }.join(' - ')} ( #{ArabicRoot.last.forms.join(' - ')} )"
+
+= form_tag create_root_url do
+	%fieldset
+		= label_tag :root1, "Root 1"
+		= text_field_tag :root1, nil, autocomplete: "off"
+	%fieldset
+		= label_tag :root2, "Root 2"
+		= text_field_tag :root2, nil, autocomplete: "off"
+	%fieldset
+		= label_tag :root3, "Root 3"
+		= text_field_tag :root3, nil, autocomplete: "off"
+
+	%hr
+
+	%fieldset
+		= label_tag "word_forms", "I"
+		= check_box_tag "word_forms[1]", "I"
+		= label_tag "word_forms[2]", "II"
+		= check_box_tag "word_forms[2]", "II"
+	%fieldset
+		= label_tag "word_forms[3]", "III"
+		= check_box_tag "word_forms[3]", "III"
+		= label_tag "word_forms[4]", "IV"
+		= check_box_tag "word_forms[4]", "IV"
+	%fieldset
+		= label_tag "word_forms[5]", "V"
+		= check_box_tag "word_forms[5]", "V"
+		= label_tag "word_forms[6]", "VI"
+		= check_box_tag "word_forms[6]", "VI"
+	%fieldset
+		= label_tag "word_forms[7]", "VII"
+		= check_box_tag "word_forms[7]", "VII"
+		= label_tag "word_forms[8]", "VIII"
+		= check_box_tag "word_forms[8]", "VIII"
+	%fieldset
+		= label_tag "word_forms[9]", "IX"
+		= check_box_tag "word_forms[9]", "IX"
+		= label_tag "word_forms[10]", "X"
+		= check_box_tag "word_forms[10]", "X"
+
+	= submit_tag "Submit"
+
+:sass
+	fieldset
+		border: 0px
+	last-root
+		font-weight: bold
+		font-size: 16px
