@@ -21,7 +21,11 @@ class PagesController < ApplicationController
 
 	def create_root
 		root = ArabicRoot.new
-		root.root = [ params[:root1].strip, params[:root2].strip, params[:root3].strip ]
+		if params[:root4].present?
+			root.root = [params[:root1].strip, params[:root2].strip, params[:root3].strip, params[:root4] ]
+		else
+			root.root = [ params[:root1].strip, params[:root2].strip, params[:root3].strip ]
+		end
 		root.forms = params[:word_forms].values.map { |value| value.strip }
 
 		if root.save

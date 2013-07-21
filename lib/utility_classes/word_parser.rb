@@ -65,8 +65,8 @@ class WordParser
 				return "hamzated-final"
 			end
 
-		elsif %w[w y].include?(root[2])
-			if %w[w y].include?(root[0])
+		elsif %w[w y amq].include?(root[2])
+			if %w[w y aa].include?(root[0])
 				return "assimilated-defective"
 			elsif %w[w y].include?(root[1])
 				return "hollow-defective"
@@ -74,7 +74,7 @@ class WordParser
 				return "defective"
 			end
 
-		elsif %w[w y].include?(root[0])
+		elsif %w[w y aa].include?(root[0])
 			return "assimilated"
 
 		elsif %w[w y].include?(root[1])
