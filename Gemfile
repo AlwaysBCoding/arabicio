@@ -24,12 +24,12 @@ ruby '2.0.0'
 	gem 'jquery-turbolinks'
 
 # USER MANAGEMENT
-	gem 'devise'
+	# gem 'devise'
 
 # FILE UPLOADS
-	gem 'carrierwave'
-	gem 'fog'
-	gem 'rmagick'
+	# gem 'carrierwave'
+	# gem 'fog'
+	# gem 'rmagick'
 
 # DEBUGGER
 	gem 'pry-rails'

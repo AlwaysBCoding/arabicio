@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe ArabicRoot do
+describe ArabicStem do
 
 end

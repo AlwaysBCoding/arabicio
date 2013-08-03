@@ -20,21 +20,21 @@ class PagesController < ApplicationController
 	end
 
 	def create_root
-		root = ArabicRoot.new
-		if params[:root4].present?
-			root.root = [params[:root1].strip, params[:root2].strip, params[:root3].strip, params[:root4] ]
-		else
-			root.root = [ params[:root1].strip, params[:root2].strip, params[:root3].strip ]
-		end
-		root.forms = params[:word_forms].values.map { |value| value.strip }
+		# root = ArabicStem.new
+		# if params[:root4].present?
+		# 	root.root = [params[:root1].strip, params[:root2].strip, params[:root3].strip, params[:root4] ]
+		# else
+		# 	root.root = [ params[:root1].strip, params[:root2].strip, params[:root3].strip ]
+		# end
+		# root.forms = params[:word_forms].values.map { |value| value.strip }
 
-		if root.save
-			flash[:success] = "Root successfully added"
-			redirect_to new_root_url
-		else
-			flash[:error] = "ROOT WAS NOT SAVED"
-			redirect_to new_root_url
-		end
+		# if root.save
+		# 	flash[:success] = "Root successfully added"
+		# 	redirect_to new_root_url
+		# else
+		# 	flash[:error] = "ROOT WAS NOT SAVED"
+		# 	redirect_to new_root_url
+		# end
 	end
 
 end

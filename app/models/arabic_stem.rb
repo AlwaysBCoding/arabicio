@@ -1,8 +1,8 @@
-class ArabicRoot < ActiveRecord::Base
+class ArabicStem < ActiveRecord::Base
 # ASSOCIATIONS
 
 # VALIDATIONS
-	validates :root, uniqueness: true, length: {mininum: 3, maximum: 4}
+	validates :root, uniqueness: {scope: :vocalization}, length: {mininum: 3, maximum: 4}
 
 # SPECIAL FEATURES
 
