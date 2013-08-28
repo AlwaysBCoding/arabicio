@@ -20,22 +20,20 @@ class PagesController < ApplicationController
 	end
 
 	def create_stem
-		raise params.inspect
-		# root = ArabicStem.new
-		# if params[:root4].present?
-		# 	root.root = [params[:root1].strip, params[:root2].strip, params[:root3].strip, params[:root4] ]
-		# else
-		# 	root.root = [ params[:root1].strip, params[:root2].strip, params[:root3].strip ]
-		# end
-		# root.forms = params[:word_forms].values.map { |value| value.strip }
+		stem = ArabicStem.new
+		if params[:root4].present?
+			stem.root = [params[:root1].strip, params[:root2].strip, params[:root3].strip, params[:root4].strip]
+		else
+			stem.root = [ params[:root1].strip, params[:root2].strip, params[:root3].strip ]
+		end
 
-		# if root.save
-		# 	flash[:success] = "Root successfully added"
-		# 	redirect_to new_root_url
-		# else
-		# 	flash[:error] = "ROOT WAS NOT SAVED"
-		# 	redirect_to new_root_url
-		# end
+		stem.measures = params[:measure].map { |key, value| value.strip }
+		stem.vocalization = { perfect_kicker: params[:perfect_kicker], imperfect_kicker: params[:imperfect_kicker] }
+		stem.verbal_nouns = params[:verbal_nouns].gsub(/[^a-zA-z,]/, "").split(",")
+		stem.notes = params[:notes] if params[:notes].present?
+
+		stem.save ? flash[:success] = "Stem successfully added" : flash[:error] = "STEM WAS NOT SAVED" ;
+		redirect_to new_stem_url
 	end
 
 end
