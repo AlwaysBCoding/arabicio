@@ -284,13 +284,6 @@ ArabicLetter.create!({
 	})
 
 ArabicLetter.create!({
-	ascii_value: "1572",
-	unicode_value: "U+0624",
-	english_value: "hamza-damma",
-	english_symbol: "o"
-	})
-
-ArabicLetter.create!({
 	ascii_value: "1609",
 	unicode_value: "U+0649",
 	english_value: "alif maqsuura",
@@ -309,6 +302,13 @@ ArabicLetter.create!({
 	unicode_value: "U+0626",
 	english_value: "hamza-yaa",
 	english_symbol: "hy"
+	})
+
+ArabicLetter.create!({
+	ascii_value: "1572",
+	unicode_value: "U+0624",
+	english_value: "hamza-waaw",
+	english_symbol: "hw"
 	})
 
 puts "Created Arabic Letters"

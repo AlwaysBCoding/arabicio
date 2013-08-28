@@ -16,10 +16,11 @@ class PagesController < ApplicationController
 		render json: ArabicWord.new(root, "I").to_json
 	end
 
-	def new_root
+	def new_stem
 	end
 
-	def create_root
+	def create_stem
+		raise params.inspect
 		# root = ArabicStem.new
 		# if params[:root4].present?
 		# 	root.root = [params[:root1].strip, params[:root2].strip, params[:root3].strip, params[:root4] ]

@@ -1,6 +1,6 @@
-%p.last-root= "LAST STEM: #{ArabicStem.last.root.map { |letter| ArabicLetter.find_by_english_symbol(letter).ascii_value.to_i.chr }.join(' - ')} ( #{ArabicStem.last.forms.join(' - ')} )"
+/ %p.last-root= "LAST STEM: #{ArabicStem.last.root.map { |letter| ArabicLetter.find_by_english_symbol(letter).ascii_value.to_i.chr }.join(' - ')} ( #{ArabicStem.last.measures.join(' - ')} )"
 
-= form_tag create_root_url do
+= form_tag create_stem_url do
 	%fieldset
 		= label_tag :root1, "Root 1"
 		= text_field_tag :root1, nil, autocomplete: "off"
@@ -41,6 +41,35 @@
 		= check_box_tag "measure[9]", "IX"
 		= label_tag "measure[10]", "X"
 		= check_box_tag "measure[10]", "X"
+
+	%hr
+
+	%fieldset
+		= label_tag "perfect-kicker", "aa"
+		= radio_button_tag "perfect-kicker", "aa"
+		= label_tag "perfect-kicker", "w"
+		= radio_button_tag "perfect-kicker", "w"
+		= label_tag "perfect-kicker", "y"
+		= radio_button_tag "perfect-kicker", "y"
+	%fieldset
+		= label_tag "imperfect-kicker", "aa"
+		= radio_button_tag "imperfect-kicker", "aa"
+		= label_tag "imperfect-kicker", "w"
+		= radio_button_tag "imperfect-kicker", "w"
+		= label_tag "imperfect-kicker", "y"
+		= radio_button_tag "imperfect-kicker", "y"
+
+	%hr
+
+	%fieldset
+		= label_tag :verbal_nouns, "Verbal Nouns ( separated by comma )"
+		= text_field_tag :verbal_nouns
+
+	%hr
+
+	%fieldset
+		= label_tag :notes
+		= text_area_tag :notes
 
 	= submit_tag "Submit"
 

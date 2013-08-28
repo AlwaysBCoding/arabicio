@@ -16,9 +16,6 @@ class ArabicStem < ActiveRecord::Base
 	def to_s
 	end
 
-	def to_param
-	end
-
 # CLASS METHODS
 
 # INSTANCE METHODS
