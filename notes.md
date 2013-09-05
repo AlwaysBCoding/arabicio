@@ -76,15 +76,18 @@ The Plan
 
 1. Start with Algorithm II. Create an algorithm to categorize a stem object. A categorization will look like:
   root: "hi-k-l"
-  root-category: "Hamzated"
-  root-subCategory: "Hamzated-Initial"
+  categorization: {
+  root-category: "hamzated",
+  root-subCategory: "hamzated-initial"
+  }
   vocalization: {
     perfect-kicker: "fatha",
     imperfect-kicker: "damma"
   }
   Measures: ["I", "II", "III", "IV", "V", "VI"]
 
+  The root, vocalization, and measures will be stored on the stem object. The root-category and root-subcategory can be created programatically based on the tirlateral pattern
 
-  The root, perfect-kicker, and imperfect-kicker will be stored on the stem object. The root-category and root-subcategory can be created programatically based on the tirlateral pattern
-
-2. Once the root-category and root-subcategory have been calculated the StemConjugator will run, which will create a table of all possible conjugations of
+2. Once the root-category and root-subcategory have been calculated the StemConjugator will run, which will create a table of all possible conjugations of the stem for the given measures.
+3. Once the conjugations have been created, the input word will be checked against the conjugations to see if there is a match. If a match occurs, the conjugation is added as a "match"
+4. All conjugations will be returned as JSON from the algorithm - with any matched conjugation returned with a special 'match' flag

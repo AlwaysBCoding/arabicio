@@ -377,185 +377,185 @@ describe WordParser do
 	describe "#parse_form" do
 	end
 
-	describe "#parse_subform_from_root" do
+	# describe "#parse_subform_from_root" do
 
-		context "regular" do
-			it "parses subform (k t b)" do
-				root = %w[k t b]
-				subform_of(root).should eq "sound"
-			end
+	# 	context "regular" do
+	# 		it "parses subform (k t b)" do
+	# 			root = %w[k t b]
+	# 			subform_of(root).should eq "sound"
+	# 		end
 
-			it "parses suboform (m l k)" do
-				root = %w[m l k]
-				subform_of(root).should eq "sound"
-			end
-		end
+	# 		it "parses suboform (m l k)" do
+	# 			root = %w[m l k]
+	# 			subform_of(root).should eq "sound"
+	# 		end
+	# 	end
 
-		context "doubled" do
-			it "parses subform (d m m)" do
-				root = %w[d m m]
-				subform_of(root).should eq "doubled"
-			end
+	# 	context "doubled" do
+	# 		it "parses subform (d m m)" do
+	# 			root = %w[d m m]
+	# 			subform_of(root).should eq "doubled"
+	# 		end
 
-			it "parses subform (d l l)" do
-				root = %w[d l l]
-				subform_of(root).should eq "doubled"
-			end
-		end
+	# 		it "parses subform (d l l)" do
+	# 			root = %w[d l l]
+	# 			subform_of(root).should eq "doubled"
+	# 		end
+	# 	end
 
-		context "hamzated-initial" do
-			it "parses suboform (hi k l)" do
-				root = %w[hi k l]
-				subform_of(root).should eq "hamzated-initial"
-			end
+	# 	context "hamzated-initial" do
+	# 		it "parses suboform (hi k l)" do
+	# 			root = %w[hi k l]
+	# 			subform_of(root).should eq "hamzated-initial"
+	# 		end
 
-			it "parses subform (hi kh dh)" do
-				root = %w[hi kh dh]
-				subform_of(root).should eq "hamzated-initial"
-			end
-		end
+	# 		it "parses subform (hi kh dh)" do
+	# 			root = %w[hi kh dh]
+	# 			subform_of(root).should eq "hamzated-initial"
+	# 		end
+	# 	end
 
-		context "hamzated-medial" do
-			it "parses subform (s hi l)" do
-				root = %w[s hi l]
-				subform_of(root).should eq "hamzated-medial"
-			end
-			it "parses subform (l hi m)" do
-				root = %w[l hi m]
-				subform_of(root).should eq "hamzated-medial"
-			end
-		end
+	# 	context "hamzated-medial" do
+	# 		it "parses subform (s hi l)" do
+	# 			root = %w[s hi l]
+	# 			subform_of(root).should eq "hamzated-medial"
+	# 		end
+	# 		it "parses subform (l hi m)" do
+	# 			root = %w[l hi m]
+	# 			subform_of(root).should eq "hamzated-medial"
+	# 		end
+	# 	end
 
-		context "hamzated-final" do
-			it "parses subform (b d hi)" do
-				root = %w[b d hi]
-				subform_of(root).should eq "hamzated-final"
-			end
-			it "parses subform (q r hi)" do
-				root = %w[q r hi]
-				subform_of(root).should eq "hamzated-final"
-			end
-		end
+	# 	context "hamzated-final" do
+	# 		it "parses subform (b d hi)" do
+	# 			root = %w[b d hi]
+	# 			subform_of(root).should eq "hamzated-final"
+	# 		end
+	# 		it "parses subform (q r hi)" do
+	# 			root = %w[q r hi]
+	# 			subform_of(root).should eq "hamzated-final"
+	# 		end
+	# 	end
 
-		context "assimilated" do
+	# 	context "assimilated" do
 
-			context "with waaw" do
-				it "parses subform (w S l)" do
-					root = %w[w S l]
-					subform_of(root).should eq "assimilated"
-				end
-				it "parses subform (w s 3)" do
-					root = %w[w s 3]
-					subform_of(root).should eq "assimilated"
-				end
-			end
+	# 		context "with waaw" do
+	# 			it "parses subform (w S l)" do
+	# 				root = %w[w S l]
+	# 				subform_of(root).should eq "assimilated"
+	# 			end
+	# 			it "parses subform (w s 3)" do
+	# 				root = %w[w s 3]
+	# 				subform_of(root).should eq "assimilated"
+	# 			end
+	# 		end
 
-			context "with yaa" do
-				it "parses subform (y s r)" do
-					root = %w[y s r]
-					subform_of(root).should eq "assimilated"
-				end
-				it "parses subform (y q DH)" do
-					root = %w[y q DH]
-					subform_of(root).should eq "assimilated"
-				end
-			end
+	# 		context "with yaa" do
+	# 			it "parses subform (y s r)" do
+	# 				root = %w[y s r]
+	# 				subform_of(root).should eq "assimilated"
+	# 			end
+	# 			it "parses subform (y q DH)" do
+	# 				root = %w[y q DH]
+	# 				subform_of(root).should eq "assimilated"
+	# 			end
+	# 		end
 
-		end
+	# 	end
 
-		context "hollow" do
+	# 	context "hollow" do
 
-			context "with waaw" do
-				it "parses subform (q w l)" do
-					root = %w[q w l]
-					subform_of(root).should eq "hollow"
-				end
-				it "parses subform (z w r)" do
-					root = %w[z w r]
-					subform_of(root).should eq "hollow"
-				end
-			end
+	# 		context "with waaw" do
+	# 			it "parses subform (q w l)" do
+	# 				root = %w[q w l]
+	# 				subform_of(root).should eq "hollow"
+	# 			end
+	# 			it "parses subform (z w r)" do
+	# 				root = %w[z w r]
+	# 				subform_of(root).should eq "hollow"
+	# 			end
+	# 		end
 
-			context "with yaa" do
-				it "parses subform (3 y sh)" do
-					root = %w[3 y sh]
-					subform_of(root).should eq "hollow"
-				end
-				it "parses subform (b y 3)" do
-					root = %w[b y 3]
-					subform_of(root).should eq "hollow"
-				end
-			end
+	# 		context "with yaa" do
+	# 			it "parses subform (3 y sh)" do
+	# 				root = %w[3 y sh]
+	# 				subform_of(root).should eq "hollow"
+	# 			end
+	# 			it "parses subform (b y 3)" do
+	# 				root = %w[b y 3]
+	# 				subform_of(root).should eq "hollow"
+	# 			end
+	# 		end
 
-		end
+	# 	end
 
-		context "defective" do
+	# 	context "defective" do
 
-			context "with waaw" do
-				it "parses subform (b d w)" do
-					root = %w[b d w]
-					subform_of(root).should eq "defective"
-				end
-				it "parses subform (d 3 w)" do
-					root = %w[d 3 w]
-					subform_of(root).should eq "defective"
-				end
-			end
+	# 		context "with waaw" do
+	# 			it "parses subform (b d w)" do
+	# 				root = %w[b d w]
+	# 				subform_of(root).should eq "defective"
+	# 			end
+	# 			it "parses subform (d 3 w)" do
+	# 				root = %w[d 3 w]
+	# 				subform_of(root).should eq "defective"
+	# 			end
+	# 		end
 
-			context "with yaa" do
-				it "parses subform (m sh y)" do
-					root = %w[m sh y]
-					subform_of(root).should eq "defective"
-				end
-				it "parses subform (b q y)" do
-					root = %w[b q y]
-					subform_of(root).should eq "defective"
-				end
-			end
+	# 		context "with yaa" do
+	# 			it "parses subform (m sh y)" do
+	# 				root = %w[m sh y]
+	# 				subform_of(root).should eq "defective"
+	# 			end
+	# 			it "parses subform (b q y)" do
+	# 				root = %w[b q y]
+	# 				subform_of(root).should eq "defective"
+	# 			end
+	# 		end
 
-		end
+	# 	end
 
-		context "hollow-hamzated" do
-			it "parses subform (j y hi)" do
-				root = %w[j y hi]
-				subform_of(root).should eq "hollow-hamzated"
-			end
-		end
+	# 	context "hollow-hamzated" do
+	# 		it "parses subform (j y hi)" do
+	# 			root = %w[j y hi]
+	# 			subform_of(root).should eq "hollow-hamzated"
+	# 		end
+	# 	end
 
-		context "hamzated-defective" do
-			it "parses subform (r hi y)" do
-				root = %w[r hi y]
-				subform_of(root).should eq "hamzated-defective"
-			end
-			it "parses subform (hi t y)" do
-				root = %w[hi t y]
-				subform_of(root).should eq "hamzated-defective"
-			end
-		end
+	# 	context "hamzated-defective" do
+	# 		it "parses subform (r hi y)" do
+	# 			root = %w[r hi y]
+	# 			subform_of(root).should eq "hamzated-defective"
+	# 		end
+	# 		it "parses subform (hi t y)" do
+	# 			root = %w[hi t y]
+	# 			subform_of(root).should eq "hamzated-defective"
+	# 		end
+	# 	end
 
-		context "assimilated-defective" do
-			it "parses subform (w l y)" do
-				root = %w[w l y]
-				subform_of(root).should eq "assimilated-defective"
-			end
-			it "parses subform (w 3 y)" do
-				root = %w[w 3 y]
-				subform_of(root).should eq "assimilated-defective"
-			end
-		end
+	# 	context "assimilated-defective" do
+	# 		it "parses subform (w l y)" do
+	# 			root = %w[w l y]
+	# 			subform_of(root).should eq "assimilated-defective"
+	# 		end
+	# 		it "parses subform (w 3 y)" do
+	# 			root = %w[w 3 y]
+	# 			subform_of(root).should eq "assimilated-defective"
+	# 		end
+	# 	end
 
-		context "hollow-defective" do
-			it "parses subform (n w y)" do
-				root = %w[n w y]
-				subform_of(root).should eq "hollow-defective"
-			end
-			it "parses subform (r w y)" do
-				root = %w[r w y]
-				subform_of(root).should eq "hollow-defective"
-			end
-		end
+	# 	context "hollow-defective" do
+	# 		it "parses subform (n w y)" do
+	# 			root = %w[n w y]
+	# 			subform_of(root).should eq "hollow-defective"
+	# 		end
+	# 		it "parses subform (r w y)" do
+	# 			root = %w[r w y]
+	# 			subform_of(root).should eq "hollow-defective"
+	# 		end
+	# 	end
 
-	end
+	# end
 
 def subform_of(root)
 	return WordParser.parse_subform_from_root(root)

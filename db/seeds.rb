@@ -7,7 +7,7 @@ ArabicLetter.create!({
 	ascii_value: "1569",
 	unicode_value: "U+0621",
 	english_value: "hamza-isolated",
-	english_symbol: "hi"
+	english_symbol: "hmz"
 	})
 
 ArabicLetter.create!({

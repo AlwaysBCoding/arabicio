@@ -20,6 +20,23 @@ class ArabicStem < ActiveRecord::Base
 
 # INSTANCE METHODS
 
+# CONVENIENCE METHODS
+  def hollow?
+    return true if (self.root[1] == "w" || self.root[1] == "y") && self.root.length == 3
+  end
+
+  def assimilated?
+    return true if self.root[0] == "w" && self.root.length == 3
+  end
+
+  def defective?
+    return true if (self.root[2] == "w" || self.root[2] == "y") && self.root.length == 3
+  end
+
+  def hamzated?
+    return true if (self.root[0] == "hmz" || self.root[1] == "hmz" || self.root[2] == "hmz") && self.root.length == 3
+  end
+
 # PRIVATE METHODS
 private
 
