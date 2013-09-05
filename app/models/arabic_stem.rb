@@ -19,6 +19,9 @@ class ArabicStem < ActiveRecord::Base
 # CLASS METHODS
 
 # INSTANCE METHODS
+  def generate_conjugation_table_for_measure(measure)
+    return StemConjugator.generate_conjugation_table_for_measure(self, measure)
+  end
 
 # CONVENIENCE METHODS
   def hollow?

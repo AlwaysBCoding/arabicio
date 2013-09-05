@@ -1,6 +1,6 @@
 class StemParser
 
-	def self.parse(input)
+	def self.parse_stem(input)
 	end
 
 end

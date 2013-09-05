@@ -17,11 +17,16 @@ Algorithm I - Stemming from input
 
 My first idea for this algorithm is to run a recursive method that checks the most likely stem for a given configuration. If the stem exists in the database, then it is saved as a "candidate". Then the most likely letter is eliminated and the recursion runs again until there are only three letters remaining.
 
+Algorithm II - Categorizing the root based on the three letters
+===============================================================
+
+The second algorithm will look at the three letter root and categorize it into a root-category - and if possible - further divide it into a root-subcategory
+
+For now there are (8) top level root categories that a root pattern can be categorized as:
+
 * Sound ( All three root letters are consonants )
-  - Treat normally
 
 * Doubled ( The second and third root letter are the same )
-  - Figure out how to convey a shadda + short vowel
 
 * Hollow ( The middle root letter is a vowel )
   - The middle vowel is either 'w' or 'y'
@@ -43,11 +48,6 @@ My first idea for this algorithm is to run a recursive method that checks the mo
 
 * Multiple ( Two of these circumstances exist )
 
-Algorithm II - Categorizing the root based on the three letters
-===============================================================
-
-The second algorithm will look at the three letter root and categorize it into a root-category - and if possible - further divide it into a root-subcategory
-
 Algorithm III - Finding matching information on stem extrapolation from input
 ============================================================================
 
@@ -61,9 +61,31 @@ After the stem is parsed, and the extrapolation is matched, a JSON response of a
 Will consist of:
   * A full, vocalized, conjugation table in the perfect and imperfect
   * A list of possible measures and the definitions of each
-  * A hit to the google translate API
+  * A hit to the google translate API ( ? )
 
 The data will then display on the page in a nice tabular format, with the matching information from the second algorithm highlighted. The search query will be saved with a timestamp and the IP address of the requesting computer
+
+Conjugation Tables
+==================
+
+Conjugation tables will be fully vocalized and consist of (4) separate tables each containing (13) conjugations for a total of 52 conjugations.
+Then there are an additional (3) special forms ( Active Participle, Passive Participle, Verbal Noun)
+These 55 conjugations for a stem in a specific measure will be called the "Base 55"
+*-* One thing to note is that Form I verbs can have multiple verbal nouns which means that the verbal nouns will be returned in the form of an array
+
+The four tables will be:
+  * Perfect ( past )
+  * Imperfect ( present )
+  * Jussive ( commands )
+  * Subjunctive ( passive voice )
+
+The 13 conjugations will be:
+  * 5 singular
+  * 5 plural
+  * 3 dual
+
+*-* Note to self *-*
+This arrangement almost perfectly mimics the arrangement of a deck of cards
 
 Future Verticals
 ================
