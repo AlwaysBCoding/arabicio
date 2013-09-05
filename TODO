@@ -1,0 +1,42 @@
+Development Stories:
+
+  Algorithm I - StemParser#parse:
+    ☐ Takes an input word and parses it into a stem object
+    ☐ Returns a list of 'candidate stems' for the unvocalized input word
+
+  Algorithm II - StemCategorizer#categorize:
+    ✔ Takes a stem object as input and returns a hash with the stem_category and stem_subcategory for conjugation @done (13-09-04 22:34)
+
+  Algorithm III - StemConjugator#conjugate:
+   ☐ Takes a stem object with the added virtual fields of 'categories' added onto it and returns a table of conjugations for the stem
+
+  Algorithm IV - StemConjugator#match:
+   ☐ Takes an input word, and a table of conjugations and matches it to the conjugations
+   ☐ It alters the conjugation table to add a 'matched' flag when matching conjugations
+
+Design Stories:
+  ☐ Create an input text field that is optimized for entering arabic characters
+  ☐ Create the arabic keyboard to drag from
+  ☐ Drag short vowels onto the words
+  ☐ Generate conjugation chart for verb
+
+People to Contact:
+    ☐ Derrik Sweeney - Dubai
+    ☐ George Berg - DC
+    ☐ John Rouse - Long Island?
+    ☐ Mairead Reilly - Baltimore?
+    ☐ Ariana Marnicio - Oman?
+    ☐ Cobi Gantz - DC
+    ☐ Jason Raskin - Saudi Arabia
+
+    ☐ Georgetown University
+    ☐ American University ( reluctantly )
+    ☐ George Washington University
+    ☐ Middlebury
+    ☐ Middle East Institute ( for news.arabic.io )
+
+    ☐ Mariam Obeidallah - Maryland?
+    ☐ Michael Anderson - DC
+    ☐ Nicholas Samonas - DC
+    ☐ Chayva Lehrman - DC
+    ☐ Anya Erokhina  - DC

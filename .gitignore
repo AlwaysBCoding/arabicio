@@ -15,6 +15,5 @@
 /log/*.log
 /tmp
 
-TODO
 config/database.yml
 .sass-cache

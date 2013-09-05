@@ -70,24 +70,3 @@ Future Verticals
 * Use the dynamic conjugation creation to make quizzes that throw out a word and ask for a random conjugation ( while teaching the meaning )
 * Frequency mapping to give roots a weight for the algorithm to use
 * Create a news.arabic.io subdomain that has a Hacker News style message board for news related to the middle east, and Americans interested in detailed discussion about the current state of affairs, instead of the propaganda that we're currently exposed to
-
-The Plan
-========
-
-1. Start with Algorithm II. Create an algorithm to categorize a stem object. A categorization will look like:
-  root: "hi-k-l"
-  categorization: {
-  root-category: "hamzated",
-  root-subCategory: "hamzated-initial"
-  }
-  vocalization: {
-    perfect-kicker: "fatha",
-    imperfect-kicker: "damma"
-  }
-  Measures: ["I", "II", "III", "IV", "V", "VI"]
-
-  The root, vocalization, and measures will be stored on the stem object. The root-category and root-subcategory can be created programatically based on the tirlateral pattern
-
-2. Once the root-category and root-subcategory have been calculated the StemConjugator will run, which will create a table of all possible conjugations of the stem for the given measures.
-3. Once the conjugations have been created, the input word will be checked against the conjugations to see if there is a match. If a match occurs, the conjugation is added as a "match"
-4. All conjugations will be returned as JSON from the algorithm - with any matched conjugation returned with a special 'match' flag
