@@ -1,6 +1,6 @@
 class StemConjugator
 
-	def self.conjugation_table_for_stem_in_measure(stem, measure)
+	def self.conjugations_for_stem_in_measure(stem, measure)
 		case measure
 
 		when "I"

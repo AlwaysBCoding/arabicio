@@ -19,8 +19,8 @@ class ArabicStem < ActiveRecord::Base
 # CLASS METHODS
 
 # INSTANCE METHODS
-  def conjugation_table_in_measure(measure)
-    return StemConjugator.conjugation_table_for_stem_in_measure(self, measure)
+  def conjugations_in_measure(measure)
+    return StemConjugator.conjugations_for_stem_in_measure(self, measure)
   end
 
 # CONVENIENCE METHODS

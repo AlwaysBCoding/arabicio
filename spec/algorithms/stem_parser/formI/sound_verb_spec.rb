@@ -8,9 +8,10 @@ describe StemParser do
       context "base sound verb" do
         it "correctly parses the stem from the base 55 conjugations ( less the verbal noun )" do
           stem = create(:sound_base) # "d", "r", "s"
-          conjugations = stem.conjugation_table_in_measure("I")
+          conjugations = stem.conjugations_in_measure("I")
           conjugations.each do |conjugation|
             candidates = StemParser.parse_stem(conjugation.to_arabic)
+            candidates.map(&:root).should include(["d", "r", "s"])
           end
         end
       end
