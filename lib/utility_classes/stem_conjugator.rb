@@ -1,4 +1,4 @@
-class WordConjugator
+class StemConjugator
 
 	def self.create_conjugations(root, form, subform)
 		case form
