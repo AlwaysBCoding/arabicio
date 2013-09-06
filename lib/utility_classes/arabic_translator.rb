@@ -6,6 +6,7 @@ class ArabicTranslator
     # parsed_input.delete("da")
     # parsed_input.delete("ka")
     # parsed_input.delete("sk")
+    # parsed_input.delete("dd")
     return parsed_input
   end
 
