@@ -5,7 +5,7 @@ class StemConjugator
 
 		when "I"
 			case StemCategorizer.categorize(stem)
-			when {root_category: "sound", root_subcategory: nil}, {root_category: "assimilated", root_subcategory: "assimilated-y"}
+			when {root_category: "sound", root_subcategory: nil}, {root_category: "assimilated", root_subcategory: "assimilated-y"}, {root_category: "assimilated", root_subcategory: "assimilated-w-deletion"}
 
 				imperative_prefix, imperative_vowel = "i", "ka" if stem.vocalization["imperfect_kicker"] == "fa"
 				imperative_prefix, imperative_vowel = "i", "ka" if stem.vocalization["imperfect_kicker"] == "ka"
@@ -76,6 +76,9 @@ class StemConjugator
 
 					ArabicConjugation.new( nil, :active_participle, [stem.root[0], 'aa', stem.root[1], stem.root[2]], [nil, nil, 'ka', nil] ),
 					ArabicConjugation.new( nil, :passive_participle, ['m', stem.root[0], stem.root[1], 'w', stem.root[2]], ['fa', 'sk', nil, nil, nil] )
+				]
+			when {root_category: "assimilated", root_subcategory: "assimilated-wa"}, {root_category: "assimilated", root_subcategory: "assimilated-wi"}
+				return [
 				]
 			end
 		end

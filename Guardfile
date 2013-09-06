@@ -20,7 +20,7 @@ guard :rspec do
   watch('app/controllers/application_controller.rb')  { "spec/controllers" }
 
 #  watch('config/routes.rb')                           { "spec/routing" }
-  watch('lib/utility_classes/stem_parser.rb') { |m| "spec/algorithms/stem_parser/formI/verb_conjugation_spec.rb" }
+  watch('lib/utility_classes/stem_parser.rb') { |m| "spec/algorithms/stem_parser/measureI/verb_conjugation_spec.rb" }
   # Capybara features specs
   watch(%r{^app/views/(.+)/.*\.(erb|haml)$})          { |m| "spec/features/#{m[1]}_spec.rb" }
 
