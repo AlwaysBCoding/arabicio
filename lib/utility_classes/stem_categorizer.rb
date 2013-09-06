@@ -13,6 +13,7 @@ class StemCategorizer
     return {root_category: "doubled", root_subcategory: nil} if stem.root[1] == stem.root[2]
 
     # ASSIMILATED
+    return {root_category: "assimilated", root_subcategory: "assimilated-y"} if stem.root[0] == "y"
     return {root_category: "assimilated", root_subcategory: nil} if stem.assimilated?
 
     # HOLLOW

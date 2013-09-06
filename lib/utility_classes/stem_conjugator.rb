@@ -5,7 +5,7 @@ class StemConjugator
 
 		when "I"
 			case StemCategorizer.categorize(stem)
-			when {root_category: "sound", root_subcategory: nil}
+			when {root_category: "sound", root_subcategory: nil}, {root_category: "assimilated", root_subcategory: "assimilated-y"}
 
 				imperative_prefix, imperative_vowel = "i", "ka" if stem.vocalization["imperfect_kicker"] == "fa"
 				imperative_prefix, imperative_vowel = "i", "ka" if stem.vocalization["imperfect_kicker"] == "ka"
