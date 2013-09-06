@@ -1,4 +1,4 @@
-sound_base_vocalization = {perfect_kicker: "fa", imperfect_kicker: "da"}
+sound_base_vocalization = {"perfect_kicker" => "fa", "imperfect_kicker" => "da"}
 
 FactoryGirl.define do
 

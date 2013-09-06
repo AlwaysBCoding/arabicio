@@ -54,22 +54,25 @@ class StemConjugator
 					ArabicConjugation.new( 'hooma-m', :jussive, ['y', stem.root[0], stem.root[1], stem.root[2], 'aa'], ['fa', 'sk', stem.vocalization["imperfect_kicker"], nil, nil] ),
 					ArabicConjugation.new( 'hooma-f', :jussive, ['t', stem.root[0], stem.root[1], stem.root[2], 'aa'], ['fa', 'sk', stem.vocalization["imperfect_kicker"], nil, nil] ),
 
-					ArabicConjugation.new( 'enta', :imperative, [imperative_prefix, stem.root[0], stem.root[1], stem.root[2]], [imperative_vowel, "sk", stem.vocalization["imperfect_kicker"], "sk"])
-					ArabicConjugation.new( 'enti', :imperative, [imperative_prefix, stem.root[0], stem.root[1], stem.root[2], 'y'], [imperative_vowel, "sk", stem.vocalization["imperfect_kicker"], nil, nil] )
-					ArabicConjugation.new( 'entum', :imperative, [imperative_prefix, stem.root[0], stem.root[1], stem.root[2], 'w', 'aa'], [imperative_vowel, "sk", stem.vocalization["imperfect_kicker"], nil, nil, nil] )
-					ArabicConjugation.new( 'entun', :imperative, [imperative_prefix, stem.root[0], stem.root[1], stem.root[2], 'n'], [imperative_vowel, 'sk', stem.vocalization["imperfect_kicker"], 'sk', 'fa'] )
-					ArabicConjugation.new( 'entuma', :imperative, [imperative_prefix, stem.root[0], stem.root[1], stem.root[2], "aa"], [imperative_vowel, "sk", stem.vocalization["imperfect_kicker"], nil, nil] )
+					ArabicConjugation.new( 'enta', :imperative, [imperative_prefix, stem.root[0], stem.root[1], stem.root[2]], [imperative_vowel, "sk", stem.vocalization["imperfect_kicker"], "sk"] ),
+					ArabicConjugation.new( 'enti', :imperative, [imperative_prefix, stem.root[0], stem.root[1], stem.root[2], 'y'], [imperative_vowel, "sk", stem.vocalization["imperfect_kicker"], nil, nil] ),
+					ArabicConjugation.new( 'entum', :imperative, [imperative_prefix, stem.root[0], stem.root[1], stem.root[2], 'w', 'aa'], [imperative_vowel, "sk", stem.vocalization["imperfect_kicker"], nil, nil, nil] ),
+					ArabicConjugation.new( 'entun', :imperative, [imperative_prefix, stem.root[0], stem.root[1], stem.root[2], 'n'], [imperative_vowel, 'sk', stem.vocalization["imperfect_kicker"], 'sk', 'fa'] ),
+					ArabicConjugation.new( 'entuma', :imperative, [imperative_prefix, stem.root[0], stem.root[1], stem.root[2], "aa"], [imperative_vowel, "sk", stem.vocalization["imperfect_kicker"], nil, nil] ),
 
-					# ArabicConjugation.new( 'ana', :subjunctive, [stem.root[0], stem.root[1], stem.root[2], 't'], ['fa', 'fa', 'sk', 'da'] ),
-					# ArabicConjugation.new( 'enta', :subjunctive, [stem.root[0], stem.root[1], stem.root[2], 't'], ['fa', 'fa', 'sk', 'fa'] ),
-					# ArabicConjugation.new( 'enti', :subjunctive, [stem.root[0], stem.root[1], stem.root[2], 't'], ['fa', 'fa', 'sk', 'ka'] ),
-					# ArabicConjugation.new( 'hooa', :subjunctive, [stem.root[0], stem.root[1], stem.root[2]], ['fa', 'fa', 'fa'] ),
-					# ArabicConjugation.new( 'heea', :subjunctive, [stem.root[0], stem.root[1], stem.root[2], 't'], ['fa', 'fa', 'fa', 'sk'] ),
-					# ArabicConjugation.new( 'nahn', :subjunctive, [stem.root[0], stem.root[1], stem.root[2], 'n', 'aa'], ['fa', 'fa', 'sk', nil, nil] ),
-					# ArabicConjugation.new( 'entum', :subjunctive, [stem.root[0], stem.root[1], stem.root[2], 't', 'm'], ['fa', 'fa', 'sk', 'da', nil] ),
-					# ArabicConjugation.new( 'entun', :subjunctive, [stem.root[0], stem.root[1], stem.root[2], 't', 'n'], ['fa', 'fa', 'sk', 'da', 'dd'] ),
-					# ArabicConjugation.new( 'hoom', :subjunctive, [stem.root[0], stem.root[1], stem.root[2], 'w', 'aa'], ['fa', 'fa', nil, nil, nil] ),
-					# ArabicConjugation.new( 'hoon', :subjunctive, [stem.root[0], stem.root[1], stem.root[2], 'n'], ['fa', 'fa', 'sk', 'fa'] ),
+					ArabicConjugation.new( 'ana', :subjunctive, ['a', stem.root[0], stem.root[1], stem.root[2]], ['fa', 'sk', stem.vocalization["imperfect_kicker"], 'fa'] ),
+					ArabicConjugation.new( 'enta', :subjunctive, ['t', stem.root[0], stem.root[1], stem.root[2]], ['fa', 'sk', stem.vocalization["imperfect_kicker"], 'fa'] ),
+					ArabicConjugation.new( 'enti', :subjunctive, ['t', stem.root[0], stem.root[1], stem.root[2], 'y'], ['fa', 'sk', stem.vocalization["imperfect_kicker"], nil, nil] ),
+					ArabicConjugation.new( 'hooa', :subjunctive, ['y', stem.root[0], stem.root[1], stem.root[2]], ['fa', 'sk', stem.vocalization["imperfect_kicker"], 'fa'] ),
+					ArabicConjugation.new( 'heea', :subjunctive, ['t', stem.root[0], stem.root[1], stem.root[2]], ['fa', 'sk', stem.vocalization["imperfect_kicker"], 'fa'] ),
+					ArabicConjugation.new( 'nahn', :subjunctive, ['n', stem.root[0], stem.root[1], stem.root[2]], ['fa', 'sk', stem.vocalization["imperfect_kicker"], 'fa'] ),
+					ArabicConjugation.new( 'entum', :subjunctive, ['t', stem.root[0], stem.root[1], stem.root[2], 'w', 'aa'], ['fa', 'sk', stem.vocalization["imperfect_kicker"], nil, nil, nil] ),
+					ArabicConjugation.new( 'entun', :subjunctive, ['t', stem.root[0], stem.root[1], stem.root[2], 'n'], ['fa', 'sk', stem.vocalization["imperfect_kicker"], 'sk', 'fa'] ),
+					ArabicConjugation.new( 'hoom', :subjunctive, ['y', stem.root[0], stem.root[1], stem.root[2], 'w', 'aa'], ['fa', 'sk', stem.vocalization["imperfect_kicker"], nil, nil, nil] ),
+					ArabicConjugation.new( 'hoon', :subjunctive, ['y', stem.root[0], stem.root[1], stem.root[2], 'n'], ['fa', 'sk', stem.vocalization["imperfect_kicker"], 'sk', 'fa'] ),
+					ArabicConjugation.new( 'entuma', :subjunctive, ['t', stem.root[0], stem.root[1], stem.root[2], 'aa'], ['fa', 'sk', stem.vocalization["imperfect_kicker"], nil, nil] ),
+					ArabicConjugation.new( 'hooma-m', :subjunctive, ['y', stem.root[0], stem.root[1], stem.root[2], 'aa'], ['fa', 'sk', stem.vocalization["imperfect_kicker"], nil, nil] ),
+					ArabicConjugation.new( 'hooma-f', :subjunctive, ['t', stem.root[0], stem.root[1], stem.root[2], 'aa'], ['fa', 'sk', stem.vocalization["imperfect_kicker"], nil, nil] ),
 
 					ArabicConjugation.new( nil, :active_participle, [stem.root[0], 'aa', stem.root[1], stem.root[2]], [nil, nil, 'ka', nil] ),
 					ArabicConjugation.new( nil, :passive_participle, ['m', stem.root[0], stem.root[1], 'w', stem.root[2]], ['fa', 'sk', nil, nil, nil] )
