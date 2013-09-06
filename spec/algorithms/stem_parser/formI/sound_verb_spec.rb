@@ -6,7 +6,7 @@ describe StemParser do
 
     context "Sound Verb" do
       context "base sound verb" do
-        it "correctly parses the stem from the base 55 conjugations ( less the verbal noun )" do
+        it "correctly parses the stem from the base 60 conjugations ( less the verbal noun )" do
           stem = create(:sound_base) # "d", "r", "s"
           conjugations = stem.conjugations_in_measure("I")
           conjugations.each do |conjugation|
@@ -17,7 +17,7 @@ describe StemParser do
       end
 
       context "sound verb with root0 'y'" do
-        it "correctly parses the stem from the base 55 conjugations ( less the verbal noun )" do
+        it "correctly parses the stem from the base 60 conjugations ( less the verbal noun )" do
         end
       end
 

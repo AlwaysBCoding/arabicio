@@ -68,9 +68,10 @@ The data will then display on the page in a nice tabular format, with the matchi
 Conjugation Tables
 ==================
 
-Conjugation tables will be fully vocalized and consist of (4) separate tables each containing (13) conjugations for a total of 52 conjugations.
+Conjugation tables will be fully vocalized and consist of (4) separate tables each containing (13) conjugations for a total of 52 conjugations. ( Perfect, Imperfect, Jussive, Subjunctive )
+There are (5) conjugations for the Imperative
 Then there are an additional (3) special forms ( Active Participle, Passive Participle, Verbal Noun)
-These 55 conjugations for a stem in a specific measure will be called the "Base 55"
+These 60 conjugations for a stem in a specific measure will be called the "Base 60"
 *-* One thing to note is that Form I verbs can have multiple verbal nouns which means that the verbal nouns will be returned in the form of an array
 
 The four tables will be:
@@ -78,6 +79,12 @@ The four tables will be:
   * Imperfect ( present )
   * Jussive ( commands )
   * Subjunctive ( passive voice )
+The fifth table is:
+  * Imperative
+The sixth table is:
+  * Active Participle
+  * Passive Participle
+  * Verbal Noun
 
 The 13 conjugations will be:
   * 5 singular
