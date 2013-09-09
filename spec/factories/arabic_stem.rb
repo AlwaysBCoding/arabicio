@@ -35,6 +35,13 @@ FactoryGirl.define do
       verbal_nouns ["wSl", "Sltm"]
     end
 
+    factory :hamzated_with_hmz_at_root0 do
+      root ["hmz", "k", "l"]
+      vocalization fa_da
+      measures ["I", "II", "III", "IV", "V", "VI"]
+      verbal_nouns ["akl", "makl"]
+    end
+
   end
 
 end

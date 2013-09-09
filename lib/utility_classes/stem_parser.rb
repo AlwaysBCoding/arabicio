@@ -18,6 +18,9 @@ class StemParser
     if input.length == 2
       # ASSIMILATED
       candidates << ['w', input[0], input[1]] # [x, x] (w)
+
+      # HAMZATED
+      candidates << ["hmz", input[0], input[1]] # [x, x] (hmz)
     end
 
     if input.length == 3
@@ -30,6 +33,13 @@ class StemParser
       if input[2] == "y" then candidates << ["w", input[0], input[1]] end #[x, x, "y"] (w)
       if input[2] == "aa" then candidates << ["w", input[0], input[1]] end #[x, x, "aa"] (w)
       if input[2] == "n" then candidates << ["w", input[0], input[1]] end #[x, x, "n"] (w)
+
+      # HAMZATED
+      if input[0] == "amd" then candidates << ["hmz", input[1], input[2]] end #["amd", x, x] (hmz)
+      if input[0] == "a" then candidates << ["hmz", input[1], input[2]] end #["a", x, x] (hmz)
+      if input[2] == "y" then candidates << ["hmz", input[0], input[1]] end #[x, x, "y"] (hmz)
+      if input[2] == "aa" then candidates << ["hmz", input[0], input[1]] end #[x, x, "aa"] (hmz)
+      if input[2] == "n" then candidates << ["hmz", input[0], input[1]] end #[x, x, "n"] (hmz)
 
       # SOLID
       candidates << input
@@ -54,7 +64,16 @@ class StemParser
       if input[0] == "t" && input[3] == "aa" then candidates << ["w", input[1], input[2]] end #["t", x, x, "aa"] (w)
       if input[0] == "y" && input[3] == "aa" then candidates << ["w", input[1], input[2]] end #["y", x, x, "aa"] (w)
       if input[2] == "w" && input[3] == "aa" then candidates << ["w", input[0], input[1]] end #[x, x, "w", "aa"] (w)
-    end
+
+      # HAMZATED
+      if input[0] == "t" && input[1] == "a" then candidates << ["hmz", input[2], input[3]] end #["t", "a", x, x] (hmz)
+      if input[0] == "y" && input[1] == "a" then candidates << ["hmz", input[2], input[3]] end #["y", "a", x, x] (hmz)
+      if input[0] == "n" && input[1] == "a" then candidates << ["hmz", input[2], input[3]] end #["n", "a", x, x] (hmz)
+      if input[0] == "a" && input[3] == "t" then candidates << ["hmz", input[1], input[2]] end #["a", x, x, "t"] (hmz)
+      if input[0] == "a" && input[3] == "n" then candidates << ["hmz", input[1], input[2]] end #["a", x, x, "n"] (hmz)
+      if input[0] == "a" && input[3] == "aa" then candidates << ["hmz", input[1], input[2]] end #["a", x, x, "aa"] (hmz)
+      if input[2] == "w" && input[3] == "aa" then candidates << ["hmz", input[0], input[1]] end #[x, x, "w", "aa"] (hmz)
+     end
 
     if input.length == 5
       # SOLID
@@ -84,6 +103,18 @@ class StemParser
       if input[0] == "y" && input[3] == "aa" && input[4] == "n" then candidates << ["w", input[1], input[2]] end #["y", x, x, "aa", "n"] (w)
       if input[0] == "t" && input[3] == "w" && input[4] == "aa" then candidates << ["w", input[1], input[2]] end #["t", x, x, "w", "aa"] (w)
       if input[0] == "y" && input[3] == "w" && input[4] == "aa" then candidates << ["w", input[1], input[2]] end #["y", x, x, "w", "aa"] (w)
+
+      # HAMZATED
+      if input[0] == "t" && input[1] == "a" && input[4] == "n" then candidates << ["hmz", input[2], input[3]] end #["t", "a", x, x, "n"] (hmz)
+      if input[0] == "y" && input[1] == "a" && input[4] == "n" then candidates << ["hmz", input[2], input[3]] end #["y", "a", x, x, "n"] (hmz)
+      if input[0] == "a" && input[3] == "n" && input[4] == "aa" then candidates << ["hmz", input[1], input[2]] end #["a", x, x, "n", "aa"] (hmz)
+      if input[0] == "a" && input[3] == "t" && input[4] == "m" then candidates << ["hmz", input[1], input[2]] end #["a", x, x, "t", "m"] (hmz)
+      if input[0] == "a" && input[3] == "t" && input[4] == "n" then candidates << ["hmz", input[1], input[2]] end #["a", x, x, "t", "n"] (hmz)
+      if input[0] == "a" && input[3] == "w" && input[4] == "aa" then candidates << ["hmz", input[1], input[2]] end #["a", x, x, "w", "aa"] (hmz)
+      if input[0] == "a" && input[3] == "t" && input[4] == "aa" then candidates << ["hmz", input[1], input[2]] end #["a", x, x, "t", "aa"] (hmz)
+      if input[0] == "t" && input[1] == "a" && input[4] == "y" then candidates << ["hmz", input[2], input[3]] end #["t", "a", x, x, "y"] (hmz)
+      if input[0] == "t" && input[1] == "a" && input[4] == "aa" then candidates << ["hmz", input[2], input[3]] end #["t", "a", x, x, "aa"] (hmz)
+      if input[0] == "y" && input[1] == "a" && input[4] == "aa" then candidates << ["hmz", input[2], input[3]] end #["y", "a", x, x, "aa"] (hmz)
     end
 
     if input.length == 6
@@ -98,6 +129,16 @@ class StemParser
       if input[0] == "y" && input[4] == "w" && input[5] == "aa" then candidates << [input[1], input[2], input[3]] end #["y", x, x, x, "w", "aa"]
       if input[0] == "a" && input[4] == "w" && input[5] == "aa" then candidates << [input[1], input[2], input[3]] end #["a", x, x, x, "w", "aa"]
       if input[0] == "i" && input[4] == "w" && input[5] == "aa" then candidates << [input[1], input[2], input[3]] end #["i", x, x, x, "w", "aa"]
+
+      # HAMZATED
+      if input[0] == "t" && input[1] == "a" && input[4] == "y" && input[5] == "n" then candidates << ["hmz", input[2], input[3]] end #["t", "a", x, x, "y", "n"] (hmz)
+      if input[0] == "t" && input[1] == "a" && input[4] == "w" && input[5] == "n" then candidates << ["hmz", input[2], input[3]] end #["t", "a", x, x, "w", "n"] (hmz)
+      if input[0] == "y" && input[1] == "a" && input[4] == "w" && input[5] == "n" then candidates << ["hmz", input[2], input[3]] end #["y", "a", x, x, "w", "n"] (hmz)
+      if input[0] == "t" && input[1] == "a" && input[4] == "aa" && input[5] == "n" then candidates << ["hmz", input[2], input[3]] end #["t", "a", x, x, "aa", "n"] (hmz)
+      if input[0] == "y" && input[1] == "a" && input[4] == "aa" && input[5] == "n" then candidates << ["hmz", input[2], input[3]] end #["y", "a", x, x, "aa", "n"] (hmz)
+      if input[0] == "a" && input[3] == "t" && input[4] == "m" && input[5] == "aa" then candidates << ["hmz", input[1], input[2]] end #["a", x, x, "t", "m", "a"] (hmz)
+      if input[0] == "t" && input[1] == "a" && input[4] == "w" && input[5] == "aa" then candidates << ["hmz", input[2], input[3]] end #["t", "a", x, x, "w", "aa"] (hmz)
+      if input[0] == "y" && input[1] == "a" && input[4] == "w" && input[5] == "aa" then candidates << ["hmz", input[2], input[3]] end #["y", "a", x, x, "w", "aa"] (hmz)
     end
 
     if input.length == 7

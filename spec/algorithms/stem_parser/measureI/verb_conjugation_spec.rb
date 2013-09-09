@@ -67,6 +67,17 @@ describe StemParser do
     end
 
     context "Hamzated Verb" do
+      context "with 'hmz' at root0" do
+        it "parses the stem from the base 60 conjugations", :focus do
+          stem = create(:hamzated_with_hmz_at_root0) # "hmz", "k", "l"
+          conjugations = stem.conjugations_in_measure("I")
+          conjugations.each do |conjugation|
+            p conjugation.consonants
+            candidates = StemParser.parse_stem(conjugation.to_arabic)
+            candidates.map(&:root).should include(["hmz", "k", "l"])
+          end
+        end
+      end
     end
 
     context "Multiple Verb" do
