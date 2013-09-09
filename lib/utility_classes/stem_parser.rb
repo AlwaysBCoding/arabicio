@@ -15,12 +15,21 @@ class StemParser
   def self.guess_root(input)
     candidates = []
 
+    if input.length == 2
+      # ASSIMILATED
+      candidates << ['w', input[0], input[1]] # [x, x] (w)
+    end
+
     if input.length == 3
       # ASSIMILATED
       if input[0] == "a" then candidates << ["w", input[1], input[2]] end #["a", x, x] (w)
       if input[0] == "t" then candidates << ["w", input[1], input[2]] end #["t", x, x] (w)
       if input[0] == "y" then candidates << ["w", input[1], input[2]] end #["y", x, x] (w)
       if input[0] == "n" then candidates << ["w", input[1], input[2]] end #["n", x, x] (w)
+      if input[0] == "n" then candidates << ["w", input[1], input[2]] end #["n", x, x] (w)
+      if input[2] == "y" then candidates << ["w", input[0], input[1]] end #[x, x, "y"] (w)
+      if input[2] == "aa" then candidates << ["w", input[0], input[1]] end #[x, x, "aa"] (w)
+      if input[2] == "n" then candidates << ["w", input[0], input[1]] end #[x, x, "n"] (w)
 
       # SOLID
       candidates << input
@@ -44,6 +53,7 @@ class StemParser
       if input[0] == "t" && input[3] == "y" then candidates << ["w", input[1], input[2]] end #["t", x, x, "y"] (w)
       if input[0] == "t" && input[3] == "aa" then candidates << ["w", input[1], input[2]] end #["t", x, x, "aa"] (w)
       if input[0] == "y" && input[3] == "aa" then candidates << ["w", input[1], input[2]] end #["y", x, x, "aa"] (w)
+      if input[2] == "w" && input[3] == "aa" then candidates << ["w", input[0], input[1]] end #[x, x, "w", "aa"] (w)
     end
 
     if input.length == 5

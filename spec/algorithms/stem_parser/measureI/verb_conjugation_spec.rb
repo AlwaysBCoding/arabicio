@@ -48,11 +48,10 @@ describe StemParser do
       end
 
       context "with 'w' at root0, perfect kicker is 'fa', root0 is assimilated" do
-        it "parses the stem from the base 60 conjugations", focus: true do
+        it "parses the stem from the base 60 conjugations" do
           stem = create(:assimilated_with_w_at_root0_perfect_kicker_fa) # "w", "S", "l"
           conjugations = stem.conjugations_in_measure("I")
           conjugations.each do |conjugation|
-            p conjugation.consonants
             candidates = StemParser.parse_stem(conjugation.to_arabic)
             candidates.map(&:root).should include(["w", "S", "l"])
           end
