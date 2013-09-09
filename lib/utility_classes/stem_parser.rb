@@ -115,6 +115,7 @@ class StemParser
       if input[0] == "t" && input[1] == "a" && input[4] == "y" then candidates << ["hmz", input[2], input[3]] end #["t", "a", x, x, "y"] (hmz)
       if input[0] == "t" && input[1] == "a" && input[4] == "aa" then candidates << ["hmz", input[2], input[3]] end #["t", "a", x, x, "aa"] (hmz)
       if input[0] == "y" && input[1] == "a" && input[4] == "aa" then candidates << ["hmz", input[2], input[3]] end #["y", "a", x, x, "aa"] (hmz)
+      if input[0] == "m" && input[1] == "a" && input[3] == "w" then candidates << ["hmz", input[2], input[4]] end #["m", "a", x, "w", x] (hmz)
     end
 
     if input.length == 6

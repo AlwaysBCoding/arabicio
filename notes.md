@@ -99,3 +99,7 @@ Future Verticals
 * Use the dynamic conjugation creation to make quizzes that throw out a word and ask for a random conjugation ( while teaching the meaning )
 * Frequency mapping to give roots a weight for the algorithm to use
 * Create a news.arabic.io subdomain that has a Hacker News style message board for news related to the middle east, and Americans interested in detailed discussion about the current state of affairs, instead of the propaganda that we're currently exposed to
+
+OBSERVATIONS
+============
+Subjunctive & Jussive mostly the same ( except for ending vowel on the big 5 ) for Form I
