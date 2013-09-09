@@ -60,11 +60,10 @@ describe StemParser do
 
     context "Hollow Verb" do
       context "with 'w' at root1, imperfect_kicker is 'da'" do
-        it "parses the stem from the base60 conjugations", :focus do
+        it "parses the stem from the base60 conjugations" do
           stem = create(:hollow_with_w_at_root1_imperfect_kicker_da) # "z", "w", "r"
           conjugations = stem.conjugations_in_measure("I")
           conjugations.each do |conjugation|
-            p conjugation.consonants
             candidates = StemParser.parse_stem(conjugation.to_arabic)
             candidates.map(&:root).should include(["z", "w", "r"])
           end
