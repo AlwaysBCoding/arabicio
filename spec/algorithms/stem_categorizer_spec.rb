@@ -8,12 +8,6 @@ describe StemCategorizer do
       categorization = StemCategorizer.categorize(stem)
       categorization.should == {root_category: "sound", root_subcategory: nil}
     end
-
-    it "categorizes a sound verb where root0 is 'y'" do
-      stem = create(:arabic_stem, root: ["y", "s", "r"])
-      categorization = StemCategorizer.categorize(stem)
-      categorization.should == {root_category: "sound", root_subcategory: nil}
-    end
   end
 
   context "Doubled Verb" do
@@ -26,29 +20,39 @@ describe StemCategorizer do
 
   context "Hollow Verb" do
     it "categorizes a hollow verb where root1 is 'w'" do
-      stem = create(:arabic_stem, root: ["z", "w", "r"], vocalization: {imperfect_kicker: "da"})
+      stem = create(:arabic_stem, root: ["z", "w", "r"], vocalization: {"imperfect_kicker" => "da"})
       categorization = StemCategorizer.categorize(stem)
       categorization.should == {root_category: "hollow", root_subcategory: "hollow-w"}
     end
 
     it "categorizes a hollow verb where root1 is 'y" do
-      stem = create(:arabic_stem, root: ["s", "y", "r"], vocalization: {imperfect_kicker: "ka"})
+      stem = create(:arabic_stem, root: ["s", "y", "r"], vocalization: {"imperfect_kicker" => "ka"})
       categorization = StemCategorizer.categorize(stem)
       categorization.should == {root_category: "hollow", root_subcategory: "hollow-y"}
     end
 
     it "categorizes a hollow verb where root1 is 'y' or 'w' and imperfect-kicker is 'fa'" do
-      stem = create(:arabic_stem, root: ["kh", "w", "f"], vocalization: {imperfect_kicker: "fa"})
+      stem = create(:arabic_stem, root: ["kh", "w", "f"], vocalization: {"imperfect_kicker" => "fa"})
       categorization = StemCategorizer.categorize(stem)
       categorization.should == {root_category: "hollow", root_subcategory: "hollow-aa"}
     end
   end
 
   context "Assimilated Verb" do
-    it "categorizes an assimilated verb where root0 is 'w'" do
-      stem = create(:arabic_stem, root: ["w", "j", "d"])
+    it "categorizes an assimilated verb where root0 is 'y'" do
+      stem = create(:arabic_stem, root: ["y", "s", "r"])
       categorization = StemCategorizer.categorize(stem)
-      categorization.should == {root_category: "assimilated", root_subcategory: nil}
+      categorization.should == {root_category: "assimilated", root_subcategory: "assimilated-y"}
+    end
+    it "categorizes an assimilated verb where root0 is 'w' and perfect_kicker is 'ka'" do
+      stem = create(:arabic_stem, root: ["w", "j", "d"], vocalization: {"perfect_kicker" => "ka", "imperfect_kicker" => "fa"})
+      categorization = StemCategorizer.categorize(stem)
+      categorization.should == {root_category: "assimilated", root_subcategory: "assimilated-concatenation"}
+    end
+    it "categorizes an assimilated verb where root0 is 'w' and perfect_kicker is 'fa'" do
+      stem = create(:arabic_stem, root: ["w", "S", "l"], vocalization: {"perfect_kicker" => "fa", "imperfect_kicker" => "ka"})
+      categorization = StemCategorizer.categorize(stem)
+      categorization.should == {root_category: "assimilated", root_subcategory: "assimilated-deletion"}
     end
   end
 
@@ -60,13 +64,13 @@ describe StemCategorizer do
     end
 
     it "categorizes a defective verb where root2 is 'y' and perfect_kicker is 'fa' and imperfect_kicker is 'ka'" do
-      stem = create(:arabic_stem, root: ["b", "n", "y"], vocalization: {perfect_kicker: "fa", imperfect_kicker: "ka"})
+      stem = create(:arabic_stem, root: ["b", "n", "y"], vocalization: {"perfect_kicker" => "fa", "imperfect_kicker" => "ka"})
       categorization = StemCategorizer.categorize(stem)
       categorization.should == {root_category: "defective", root_subcategory: "defective-ay"}
     end
 
     it "categorizes a defective verb where root2 is 'y' and perfect_kicker is 'ka', and imperfect_kicker is 'fa'" do
-      stem = create(:arabic_stem, root: ["n", "s", "y"], vocalization: {perfect_kicker: "ka", imperfect_kicker: "fa"})
+      stem = create(:arabic_stem, root: ["n", "s", "y"], vocalization: {"perfect_kicker" => "ka", "imperfect_kicker" => "fa"})
       categorization = StemCategorizer.categorize(stem)
       categorization.should == {root_category: "defective", root_subcategory: "defective-ya"}
     end

@@ -25,7 +25,7 @@ describe StemParser do
 
     context "Assimilated Verb" do
 
-      context "with 'y' at root0" do
+      context "with 'y' at root0, root0 is not assimilated" do
         it "parses the stem from the base 60 conjugations" do
           stem = create(:assimilated_with_y_at_root0) # "y", "q", "DH"
           conjugations = stem.conjugations_in_measure("I")
@@ -36,7 +36,26 @@ describe StemParser do
         end
       end
 
-      context "with 'w' at root0" do
+      context "with 'w' at root0, perfect kicker is 'ka', root0 is not assimilated" do
+        it "parses the stem from the base 60 conjugations" do
+          stem = create(:assimilated_with_w_at_root0_perfect_kicker_ka) # "w", "j", "3"
+          conjugations = stem.conjugations_in_measure("I")
+          conjugations.each do |conjugation|
+            candidates = StemParser.parse_stem(conjugation.to_arabic)
+            candidates.map(&:root).should include(["w", "j", "3"])
+          end
+        end
+      end
+
+      context "with 'w' at root0, perfect kicker is 'fa', root0 is assimilated" do
+        it "parses the stem from the base 60 conjugations" do
+          stem = create(:assimilated_with_w_at_root0_perfect_kicker_fa) # "w", "S", "l"
+          conjugations = stem.conjugations_in_measure("I")
+          conjugations.each do |conjugation|
+            candidates = StemParser.parse_stem(conjugation.to_arabic)
+            candidates.map(&:root).should include(["w", "S", "l"])
+          end
+        end
       end
 
     end

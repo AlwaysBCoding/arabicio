@@ -14,13 +14,12 @@ class StemCategorizer
 
     # ASSIMILATED
     return {root_category: "assimilated", root_subcategory: "assimilated-y"} if stem.root[0] == "y" #-#
-    return {root_category: "assimilated", root_subcategory: "assimilated-wa"} if stem.assimilated? && stem.vocalization[:perfect_kicker] == "fa" && stem.vocalization[:imperfect_kicker] == "fa"
-    return {root_category: "assimilated", root_subcategory: "assimilated-wi"} if stem.assimilated? && stem.vocalization[:perfect_kicker] == "fa" && stem.vocalization[:imperfect_kicker] == "ka"
-    return {root_category: "assimilated", root_subcategory: "assimilated-w-deletion"} if stem.assimilated? && stem.vocalization[:perfect_kicker] == "ka" || stem.vocalization[:perfect_kicker] == "da"
+    return {root_category: "assimilated", root_subcategory: "assimilated-concatenation"} if stem.root[0] == "w" && %w[da ka].include?(stem.vocalization["perfect_kicker"])
+    return {root_category: "assimilated", root_subcategory: "assimilated-deletion"} if stem.root[0] == "w" && stem.vocalization["perfect_kicker"] == "fa"
 
     # HOLLOW
     if stem.hollow?
-      return {root_category: "hollow", root_subcategory: "hollow-aa"} if stem.vocalization[:imperfect_kicker] == "fa"
+      return {root_category: "hollow", root_subcategory: "hollow-aa"} if stem.vocalization["imperfect_kicker"] == "fa"
       return {root_category: "hollow", root_subcategory: "hollow-w"} if stem.root[1] == "w"
       return {root_category: "hollow", root_subcategory: "hollow-y"} if stem.root[1] == "y"
     end
@@ -28,8 +27,8 @@ class StemCategorizer
     # DEFECTIVE
     if stem.defective?
       return {root_category: "defective", root_subcategory: "defective-w"} if stem.root[2] == "w"
-      return {root_category: "defective", root_subcategory: "defective-ay"} if stem.root[2] == "y" && stem.vocalization[:perfect_kicker] == "fa"
-      return {root_category: "defective", root_subcategory: "defective-ya"} if stem.root[2] == "y" && stem.vocalization[:perfect_kicker] == "ka"
+      return {root_category: "defective", root_subcategory: "defective-ay"} if stem.root[2] == "y" && stem.vocalization["perfect_kicker"] == "fa"
+      return {root_category: "defective", root_subcategory: "defective-ya"} if stem.root[2] == "y" && stem.vocalization["perfect_kicker"] == "ka"
     end
 
     # HAMZATED

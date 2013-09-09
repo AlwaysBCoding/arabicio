@@ -29,7 +29,7 @@ class ArabicStem < ActiveRecord::Base
   end
 
   def assimilated?
-    return true if self.root[0] == "w" && self.root.length == 3
+    return true if (self.root[0] == "w" || self.root[0] == "y") && self.root.length == 3
   end
 
   def defective?
