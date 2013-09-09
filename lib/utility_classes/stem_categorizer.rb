@@ -20,8 +20,8 @@ class StemCategorizer
     # HOLLOW
     if stem.hollow?
       return {root_category: "hollow", root_subcategory: "hollow-aa"} if stem.vocalization["imperfect_kicker"] == "fa"
-      return {root_category: "hollow", root_subcategory: "hollow-w"} if stem.root[1] == "w"
-      return {root_category: "hollow", root_subcategory: "hollow-y"} if stem.root[1] == "y"
+      return {root_category: "hollow", root_subcategory: "hollow-w"} if stem.vocalization["imperfect_kicker"] == "da"
+      return {root_category: "hollow", root_subcategory: "hollow-y"} if stem.vocalization["imperfect_kicker"] == "ka"
     end
 
     # DEFECTIVE

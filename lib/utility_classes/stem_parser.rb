@@ -21,6 +21,9 @@ class StemParser
 
       # HAMZATED-INITIAL
       candidates << ["hmz", input[0], input[1]] # [x, x] (hmz)
+
+      # HOLLOW
+      candidates << [input[0], "w", input[1]] # [x, x] (w)
     end
 
     if input.length == 3
@@ -47,6 +50,13 @@ class StemParser
       # HAMZATED-FINAL
       if input[2] == "a" then candidates << [input[0], input[1], "hmz"] end #[x, x, "a"] (hmz)
       if input[2] == "amd" then candidates << [input[0], input[1], "hmz"] end #[x, x, "amd"] (hmz)
+
+      # HOLLOW
+      if input[0] == "a" then candidates << [input[1], "w", input[2]] end #["a", x, x] (w)
+      if input[0] == "t" then candidates << [input[1], "w", input[2]] end #["t", x, x] (w)
+      if input[0] == "y" then candidates << [input[1], "w", input[2]] end #["y", x, x] (w)
+      if input[0] == "n" then candidates << [input[1], "w", input[2]] end #["n", x, x] (w)
+      if input[2] == "n" then candidates << [input[0], "w", input[1]] end #[x, x, "n"] (w)
 
       # SOLID
       candidates << input
@@ -104,6 +114,11 @@ class StemParser
       if input[2] == "a" && input[3] == "t" then candidates << [input[0], input[1], "hmz"] end #[x, x, "a", "t"] (hmz)
       if input[2] == "a" && input[3] == "n" then candidates << [input[0], input[1], "hmz"] end #[x, x, "a", "n"] (hmz)
       if input[1] == "aa" && input[3] == "hy" then candidates << [input[0], input[2], "hmz"] end #[x, "aa", x, "hy"] (hmz)
+
+      # HOLLOW
+      if input[0] == "t" && input[3] == "n" then candidates << [input[1], "w", input[2]] end #["t", x, x, "n"] (w)
+      if input[0] == "y" && input[3] == "n" then candidates << [input[1], "w", input[2]] end #["y", x, x, "n"] (w)
+      if input[1] == "w" && input[3] == "y" then candidates << [input[0], "w", input[2]] end #[x, "w", x, "y"] (w)
      end
 
     if input.length == 5
