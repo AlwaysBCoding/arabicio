@@ -285,6 +285,11 @@ class StemConjugator
 					ArabicConjugation.new( nil, :passive_participle, ['m', stem.root[0], 'hw', 'w', stem.root[2]], ['fa', 'sk', nil, nil, nil] )
 				]
 			when {root_category: "hamzated", root_subcategory: "hamzated-final"}
+
+				imperative_prefix, imperative_vowel = "aa", "ka" if stem.vocalization["imperfect_kicker"] == "fa"
+				imperative_prefix, imperative_vowel = "aa", "ka" if stem.vocalization["imperfect_kicker"] == "ka"
+				imperative_prefix, imperative_vowel = "aa", "da" if stem.vocalization["imperfect_kicker"] == "da"
+
 				return [
 					ArabicConjugation.new( "ana", :imperfect, ["a", stem.root[0], stem.root[1], "a"], ['fa', 'sk', stem.vocalization["imperfect_kicker"], 'da'] ),
 					ArabicConjugation.new( "enta", :imperfect, ["t", stem.root[0], stem.root[1], "a"], ['fa', 'sk', stem.vocalization["imperfect_kicker"], 'da'] ),
@@ -312,7 +317,44 @@ class StemConjugator
 					ArabicConjugation.new( "hoon", :jussive, ["y", stem.root[0], stem.root[1], "a", 'n'], ['fa', 'sk', stem.vocalization["imperfect_kicker"], 'sk', 'fa'] ),
 					ArabicConjugation.new( "entuma", :jussive, ["t", stem.root[0], stem.root[1], "amd"], ['fa', 'sk', stem.vocalization["imperfect_kicker"], nil] ),
 					ArabicConjugation.new( "hooma-m", :jussive, ["y", stem.root[0], stem.root[1], "amd"], ['fa', 'sk', stem.vocalization["imperfect_kicker"], nil] ),
-					ArabicConjugation.new( "hooma-m", :jussive, ["t", stem.root[0], stem.root[1], "amd"], ['fa', 'sk', stem.vocalization["imperfect_kicker"], nil] )
+					ArabicConjugation.new( "hooma-m", :jussive, ["t", stem.root[0], stem.root[1], "amd"], ['fa', 'sk', stem.vocalization["imperfect_kicker"], nil] ),
+
+					ArabicConjugation.new( "ana", :subjunctive, ["a", stem.root[0], stem.root[1], "a"], ['fa', 'sk', stem.vocalization["imperfect_kicker"], 'fa'] ),
+					ArabicConjugation.new( "enta", :subjunctive, ["t", stem.root[0], stem.root[1], "a"], ['fa', 'sk', stem.vocalization["imperfect_kicker"], 'fa'] ),
+					ArabicConjugation.new( "enti", :subjunctive, ["t", stem.root[0], stem.root[1], "hy", 'y'], ['fa', 'sk', stem.vocalization["imperfect_kicker"], 'ka', nil] ),
+					ArabicConjugation.new( "hooa", :subjunctive, ["y", stem.root[0], stem.root[1], "a"], ['fa', 'sk', stem.vocalization["imperfect_kicker"], 'fa'] ),
+					ArabicConjugation.new( "heea", :subjunctive, ["t", stem.root[0], stem.root[1], "a"], ['fa', 'sk', stem.vocalization["imperfect_kicker"], 'fa'] ),
+					ArabicConjugation.new( "nahn", :subjunctive, ["n", stem.root[0], stem.root[1], "a"], ['fa', 'sk', stem.vocalization["imperfect_kicker"], 'fa'] ),
+					ArabicConjugation.new( "entum", :subjunctive, ["t", stem.root[0], stem.root[1], "hw", 'w', 'aa'], ['fa', 'sk', stem.vocalization["imperfect_kicker"], 'da', nil, nil] ),
+					ArabicConjugation.new( "entun", :subjunctive, ["t", stem.root[0], stem.root[1], "a", 'n'], ['fa', 'sk', stem.vocalization["imperfect_kicker"], 'sk', 'fa'] ),
+					ArabicConjugation.new( "hoom", :subjunctive, ["y", stem.root[0], stem.root[1], "hw", 'w', 'aa'], ['fa', 'sk', stem.vocalization["imperfect_kicker"], 'da', nil, nil] ),
+					ArabicConjugation.new( "hoon", :subjunctive, ["y", stem.root[0], stem.root[1], "a", 'n'], ['fa', 'sk', stem.vocalization["imperfect_kicker"], 'sk', 'fa'] ),
+					ArabicConjugation.new( "entuma", :subjunctive, ["t", stem.root[0], stem.root[1], "amd"], ['fa', 'sk', stem.vocalization["imperfect_kicker"], nil] ),
+					ArabicConjugation.new( "hooma-m", :subjunctive, ["y", stem.root[0], stem.root[1], "amd"], ['fa', 'sk', stem.vocalization["imperfect_kicker"], nil] ),
+					ArabicConjugation.new( "hooma-m", :subjunctive, ["t", stem.root[0], stem.root[1], "amd"], ['fa', 'sk', stem.vocalization["imperfect_kicker"], nil] ),
+
+					ArabicConjugation.new( "enta", :imperative, [imperative_prefix, stem.root[0], stem.root[1], "a"], [imperative_vowel, 'sk', stem.vocalization["imperfect_kicker"], "sk"] ),
+					ArabicConjugation.new( "enti", :imperative, [imperative_prefix, stem.root[0], stem.root[1], "hy", 'y'], [imperative_vowel, 'sk', stem.vocalization["imperfect_kicker"], nil, nil] ),
+					ArabicConjugation.new( "entuma", :imperative, [imperative_prefix, stem.root[0], stem.root[1], "amd"], [imperative_vowel, 'sk', stem.vocalization["imperfect_kicker"], nil] ),
+					ArabicConjugation.new( "entum", :imperative, [imperative_prefix, stem.root[0], stem.root[1], "hw", "w", "n"], [imperative_vowel, 'sk', stem.vocalization["imperfect_kicker"], "da", nil, nil] ),
+					ArabicConjugation.new( "entun", :imperative, [imperative_prefix, stem.root[0], stem.root[1], "a", "n"], [imperative_vowel, 'sk', stem.vocalization["imperfect_kicker"], "sk", "fa"] ),
+
+					ArabicConjugation.new( "ana", :perfect, [stem.root[0], stem.root[1], 'a', 't'], ['fa', stem.vocalization["perfect_kicker"], 'sk', 'da'] ),
+					ArabicConjugation.new( "enta", :perfect, [stem.root[0], stem.root[1], 'a', 't'], ['fa', stem.vocalization["perfect_kicker"], 'sk', 'fa'] ),
+					ArabicConjugation.new( "enti", :perfect, [stem.root[0], stem.root[1], 'a', 't'], ['fa', stem.vocalization["perfect_kicker"], 'sk', 'ka'] ),
+					ArabicConjugation.new( "hooa", :perfect, [stem.root[0], stem.root[1], 'a'], ['fa', stem.vocalization["perfect_kicker"], 'fa'] ),
+					ArabicConjugation.new( "enti", :perfect, [stem.root[0], stem.root[1], 'a', 't'], ['fa', stem.vocalization["perfect_kicker"], 'fa', 'sk'] ),
+					ArabicConjugation.new( "nahn", :perfect, [stem.root[0], stem.root[1], 'a', 'n', 'aa'], ['fa', stem.vocalization["perfect_kicker"], 'sk', nil, nil] ),
+					ArabicConjugation.new( "entum", :perfect, [stem.root[0], stem.root[1], 'a', 't', 'm'], ['fa', stem.vocalization["perfect_kicker"], 'sk', 'da', nil] ),
+					ArabicConjugation.new( "entun", :perfect, [stem.root[0], stem.root[1], 'a', 't', 'n'], ['fa', stem.vocalization["perfect_kicker"], 'sk', 'da', 'dd'] ),
+					ArabicConjugation.new( "hoom", :perfect, [stem.root[0], stem.root[1], 'hw', 'w', 'aa'], ['fa', stem.vocalization["perfect_kicker"], 'da', nil, nil] ),
+					ArabicConjugation.new( "hoon", :perfect, [stem.root[0], stem.root[1], 'a', 'n'], ['fa', stem.vocalization["perfect_kicker"], 'sk', 'fa'] ),
+					ArabicConjugation.new( "entuma", :perfect, [stem.root[0], stem.root[1], 'a', 't', 'm', 'aa'], ['fa', stem.vocalization["perfect_kicker"], 'sk', 'da', nil, nil] ),
+					ArabicConjugation.new( "hooma-m", :perfect, [stem.root[0], stem.root[1], 'amd'], ['fa', stem.vocalization["perfect_kicker"], nil] ),
+					ArabicConjugation.new( "hooma-f", :perfect, [stem.root[0], stem.root[1], 'a', 't', 'aa'], ['fa', stem.vocalization["perfect_kicker"], 'fa', nil, nil] ),
+
+					ArabicConjugation.new( nil, :active_participle, [stem.root[0], 'aa', stem.root[1], 'hy'], [nil, nil, 'ka', nil] ),
+					ArabicConjugation.new( nil, :passive_participle, ['m', stem.root[0], stem.root[1], 'w', 'hmz'], ['fa', 'sk', nil, nil, nil] )
 				]
 			end
 		end

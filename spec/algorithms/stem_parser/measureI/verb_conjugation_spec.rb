@@ -24,7 +24,6 @@ describe StemParser do
     end
 
     context "Assimilated Verb" do
-
       context "with 'y' at root0, root0 is not assimilated" do
         it "parses the stem from the base 60 conjugations" do
           stem = create(:assimilated_with_y_at_root0) # "y", "q", "DH"
@@ -57,7 +56,6 @@ describe StemParser do
           end
         end
       end
-
     end
 
     context "Hollow Verb" do
@@ -90,11 +88,10 @@ describe StemParser do
       end
 
       context "with 'hmz' at root2" do
-        it "parses the stem from the base 60 conjugations", :focus do
+        it "parses the stem from the base 60 conjugations" do
           stem = create(:hamzated_with_hmz_at_root2) # "q", "r", "hmz"
           conjugations = stem.conjugations_in_measure("I")
           conjugations.each do |conjugation|
-            p conjugation.consonants
             candidates = StemParser.parse_stem(conjugation.to_arabic)
             candidates.map(&:root).should include(["q", "r", "hmz"])
           end
