@@ -103,3 +103,4 @@ Future Verticals
 OBSERVATIONS
 ============
 Subjunctive & Jussive mostly the same ( except for ending vowel on the big 5 ) for Form I
+The vocalization patterns are mostly the same for everything ( the consonants are what alter )
