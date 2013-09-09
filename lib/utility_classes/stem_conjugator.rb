@@ -212,6 +212,10 @@ class StemConjugator
 					ArabicConjugation.new( nil, :active_participle, ["amd", stem.root[1], stem.root[2]], [nil, 'ka', nil] ),
 					ArabicConjugation.new( nil, :passive_participle, ["m", "a", stem.root[1], 'w', stem.root[2]], ['fa', 'sk', nil, nil, nil] )
 				]
+			when {root_category: "hamzated", root_subcategory: "hamzated-medial"}
+				return [
+					nil
+				]
 			end
 		end
 
