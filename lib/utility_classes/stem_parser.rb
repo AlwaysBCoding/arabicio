@@ -17,14 +17,17 @@ class StemParser
 
     if input.length == 2
       # ASSIMILATED
-      candidates << ['w', input[0], input[1]] # [x, x] (w)
+      candidates << ['w', input[0], input[1]] #[x, x] (w)
 
       # HAMZATED-INITIAL
-      candidates << ["hmz", input[0], input[1]] # [x, x] (hmz)
+      candidates << ["hmz", input[0], input[1]] #[x, x] (hmz)
 
       # HOLLOW
-      candidates << [input[0], "w", input[1]] # [x, x] (w)
-      candidates << [input[0], "y", input[1]] # [x, x] (y)
+      candidates << [input[0], "w", input[1]] #[x, x] (w)
+      candidates << [input[0], "y", input[1]] #[x, x] (y)
+
+      # DOUBLED
+      candidates << [input[0], input[1], input[1]] #[x, x] (dd)
     end
 
     if input.length == 3
@@ -73,6 +76,9 @@ class StemParser
       if input[0] == "t" then candidates << [input[1], input[2], input[2]] end #["t", x, x] (dd)
       if input[0] == "y" then candidates << [input[1], input[2], input[2]] end #["y", x, x] (dd)
       if input[0] == "n" then candidates << [input[1], input[2], input[2]] end #["n", x, x] (dd)
+      if input[2] == "y" then candidates << [input[0], input[1], input[1]] end #[x, x, "y"] (dd)
+      if input[2] == "aa" then candidates << [input[0], input[1], input[1]] end #[x, x, "aa"] (dd)
+      if input[2] == "t" then candidates << [input[0], input[1], input[1]] end #[x, x, "t"] (dd)
 
       # SOLID
       candidates << input
@@ -158,6 +164,13 @@ class StemParser
       if input[0] == "n" && input[2] == "aa" then candidates << [input[1], "w", input[3]] end #["n", x, "aa", x] (w)
       if input[1] == "aa" && input[3] == "y" then candidates << [input[0], "w", input[2]] end #[x, "aa", x, "y"] (w)
       if input[0] == "m" && input[2] == "aa" then candidates << [input[1], "w", input[3]] end #["m", x, "aa", x] (w)
+
+      # DOUBLED
+      if input[0] == "t" && input[3] == "y" then candidates << [input[1], input[2], input[2]] end #["t", x, x, "y"] (dd)
+      if input[0] == "t" && input[3] == "aa" then candidates << [input[1], input[2], input[2]] end #["t", x, x, "aa"] (dd)
+      if input[0] == "y" && input[3] == "aa" then candidates << [input[1], input[2], input[2]] end #["y", x, x, "aa"] (dd)
+      if input[2] == "w" && input[3] == "aa" then candidates << [input[0], input[1], input[1]] end #[x, x, "w", "aa"] (dd)
+      if input[2] == "t" && input[3] == "aa" then candidates << [input[0], input[1], input[1]] end #[x, x, "t", "aa"] (dd)
 
       # GENERAL
       if input[0] == "m" then candidates << [input[1], input[2], input[3]] end #["m", x, x, x]
@@ -253,6 +266,8 @@ class StemParser
       if input[0] == "y" && input[3] == "w" && input[4] == "n" then candidates << [input[1], input[2], input[2]] end #["y", x, x, "w", "n"] (dd)
       if input[0] == "t" && input[3] == "aa" && input[4] == "n" then candidates << [input[1], input[2], input[2]] end #["t", x, x, "aa", "n"] (dd)
       if input[0] == "y" && input[3] == "aa" && input[4] == "n" then candidates << [input[1], input[2], input[2]] end #["y", x, x, "aa", "n"] (dd)
+      if input[0] == "t" && input[3] == "w" && input[4] == "aa" then candidates << [input[1], input[2], input[2]] end #["t", x, x, "w", "aa"] (dd)
+      if input[0] == "y" && input[3] == "w" && input[4] == "aa" then candidates << [input[1], input[2], input[2]] end #["y", x, x, "w", "aa"] (dd)
     end
 
     if input.length == 6

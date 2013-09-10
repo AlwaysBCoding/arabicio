@@ -22,11 +22,10 @@ describe StemParser do
 
     context "Doubled Verb" do
       context "with a base doubled pattern" do
-        it "parses the stem from the base 60 conjugations", :focus do
+        it "parses the stem from the base 60 conjugations" do
           stem = create(:doubled) # "d", "l", "l"
           conjugations = stem.conjugations_in_measure("I")
           conjugations.each do |conjugation|
-            p conjugation.consonants
             candidates = StemParser.parse_stem(conjugation.to_arabic)
             candidates.map(&:root).should include(["d", "l", "l"])
           end
