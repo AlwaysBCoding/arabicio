@@ -69,6 +69,29 @@ describe StemParser do
           end
         end
       end
+
+      context "with 'y' at root1, imperfect_kicker is 'ka'" do
+        it "parses the stem from the base 60 conjugations" do
+          stem = create(:hollow_with_y_at_root1_imperfect_kicker_ka) # "b", "y", "3"
+          conjugations = stem.conjugations_in_measure("I")
+          conjugations.each do |conjugation|
+            candidates = StemParser.parse_stem(conjugation.to_arabic)
+            candidates.map(&:root).should include(["b", "y", "3"])
+          end
+        end
+
+        context "with 'w' at root1, imperfect_kicker is 'fa'" do
+          it "parses the stem from the base 60 conjugations" do
+            stem = create(:hollow_with_w_at_root1_imperfect_kicker_fa) # "kh", "w", "f"
+            conjugations = stem.conjugations_in_measure("I")
+            conjugations.each do |conjugation|
+              candidates = StemParser.parse_stem(conjugation.to_arabic)
+              candidates.map(&:root).should include(["kh", "w", "f"])
+            end
+          end
+        end
+      end
+
     end
 
     context "Defective Verb" do

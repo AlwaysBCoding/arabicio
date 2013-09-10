@@ -24,6 +24,7 @@ class StemParser
 
       # HOLLOW
       candidates << [input[0], "w", input[1]] # [x, x] (w)
+      candidates << [input[0], "y", input[1]] # [x, x] (y)
     end
 
     if input.length == 3
@@ -53,12 +54,19 @@ class StemParser
 
       # HOLLOW
       if input[0] == "a" then candidates << [input[1], "w", input[2]] end #["a", x, x] (w)
+      if input[0] == "a" then candidates << [input[1], "y", input[2]] end #["a", x, x] (y)
       if input[0] == "t" then candidates << [input[1], "w", input[2]] end #["t", x, x] (w)
+      if input[0] == "t" then candidates << [input[1], "y", input[2]] end #["t", x, x] (y)
       if input[0] == "y" then candidates << [input[1], "w", input[2]] end #["y", x, x] (w)
+      if input[0] == "y" then candidates << [input[1], "y", input[2]] end #["y", x, x] (y)
       if input[0] == "n" then candidates << [input[1], "w", input[2]] end #["n", x, x] (w)
+      if input[0] == "n" then candidates << [input[1], "y", input[2]] end #["n", x, x] (y)
       if input[2] == "n" then candidates << [input[0], "w", input[1]] end #[x, x, "n"] (w)
+      if input[2] == "n" then candidates << [input[0], "y", input[1]] end #[x, x, "n"] (y)
       if input[2] == "t" then candidates << [input[0], "w", input[1]] end #[x, x, "t"] (w)
+      if input[2] == "t" then candidates << [input[0], "y", input[1]] end #[x, x, "t"] (y)
       if input[1] == "aa" then candidates << [input[0], "w", input[2]] end #[x, "aa", x] (w)
+      if input[1] == "aa" then candidates << [input[0], "y", input[2]] end #[x, "aa", x] (y)
 
       # SOLID
       candidates << input
@@ -119,14 +127,31 @@ class StemParser
 
       # HOLLOW
       if input[0] == "t" && input[3] == "n" then candidates << [input[1], "w", input[2]] end #["t", x, x, "n"] (w)
+      if input[0] == "t" && input[3] == "n" then candidates << [input[1], "y", input[2]] end #["t", x, x, "n"] (y)
       if input[0] == "y" && input[3] == "n" then candidates << [input[1], "w", input[2]] end #["y", x, x, "n"] (w)
+      if input[0] == "y" && input[3] == "n" then candidates << [input[1], "y", input[2]] end #["y", x, x, "n"] (y)
       if input[1] == "w" && input[3] == "y" then candidates << [input[0], "w", input[2]] end #[x, "w", x, "y"] (w)
+      if input[1] == "y" && input[3] == "y" then candidates << [input[0], "y", input[2]] end #[x, "y", x, "y"] (y)
       if input[1] == "aa" && input[3] == "t" then candidates << [input[0], "w", input[2]] end #[x, "aa", x, "t"] (w)
+      if input[1] == "aa" && input[3] == "t" then candidates << [input[0], "y", input[2]] end #[x, "aa", x, "t"] (y)
       if input[2] == "n" && input[3] == "aa" then candidates << [input[0], "w", input[1]] end #[x, x, "n", "aa"] (w)
+      if input[2] == "n" && input[3] == "aa" then candidates << [input[0], "y", input[1]] end #[x, x, "n", "aa"] (y)
       if input[2] == "t" && input[3] == "m" then candidates << [input[0], "w", input[1]] end #[x, x, "t", "m"] (w)
+      if input[2] == "t" && input[3] == "m" then candidates << [input[0], "y", input[1]] end #[x, x, "t", "m"] (y)
       if input[2] == "t" && input[3] == "n" then candidates << [input[0], "w", input[1]] end #[x, x, "t", "n"] (w)
+      if input[2] == "t" && input[3] == "n" then candidates << [input[0], "y", input[1]] end #[x, x, "t", "n"] (y)
       if input[1] == "aa" && input[3] == "aa" then candidates << [input[0], "w", input[2]] end #[x, "aa", x, "aa"] (w)
+      if input[1] == "aa" && input[3] == "aa" then candidates << [input[0], "y", input[2]] end #[x, "aa", x, "aa"] (y)
       if input[1] == "aa" && input[2] == "hy" then candidates << [input[0], "w", input[3]] end #[x, "aa", "hy", x] (w)
+      if input[1] == "aa" && input[2] == "hy" then candidates << [input[0], "y", input[3]] end #[x, "aa", "hy", x] (y)
+
+      # HOLLOW-AA
+      if input[0] == "a" && input[2] == "aa" then candidates << [input[1], "w", input[3]] end #["a", x, "aa", x] (w)
+      if input[0] == "t" && input[2] == "aa" then candidates << [input[1], "w", input[3]] end #["t", x, "aa", x] (w)
+      if input[0] == "y" && input[2] == "aa" then candidates << [input[1], "w", input[3]] end #["y", x, "aa", x] (w)
+      if input[0] == "n" && input[2] == "aa" then candidates << [input[1], "w", input[3]] end #["n", x, "aa", x] (w)
+      if input[1] == "aa" && input[3] == "y" then candidates << [input[0], "w", input[2]] end #[x, "aa", x, "y"] (w)
+      if input[0] == "m" && input[2] == "aa" then candidates << [input[1], "w", input[3]] end #["m", x, "aa", x] (w)
 
       # GENERAL
       if input[0] == "m" then candidates << [input[1], input[2], input[3]] end #["m", x, x, x]
@@ -205,8 +230,16 @@ class StemParser
 
       # HOLLOW
       if input[1] == "aa" && input[3] == "w" && input[4] == "aa" then candidates << [input[0], "w", input[2]] end #[x, "aa", x, "w", "aa"] (w)
+      if input[1] == "aa" && input[3] == "w" && input[4] == "aa" then candidates << [input[0], "y", input[2]] end #[x, "aa", x, "w", "aa"] (y)
       if input[2] == "t" && input[3] == "m" && input[4] == "aa" then candidates << [input[0], "w", input[1]] end #[x, x, "t", "m", "aa"] (w)
+      if input[2] == "t" && input[3] == "m" && input[4] == "aa" then candidates << [input[0], "y", input[1]] end #[x, x, "t", "m", "aa"] (y)
       if input[1] == "aa" && input[3] == "t" && input[4] == "aa" then candidates << [input[0], "w", input[2]] end #[x, "aa", x, "t", "aa"] (w)
+      if input[1] == "aa" && input[3] == "t" && input[4] == "aa" then candidates << [input[0], "y", input[2]] end #[x, "aa", x, "t", "aa"] (y)
+
+      # HOLLOW-AA
+      if input[0] == "t" && input[2] == "aa" && input[4] == "y" then candidates << [input[1], "w", input[3]] end #["t", x, "aa", x, "y"] (w)
+      if input[0] == "t" && input[2] == "aa" && input[4] == "aa" then candidates << [input[1], "w", input[3]] end #["t", x, "aa", x, "aa"] (w)
+      if input[0] == "y" && input[2] == "aa" && input[4] == "aa" then candidates << [input[1], "w", input[3]] end #["y", x, "aa", x, "aa"] (w)
     end
 
     if input.length == 6
@@ -251,6 +284,15 @@ class StemParser
       if input[0] == "y" && input[3] == "hw" && input[4] == "w" && input[5] == "aa" then candidates << [input[1], input[2], "hmz"] end #["y", x, x, "hw", "w", "aa"] (hmz)
       if input[0] == "aa" && input[3] == "hw" && input[4] == "w" && input[5] == "n" then candidates << [input[1], input[2], "hmz"] end #["aa", x, x, "hw", "w", "n"] (hmz)
       if input[2] == "a" && input[3] == "t" && input[4] == "m" && input[5] == "aa" then candidates << [input[0], input[1], "hmz"] end #[x, x, "a", "t", "m", "aa"] (hmz)
+
+      # HOLLOW-AA
+      if input[0] == "t" && input[2] == "aa" && input[4] == "y" && input[5] == "n" then candidates << [input[1], "w", input[3]] end #["t", x, "aa", x, "y", "n"] (w)
+      if input[0] == "t" && input[2] == "aa" && input[4] == "w" && input[5] == "n" then candidates << [input[1], "w", input[3]] end #["t", x, "aa", x, "w", "n"] (w)
+      if input[0] == "y" && input[2] == "aa" && input[4] == "w" && input[5] == "n" then candidates << [input[1], "w", input[3]] end #["y", x, "aa", x, "w", "n"] (w)
+      if input[0] == "t" && input[2] == "aa" && input[4] == "aa" && input[5] == "n" then candidates << [input[1], "w", input[3]] end #["t", x, "aa", x, "aa", "n"] (w)
+      if input[0] == "y" && input[2] == "aa" && input[4] == "aa" && input[5] == "n" then candidates << [input[1], "w", input[3]] end #["y", x, "aa", x, "aa", "n"] (w)
+      if input[0] == "t" && input[2] == "aa" && input[4] == "w" && input[5] == "aa" then candidates << [input[1], "w", input[3]] end #["t", x, "aa", x, "w", "aa"] (w)
+      if input[0] == "y" && input[2] == "aa" && input[4] == "w" && input[5] == "aa" then candidates << [input[1], "w", input[3]] end #["y", x, "aa", x, "w", "aa"] (w)
     end
 
     if input.length == 7

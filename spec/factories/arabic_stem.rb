@@ -55,6 +55,18 @@ FactoryGirl.define do
       measures ["I", "II", "IV", "VI", "IX", "X"]
     end
 
+    factory :hollow_with_y_at_root1_imperfect_kicker_ka do
+      root ["b", "y", "3"]
+      vocalization fa_ka
+      measures ["I", "III", "IV", "VI", "VII", "VIII"]
+    end
+
+    factory :hollow_with_w_at_root1_imperfect_kicker_fa do
+      root ["kh", "w", "f"]
+      vocalization fa_fa
+      measures ["I", "II", "IV", "V"]
+    end
+
   end
 
 end
