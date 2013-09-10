@@ -434,7 +434,19 @@ class StemConjugator
 				]
 			when {root_category: "doubled", root_subcategory: nil}
 				return [
-					nil
+					ArabicConjugation.new( "ana", :imperfect, ["a", stem.root[0], stem.root[1]], ["fa", stem.vocalization["imperfect_kicker"], "dd"] ),
+					ArabicConjugation.new( "enta", :imperfect, ["t", stem.root[0], stem.root[1]], ["fa", stem.vocalization["imperfect_kicker"], "dd"] ),
+					ArabicConjugation.new( "enti", :imperfect, ["t", stem.root[0], stem.root[1], "y", "n"], ["fa", stem.vocalization["imperfect_kicker"], "dd", nil, "fa"] ),
+					ArabicConjugation.new( "hooa", :imperfect, ["y", stem.root[0], stem.root[1]], ["fa", stem.vocalization["imperfect_kicker"], "dd"] ),
+					ArabicConjugation.new( "heea", :imperfect, ["t", stem.root[0], stem.root[1]], ["fa", stem.vocalization["imperfect_kicker"], "dd"] ),
+					ArabicConjugation.new( "nahn", :imperfect, ["n", stem.root[0], stem.root[1]], ["fa", stem.vocalization["imperfect_kicker"], "dd"] ),
+					ArabicConjugation.new( "entum", :imperfect, ["t", stem.root[0], stem.root[1], "w", "n"], ["fa", stem.vocalization["imperfect_kicker"], "dd", nil, "fa"] ),
+					ArabicConjugation.new( "hoom", :imperfect, ["y", stem.root[0], stem.root[1], "w", "n"], ["fa", stem.vocalization["imperfect_kicker"], "dd", nil, "fa"] ),
+					ArabicConjugation.new( "entun", :imperfect, ["t", stem.root[0], stem.root[1], stem.root[2], "n"], ["fa", "sk", stem.vocalization["imperfect_kicker"], "sk", "fa"] ),
+					ArabicConjugation.new( "hoon", :imperfect, ["y", stem.root[0], stem.root[1], stem.root[2], "n"], ["fa", "sk", stem.vocalization["imperfect_kicker"], "sk", "fa"] ),
+					ArabicConjugation.new( "entuma", :imperfect, ["t", stem.root[0], stem.root[1], "aa", "n"], ["fa", stem.vocalization["imperfect_kicker"], nil, "dd", "ka"] ),
+					ArabicConjugation.new( "hooma-m", :imperfect, ["y", stem.root[0], stem.root[1], "aa", "n"], ["fa", stem.vocalization["imperfect_kicker"], nil, "dd", "ka"] ),
+					ArabicConjugation.new( "hooma-f", :imperfect, ["t", stem.root[0], stem.root[1], "aa", "n"], ["fa", stem.vocalization["imperfect_kicker"], nil, "dd", "ka"] )
 				]
 			end
 		end
