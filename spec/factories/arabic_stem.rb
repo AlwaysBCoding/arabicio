@@ -13,6 +13,12 @@ FactoryGirl.define do
       measures ["I", "II", "III", "VI", "VII"]
     end
 
+    factory :doubled do
+      root ["d", "l", "l"]
+      vocalization fa_da
+      measures ["I", "II", "VII"]
+    end
+
     factory :assimilated_with_y_at_root0 do
       root ["y", "q", "DH"]
       vocalization ka_fa
