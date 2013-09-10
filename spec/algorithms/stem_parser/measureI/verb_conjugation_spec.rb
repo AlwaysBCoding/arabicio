@@ -105,11 +105,10 @@ describe StemParser do
 
     context "Defective Verb" do
       context "with 'w' at root2" do
-        it "parses the stem from the base 60 conjugations", :focus do
+        it "parses the stem from the base 60 conjugations" do
           stem = create(:defective_with_w_at_root2)
           conjugations = stem.conjugations_in_measure("I")
           conjugations.each do |conjugation|
-            p conjugation.consonants
             candidates = StemParser.parse_stem(conjugation.to_arabic)
             candidates.map(&:root).should include(["d", "3", "w"])
           end
