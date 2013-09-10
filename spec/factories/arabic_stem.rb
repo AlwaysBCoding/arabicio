@@ -79,6 +79,18 @@ FactoryGirl.define do
       measures ["I", "III", "VI", "VIII", "X"]
     end
 
+    factory :defective_with_y_at_root2_vocalization_fa_ka do
+      root ["b", "n", "y"]
+      vocalization fa_ka
+      measures ["I", "V", "VII", "VIII"]
+    end
+
+    factory :defective_with_y_at_root2_vocalization_ka_fa do
+      root ["n", "s", "y"]
+      vocalization ka_fa
+      measures ["I", "IV", "VI"]
+    end
+
   end
 
 end
