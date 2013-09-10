@@ -80,6 +80,13 @@ class StemParser
       if input[2] == "aa" then candidates << [input[0], input[1], input[1]] end #[x, x, "aa"] (dd)
       if input[2] == "t" then candidates << [input[0], input[1], input[1]] end #[x, x, "t"] (dd)
 
+      # DEFECTIVE
+      if input[0] == "a" then candidates << [input[1], input[2], "w"] end #["a", x, x] (w)
+      if input[0] == "t" then candidates << [input[1], input[2], "w"] end #["t", x, x] (w)
+      if input[0] == "y" then candidates << [input[1], input[2], "w"] end #["y", x, x] (w)
+      if input[0] == "n" then candidates << [input[1], input[2], "w"] end #["n", x, x] (w)
+      if input[0] == "aa" then candidates << [input[1], input[2], "w"] end #["a", x, x] (w)
+
       # SOLID
       candidates << input
     end
@@ -171,6 +178,10 @@ class StemParser
       if input[0] == "y" && input[3] == "aa" then candidates << [input[1], input[2], input[2]] end #["y", x, x, "aa"] (dd)
       if input[2] == "w" && input[3] == "aa" then candidates << [input[0], input[1], input[1]] end #[x, x, "w", "aa"] (dd)
       if input[2] == "t" && input[3] == "aa" then candidates << [input[0], input[1], input[1]] end #[x, x, "t", "aa"] (dd)
+
+      # DEFECTIVE
+      if input[0] == "t" && input[3] == "y" then candidates << [input[1], input[2], "w"] end #["t", x, x, "y"] (w)
+      if input[0] == "aa" && input[3] == "y" then candidates << [input[1], input[2], "w"] end #["aa", x, x, "y"] (w)
 
       # GENERAL
       if input[0] == "m" then candidates << [input[1], input[2], input[3]] end #["m", x, x, x]
@@ -268,6 +279,9 @@ class StemParser
       if input[0] == "y" && input[3] == "aa" && input[4] == "n" then candidates << [input[1], input[2], input[2]] end #["y", x, x, "aa", "n"] (dd)
       if input[0] == "t" && input[3] == "w" && input[4] == "aa" then candidates << [input[1], input[2], input[2]] end #["t", x, x, "w", "aa"] (dd)
       if input[0] == "y" && input[3] == "w" && input[4] == "aa" then candidates << [input[1], input[2], input[2]] end #["y", x, x, "w", "aa"] (dd)
+
+      # DEFECTIVE
+      if input[0] == "t" && input[3] == "y" && input[4] == "n" then candidates << [input[1], input[2], "w"] end #["t", x, x, "y", "n"] (w)
     end
 
     if input.length == 6

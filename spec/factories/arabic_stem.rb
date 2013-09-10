@@ -73,6 +73,12 @@ FactoryGirl.define do
       measures ["I", "II", "IV", "V"]
     end
 
+    factory :defective_with_w_at_root2 do
+      root ["d", "3", "w"]
+      vocalization fa_da
+      measures ["I", "III", "VI", "VIII", "X"]
+    end
+
   end
 
 end

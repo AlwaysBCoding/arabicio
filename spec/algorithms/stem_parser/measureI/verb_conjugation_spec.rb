@@ -6,7 +6,6 @@ describe StemParser do
     # BASE 60 Conjugations - NO Verbal Noun
 
     context "Sound Verb" do
-
       context "with a base trilateral pattern" do
         it "parses the stem from the base 60 conjugations" do
           stem = create(:sound) # "d", "r", "s"
@@ -105,6 +104,17 @@ describe StemParser do
     end
 
     context "Defective Verb" do
+      context "with 'w' at root2" do
+        it "parses the stem from the base 60 conjugations", :focus do
+          stem = create(:defective_with_w_at_root2)
+          conjugations = stem.conjugations_in_measure("I")
+          conjugations.each do |conjugation|
+            p conjugation.consonants
+            candidates = StemParser.parse_stem(conjugation.to_arabic)
+            candidates.map(&:root).should include(["d", "3", "w"])
+          end
+        end
+      end
     end
 
     context "Hamzated Verb" do
