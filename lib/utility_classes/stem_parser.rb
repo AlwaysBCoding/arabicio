@@ -95,6 +95,9 @@ class StemParser
       if input[0] == "aa" then candidates << [input[1], input[2], "y"] end #["a", x, x] (y)
       if input[2] == "aa" then candidates << [input[0], input[1], "y"] end #[x, x, "aa"] (y)
       if input[2] == "t" then candidates << [input[0], input[1], "y"] end #[x, x, "t"] (y)
+      if input[2] == "amq" then candidates << [input[0], input[1], "y"] end #[x, x, "amq"] (y)
+      if input[1] == "aa" then candidates << [input[0], input[2], "w"] end #[x, "aa", x] (w)
+      if input[1] == "aa" then candidates << [input[0], input[2], "y"] end #[x, "aa", x] (y)
 
       # SOLID
       candidates << input
@@ -192,6 +195,8 @@ class StemParser
       if input[0] == "t" && input[3] == "y" then candidates << [input[1], input[2], "w"] end #["t", x, x, "y"] (w)
       if input[0] == "aa" && input[3] == "y" then candidates << [input[1], input[2], "w"] end #["aa", x, x, "y"] (w)
       if input[2] == "t" && input[3] == "aa" then candidates << [input[0], input[1], "w"] end #[x, x, "t", "aa"] (w)
+      if input[2] == "w" && input[3] == "aa" then candidates << [input[0], input[1], "y"] end #[x, x, "w", "aa"] (y)
+      if input[2] == "t" && input[3] == "aa" then candidates << [input[0], input[1], "y"] end #[x, x, "t", "aa"] (y)
 
       # GENERAL
       if input[0] == "m" then candidates << [input[1], input[2], input[3]] end #["m", x, x, x]
@@ -296,6 +301,7 @@ class StemParser
       if input[0] == "y" && input[3] == "w" && input[4] == "n" then candidates << [input[1], input[2], "y"] end #["y", x, x, "w", "n"] (y)
       if input[0] == "t" && input[3] == "w" && input[4] == "aa" then candidates << [input[1], input[2], "y"] end #["t", x, x, "w", "aa"] (y)
       if input[0] == "y" && input[3] == "w" && input[4] == "aa" then candidates << [input[1], input[2], "y"] end #["y", x, x, "w", "aa"] (y)
+      if input[0] == "aa" && input[3] == "w" && input[4] == "aa" then candidates << [input[1], input[2], "y"] end #["aa", x, x, "w", "aa"] (y)
     end
 
     if input.length == 6
@@ -373,5 +379,8 @@ private
     input.delete("ka")
     input.delete("sk")
     input.delete("dd")
+    input.delete("in")
+    input.delete("an")
+    input.delete("on")
   end
 end
