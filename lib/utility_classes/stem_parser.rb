@@ -88,6 +88,13 @@ class StemParser
       if input[0] == "aa" then candidates << [input[1], input[2], "w"] end #["a", x, x] (w)
       if input[2] == "aa" then candidates << [input[0], input[1], "w"] end #[x, x, "aa"] (w)
       if input[2] == "t" then candidates << [input[0], input[1], "w"] end #[x, x, "t"] (w)
+      if input[0] == "a" then candidates << [input[1], input[2], "y"] end #["a", x, x] (y)
+      if input[0] == "t" then candidates << [input[1], input[2], "y"] end #["t", x, x] (y)
+      if input[0] == "y" then candidates << [input[1], input[2], "y"] end #["y", x, x] (y)
+      if input[0] == "n" then candidates << [input[1], input[2], "y"] end #["n", x, x] (y)
+      if input[0] == "aa" then candidates << [input[1], input[2], "y"] end #["a", x, x] (y)
+      if input[2] == "aa" then candidates << [input[0], input[1], "y"] end #[x, x, "aa"] (y)
+      if input[2] == "t" then candidates << [input[0], input[1], "y"] end #[x, x, "t"] (y)
 
       # SOLID
       candidates << input
@@ -285,6 +292,10 @@ class StemParser
 
       # DEFECTIVE
       if input[0] == "t" && input[3] == "y" && input[4] == "n" then candidates << [input[1], input[2], "w"] end #["t", x, x, "y", "n"] (w)
+      if input[0] == "t" && input[3] == "w" && input[4] == "n" then candidates << [input[1], input[2], "y"] end #["t", x, x, "w", "n"] (y)
+      if input[0] == "y" && input[3] == "w" && input[4] == "n" then candidates << [input[1], input[2], "y"] end #["y", x, x, "w", "n"] (y)
+      if input[0] == "t" && input[3] == "w" && input[4] == "aa" then candidates << [input[1], input[2], "y"] end #["t", x, x, "w", "aa"] (y)
+      if input[0] == "y" && input[3] == "w" && input[4] == "aa" then candidates << [input[1], input[2], "y"] end #["y", x, x, "w", "aa"] (y)
     end
 
     if input.length == 6

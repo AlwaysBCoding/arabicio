@@ -27,8 +27,8 @@ class StemCategorizer
     # DEFECTIVE
     if stem.defective?
       return {root_category: "defective", root_subcategory: "defective-w"} if stem.root[2] == "w"
-      return {root_category: "defective", root_subcategory: "defective-ay"} if stem.root[2] == "y" && stem.vocalization["perfect_kicker"] == "fa"
-      return {root_category: "defective", root_subcategory: "defective-ya"} if stem.root[2] == "y" && stem.vocalization["perfect_kicker"] == "ka"
+      return {root_category: "defective", root_subcategory: "defective-y-fa_ka"} if stem.root[2] == "y" && stem.vocalization["perfect_kicker"] == "fa"
+      return {root_category: "defective", root_subcategory: "defective-y-ka_fa"} if stem.root[2] == "y" && stem.vocalization["perfect_kicker"] == "ka"
     end
 
     # HAMZATED
