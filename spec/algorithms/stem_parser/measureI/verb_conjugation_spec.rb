@@ -129,7 +129,7 @@ describe StemParser do
       end
 
       context "with 'y' at root2, vocalization ka_fa" do
-        it "parses the stem from the base 60 conjugations" do
+        it "parses the stem from the base 60 conjugations", :focus do
           stem = create(:defective_with_y_at_root2_vocalization_ka_fa)
           conjugations = stem.conjugations_in_measure("I")
           conjugations.each do |conjugation|

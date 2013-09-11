@@ -1,7 +1,4 @@
 class StemParser
-  SOLID_LETTERS = %w[b th j H kh d dh r z sh S D DH 3 gh q]
-  POROUS_LETTERS = %w[aa t s T f k l m n h w y a i]
-
 
   def self.parse_stem(input)
     parsed_input = ArabicTranslator.arabic_to_english_symbol_array(input)
@@ -197,6 +194,7 @@ class StemParser
       if input[2] == "t" && input[3] == "aa" then candidates << [input[0], input[1], "w"] end #[x, x, "t", "aa"] (w)
       if input[2] == "w" && input[3] == "aa" then candidates << [input[0], input[1], "y"] end #[x, x, "w", "aa"] (y)
       if input[2] == "t" && input[3] == "aa" then candidates << [input[0], input[1], "y"] end #[x, x, "t", "aa"] (y)
+      if input[3] == "amq" then candidates << [input[1], input[2], "y"] end #["?", x, x, "amq"]
 
       # GENERAL
       if input[0] == "m" then candidates << [input[1], input[2], input[3]] end #["m", x, x, x]
