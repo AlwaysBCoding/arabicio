@@ -66,13 +66,13 @@ describe StemCategorizer do
     it "categorizes a defective verb where root2 is 'y' and perfect_kicker is 'fa' and imperfect_kicker is 'ka'" do
       stem = create(:arabic_stem, root: ["b", "n", "y"], vocalization: {"perfect_kicker" => "fa", "imperfect_kicker" => "ka"})
       categorization = StemCategorizer.categorize(stem)
-      categorization.should == {root_category: "defective", root_subcategory: "defective-ay"}
+      categorization.should == {root_category: "defective", root_subcategory: "defective-y-fa_ka"}
     end
 
     it "categorizes a defective verb where root2 is 'y' and perfect_kicker is 'ka', and imperfect_kicker is 'fa'" do
       stem = create(:arabic_stem, root: ["n", "s", "y"], vocalization: {"perfect_kicker" => "ka", "imperfect_kicker" => "fa"})
       categorization = StemCategorizer.categorize(stem)
-      categorization.should == {root_category: "defective", root_subcategory: "defective-ya"}
+      categorization.should == {root_category: "defective", root_subcategory: "defective-y-ka_fa"}
     end
   end
 

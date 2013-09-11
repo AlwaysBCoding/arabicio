@@ -104,3 +104,9 @@ OBSERVATIONS
 ============
 Subjunctive & Jussive mostly the same ( except for ending vowel on the big 5 ) for Form I
 The vocalization patterns are mostly the same for everything ( the consonants are what alter )
+
+Development Schedule
+====================
+1. Refactor the StemParsing algorithm to abstract common patterns and reduce #LOC in the algorithm
+2. Add "Multiple" conjugation tables, and think of a way to make the conjugation entry process less tedious
+3. Create a web UI to parse the verb, return a stem object with conjugations + highlight on candidate conjugations
