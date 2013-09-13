@@ -1,4 +1,5 @@
 class StemParser
+  BIG5_CONJUGATION_PREFIXES = %w[a t y n]
 
   def self.parse_stem(input)
     parsed_input = ArabicTranslator.arabic_to_english_symbol_array(input)
@@ -13,91 +14,83 @@ class StemParser
     candidates = []
 
     if input.length == 2
-      # ASSIMILATED
-      candidates << ['w', input[0], input[1]] #[x, x] (w)
-
-      # HAMZATED-INITIAL
-      candidates << ["hmz", input[0], input[1]] #[x, x] (hmz)
-
-      # HOLLOW
-      candidates << [input[0], "w", input[1]] #[x, x] (w)
-      candidates << [input[0], "y", input[1]] #[x, x] (y)
-
-      # DOUBLED
-      candidates << [input[0], input[1], input[1]] #[x, x] (dd)
+      candidates << ['w', input[0], input[1]]           #[x, x] (w) - ASSIMILATED
+      candidates << ["hmz", input[0], input[1]]         #[x, x] (hmz) - HAMZATED-INITIAL
+      candidates << [input[0], "w", input[1]]           #[x, x] (w) - HOLLOW
+      candidates << [input[0], "y", input[1]]           #[x, x] (y) - HOLLOW
+      candidates << [input[0], input[1], input[1]]      #[x, x] (dd) - DOUBLED
     end
 
     if input.length == 3
-      # ASSIMILATED
-      if input[0] == "a" then candidates << ["w", input[1], input[2]] end #["a", x, x] (w)
-      if input[0] == "t" then candidates << ["w", input[1], input[2]] end #["t", x, x] (w)
-      if input[0] == "y" then candidates << ["w", input[1], input[2]] end #["y", x, x] (w)
-      if input[0] == "n" then candidates << ["w", input[1], input[2]] end #["n", x, x] (w)
-      if input[0] == "n" then candidates << ["w", input[1], input[2]] end #["n", x, x] (w)
-      if input[2] == "y" then candidates << ["w", input[0], input[1]] end #[x, x, "y"] (w)
-      if input[2] == "aa" then candidates << ["w", input[0], input[1]] end #[x, x, "aa"] (w)
-      if input[2] == "n" then candidates << ["w", input[0], input[1]] end #[x, x, "n"] (w)
+      candidates << input                               #[x, x, x] - SOLID
 
-      # HAMZATED-INITIAL
-      if input[0] == "amd" then candidates << ["hmz", input[1], input[2]] end #["amd", x, x] (hmz)
-      if input[0] == "a" then candidates << ["hmz", input[1], input[2]] end #["a", x, x] (hmz)
-      if input[2] == "y" then candidates << ["hmz", input[0], input[1]] end #[x, x, "y"] (hmz)
-      if input[2] == "aa" then candidates << ["hmz", input[0], input[1]] end #[x, x, "aa"] (hmz)
-      if input[2] == "n" then candidates << ["hmz", input[0], input[1]] end #[x, x, "n"] (hmz)
+      %w[a t y n].each do |letter|
+        if input[0] == letter
+          candidates << ["w", input[1], input[2]]       #["t", x, x] (w) - ASSIMILATED
+          candidates << [input[1], "w", input[2]]       #["t", x, x] (w) - HOLLOW
+          candidates << [input[1], "y", input[2]]       #["t", x, x] (y) - HOLLOW
+          candidates << [input[1], input[2], input[2]]  #["t", x, x] (dd) - DOUBLED
+          candidates << [input[1], input[2], "w"]       #["t", x, x] (w) - DEFECTIVE
+          candidates << [input[1], input[2], "y"]       #["t", x, x] (y) - DEFECTIVE
+        end
+      end
+      if input[0] == "a" then candidates << ["hmz", input[1], input[2]] end    #["a", x, x] (hmz) - HAMZATED-INITIAL
 
-      # HAMZATED-MEDIAL
-      if input[1] == "a" then candidates << [input[0], "hmz", input[2]] end #[x, "a", x] (hmz)
+      if input[0] == "amd" then candidates << ["hmz", input[1], input[2]] end  #["amd", x, x] (hmz) - HAMZATED-INITIAL
+      if input[0] == "aa"
+        candidates << [input[1], input[2], "w"]       #["a", x, x] (w) - DEFECTIVE
+        candidates << [input[1], input[2], "y"]       #["a", x, x] (y) - DEFECTIVE
+      end
 
-      # HAMZATED-FINAL
-      if input[2] == "a" then candidates << [input[0], input[1], "hmz"] end #[x, x, "a"] (hmz)
-      if input[2] == "amd" then candidates << [input[0], input[1], "hmz"] end #[x, x, "amd"] (hmz)
+      if input[1] == "a" then candidates << [input[0], "hmz", input[2]] end   #[x, "a", x] (hmz) - HAMZATED-MEDIAL
 
-      # HOLLOW
-      if input[0] == "a" then candidates << [input[1], "w", input[2]] end #["a", x, x] (w)
-      if input[0] == "a" then candidates << [input[1], "y", input[2]] end #["a", x, x] (y)
-      if input[0] == "t" then candidates << [input[1], "w", input[2]] end #["t", x, x] (w)
-      if input[0] == "t" then candidates << [input[1], "y", input[2]] end #["t", x, x] (y)
-      if input[0] == "y" then candidates << [input[1], "w", input[2]] end #["y", x, x] (w)
-      if input[0] == "y" then candidates << [input[1], "y", input[2]] end #["y", x, x] (y)
-      if input[0] == "n" then candidates << [input[1], "w", input[2]] end #["n", x, x] (w)
-      if input[0] == "n" then candidates << [input[1], "y", input[2]] end #["n", x, x] (y)
-      if input[2] == "n" then candidates << [input[0], "w", input[1]] end #[x, x, "n"] (w)
-      if input[2] == "n" then candidates << [input[0], "y", input[1]] end #[x, x, "n"] (y)
-      if input[2] == "t" then candidates << [input[0], "w", input[1]] end #[x, x, "t"] (w)
-      if input[2] == "t" then candidates << [input[0], "y", input[1]] end #[x, x, "t"] (y)
-      if input[1] == "aa" then candidates << [input[0], "w", input[2]] end #[x, "aa", x] (w)
-      if input[1] == "aa" then candidates << [input[0], "y", input[2]] end #[x, "aa", x] (y)
+      if input[1] == "aa"
+        candidates << [input[0], "w", input[2]]       #[x, "aa", x] (w) - HOLLOW
+        candidates << [input[0], "y", input[2]]       #[x, "aa", x] (y) - HOLLOW
+        candidates << [input[0], input[2], "w"]       #[x, "aa", x] (w) - DEFECTIVE
+        candidates << [input[0], input[2], "y"]       #[x, "aa", x] (y) - DEFECTIVE
+      end
 
-      # DOUBLED
-      if input[0] == "a" then candidates << [input[1], input[2], input[2]] end #["a", x, x] (dd)
-      if input[0] == "t" then candidates << [input[1], input[2], input[2]] end #["t", x, x] (dd)
-      if input[0] == "y" then candidates << [input[1], input[2], input[2]] end #["y", x, x] (dd)
-      if input[0] == "n" then candidates << [input[1], input[2], input[2]] end #["n", x, x] (dd)
-      if input[2] == "y" then candidates << [input[0], input[1], input[1]] end #[x, x, "y"] (dd)
-      if input[2] == "aa" then candidates << [input[0], input[1], input[1]] end #[x, x, "aa"] (dd)
-      if input[2] == "t" then candidates << [input[0], input[1], input[1]] end #[x, x, "t"] (dd)
+      if input[2] == "y"
+        candidates << ["w", input[0], input[1]]       #[x, x, "y"] (w) - ASSIMILATED
+        candidates << ["hmz", input[0], input[1]]     #[x, x, "y"] (hmz) - HAMZATED-INITIAL
+        candidates << [input[0], input[1], input[1]]  #[x, x, "y"] (dd) - DOUBLED
+      end
 
-      # DEFECTIVE
-      if input[0] == "a" then candidates << [input[1], input[2], "w"] end #["a", x, x] (w)
-      if input[0] == "t" then candidates << [input[1], input[2], "w"] end #["t", x, x] (w)
-      if input[0] == "y" then candidates << [input[1], input[2], "w"] end #["y", x, x] (w)
-      if input[0] == "n" then candidates << [input[1], input[2], "w"] end #["n", x, x] (w)
-      if input[0] == "aa" then candidates << [input[1], input[2], "w"] end #["a", x, x] (w)
-      if input[2] == "aa" then candidates << [input[0], input[1], "w"] end #[x, x, "aa"] (w)
-      if input[2] == "t" then candidates << [input[0], input[1], "w"] end #[x, x, "t"] (w)
-      if input[0] == "a" then candidates << [input[1], input[2], "y"] end #["a", x, x] (y)
-      if input[0] == "t" then candidates << [input[1], input[2], "y"] end #["t", x, x] (y)
-      if input[0] == "y" then candidates << [input[1], input[2], "y"] end #["y", x, x] (y)
-      if input[0] == "n" then candidates << [input[1], input[2], "y"] end #["n", x, x] (y)
-      if input[0] == "aa" then candidates << [input[1], input[2], "y"] end #["a", x, x] (y)
-      if input[2] == "aa" then candidates << [input[0], input[1], "y"] end #[x, x, "aa"] (y)
-      if input[2] == "t" then candidates << [input[0], input[1], "y"] end #[x, x, "t"] (y)
-      if input[2] == "amq" then candidates << [input[0], input[1], "y"] end #[x, x, "amq"] (y)
-      if input[1] == "aa" then candidates << [input[0], input[2], "w"] end #[x, "aa", x] (w)
-      if input[1] == "aa" then candidates << [input[0], input[2], "y"] end #[x, "aa", x] (y)
+      if input[2] == "aa"
+        candidates << ["w", input[0], input[1]]       #[x, x, "aa"] (w) - ASSIMILATED
+        candidates << ["hmz", input[0], input[1]]     #[x, x, "aa"] (hmz) - HAMZATED-INITIAL
+        candidates << [input[0], input[1], input[1]]  #[x, x, "aa"] (dd) - DOUBLED
+        candidates << [input[0], input[1], "w"]       #[x, x, "aa"] (w) - DEFECTIVE
+        candidates << [input[0], input[1], "y"]       #[x, x, "aa"] (y) - DEFECTIVE
+      end
 
-      # SOLID
-      candidates << input
+      if input[2] == "n"
+        candidates << ["w", input[0], input[1]]       #[x, x, "n"] (w) - ASSIMILATED
+        candidates << ["hmz", input[0], input[1]]     #[x, x, "n"] (hmz) - HAMZATED-INITIAL
+        candidates << [input[0], "w", input[1]]       #[x, x, "n"] (w) - HOLLOW
+        candidates << [input[0], "y", input[1]]       #[x, x, "n"] (y) - HOLLOW
+      end
+
+      if input[2] == "a"
+        candidates << [input[0], input[1], "hmz"]     #[x, x, "a"] (hmz) - HAMZATED-FINAL
+      end
+
+      if input[2] == "amd"
+        candidates << [input[0], input[1], "hmz"]     #[x, x, "amd"] (hmz) - HAMZATED-FINAL
+      end
+
+      if input[2] == "t"
+        candidates << [input[0], "w", input[1]]       #[x, x, "t"] (w) - HOLLOW
+        candidates << [input[0], "y", input[1]]       #[x, x, "t"] (y) - HOLLOW
+        candidates << [input[0], input[1], input[1]]  #[x, x, "t"] (dd) - DOUBLED
+        candidates << [input[0], input[1], "w"]       #[x, x, "t"] (w) - DEFECTIVE
+        candidates << [input[0], input[1], "y"]       #[x, x, "t"] (y) - DEFECTIVE
+      end
+
+      if input[2] == "amq"
+        candidates << [input[0], input[1], "y"]       #[x, x, "amq"] (y) - DEFECTIVE
+      end
     end
 
     if input.length == 4
