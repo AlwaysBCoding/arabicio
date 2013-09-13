@@ -99,105 +99,52 @@ class StemParser
      end
 
     if input.length == 5
-      # SOLID
-      if input[0] == "t" && input[4] == "n" then candidates << [input[1], input[2], input[3]] end #["t", x, x, x, "n"]
-      if input[0] == "y" && input[4] == "n" then candidates << [input[1], input[2], input[3]] end #["y", x, x, x, "n"]
-      if input[0] == "t" && input[4] == "y" then candidates << [input[1], input[2], input[3]] end #["t", x, x, x, "y"]
-      if input[0] == "t" && input[4] == "aa" then candidates << [input[1], input[2], input[3]] end #["t", x, x, x, "aa"]
-      if input[0] == "y" && input[4] == "aa" then candidates << [input[1], input[2], input[3]] end #["y", x, x, x, "aa"]
-      if input[0] == "a" && input[4] == "y" then candidates << [input[1], input[2], input[3]] end #["a", x, x, x, "y"]
-      if input[0] == "a" && input[4] == "n" then candidates << [input[1], input[2], input[3]] end #["a", x, x, x, "n"]
-      if input[0] == "a" && input[4] == "aa" then candidates << [input[1], input[2], input[3]] end #["a", x, x, x, "aa"]
-      if input[0] == "aa" && input[4] == "y" then candidates << [input[1], input[2], input[3]] end #["aa", x, x, x, "y"]
-      if input[0] == "aa" && input[4] == "n" then candidates << [input[1], input[2], input[3]] end #["aa", x, x, x, "n"]
-      if input[0] == "aa" && input[4] == "aa" then candidates << [input[1], input[2], input[3]] end #["aa", x, x, x, "aa"]
-      if input[3] == "n" && input[4] == "aa" then candidates << [input[0], input[1], input[2]] end #[x, x, x, "n", "aa"]
-      if input[3] == "t" && input[4] == "m" then candidates << [input[0], input[1], input[2]] end #[x, x, x, "t", "m"]
-      if input[3] == "t" && input[4] == "n" then candidates << [input[0], input[1], input[2]] end #[x, x, x, "t", "n"]
-      if input[3] == "w" && input[4] == "aa" then candidates << [input[0], input[1], input[2]] end #[x, x, x, "w", "aa"]
-      if input[3] == "t" && input[4] == "aa" then candidates << [input[0], input[1], input[2]] end #[x, x, x, "t", "aa"]
-      if input[0] == "m" && input[3] == "w" then candidates << [input[1], input[2], input[4]] end #["m", x, x, "w", x]
+      candidates << [input[0], input[1], input[2]] if ( %w[n t w].include?(input[3]) && input[4] == "aa" ) #[x, x, "?", "aa"] - SOLID
+      candidates << [input[0], input[1], input[2]] if ( input[3] == "t" && %w[n m].include?(input[4]) ) #[x, x, "t", "?"] - SOLID
+      candidates << [input[1], input[2], input[3]] if ( %w[a aa t y].include?(input[0]) && input[4] == "n" ) #["?", x, x, x, "n"] - SOLID
+      candidates << [input[1], input[2], input[3]] if ( %w[a aa t y].include?(input[0]) && input[4] == "aa" ) #["?", x, x, x, "aa"] - SOLID
+      candidates << [input[1], input[2], input[3]] if ( %w[a aa t].include?(input[0]) && input[4] == "y" ) #["?", x, x, x, "y"] - SOLID
+      candidates << [input[1], input[2], input[4]] if ( input[0] == "m" && input[3] == "w" ) #["m", x, x, "w", x] - SOLID
 
-      # ASSIMILATED
-      if input[0] == "t" && input[3] == "y" && input[4] == "n" then candidates << ["w", input[1], input[2]] end #["t", x, x, "y", "n"] (w)
-      if input[0] == "t" && input[3] == "w" && input[4] == "n" then candidates << ["w", input[1], input[2]] end #["t", x, x, "w", "n"] (w)
-      if input[0] == "y" && input[3] == "w" && input[4] == "n" then candidates << ["w", input[1], input[2]] end #["y", x, x, "w", "n"] (w)
-      if input[0] == "t" && input[3] == "aa" && input[4] == "n" then candidates << ["w", input[1], input[2]] end #["t", x, x, "aa", "n"] (w)
-      if input[0] == "y" && input[3] == "aa" && input[4] == "n" then candidates << ["w", input[1], input[2]] end #["y", x, x, "aa", "n"] (w)
-      if input[0] == "t" && input[3] == "w" && input[4] == "aa" then candidates << ["w", input[1], input[2]] end #["t", x, x, "w", "aa"] (w)
-      if input[0] == "y" && input[3] == "w" && input[4] == "aa" then candidates << ["w", input[1], input[2]] end #["y", x, x, "w", "aa"] (w)
+      candidates << ["w", input[1], input[2]] if ( %w[t y].include?(input[0]) && %w[w aa].include?(input[3]) && input[4] == "n") #["?", x, x, "?", "n"] (w/y) - ASSIMILATED
+      candidates << ["w", input[1], input[2]] if ( %w[t y].include?(input[0]) && input[3] == "w" && input[4] == "aa") #["?", x, x, "w", "aa"] (w/y) - ASSIMILATED
+      candidates << ["w", input[1], input[2]] if ( input[0] == "t" && input[3] == "y" && input[4] == "n") #["t", x, x, "y", "n"] (w) - ASSIMILATED
 
-      # HAMZATED-INITIAL
-      if input[0] == "t" && input[1] == "a" && input[4] == "n" then candidates << ["hmz", input[2], input[3]] end #["t", "a", x, x, "n"] (hmz)
-      if input[0] == "y" && input[1] == "a" && input[4] == "n" then candidates << ["hmz", input[2], input[3]] end #["y", "a", x, x, "n"] (hmz)
-      if input[0] == "a" && input[3] == "n" && input[4] == "aa" then candidates << ["hmz", input[1], input[2]] end #["a", x, x, "n", "aa"] (hmz)
-      if input[0] == "a" && input[3] == "t" && input[4] == "m" then candidates << ["hmz", input[1], input[2]] end #["a", x, x, "t", "m"] (hmz)
-      if input[0] == "a" && input[3] == "t" && input[4] == "n" then candidates << ["hmz", input[1], input[2]] end #["a", x, x, "t", "n"] (hmz)
-      if input[0] == "a" && input[3] == "w" && input[4] == "aa" then candidates << ["hmz", input[1], input[2]] end #["a", x, x, "w", "aa"] (hmz)
-      if input[0] == "a" && input[3] == "t" && input[4] == "aa" then candidates << ["hmz", input[1], input[2]] end #["a", x, x, "t", "aa"] (hmz)
-      if input[0] == "t" && input[1] == "a" && input[4] == "y" then candidates << ["hmz", input[2], input[3]] end #["t", "a", x, x, "y"] (hmz)
-      if input[0] == "t" && input[1] == "a" && input[4] == "aa" then candidates << ["hmz", input[2], input[3]] end #["t", "a", x, x, "aa"] (hmz)
-      if input[0] == "y" && input[1] == "a" && input[4] == "aa" then candidates << ["hmz", input[2], input[3]] end #["y", "a", x, x, "aa"] (hmz)
-      if input[0] == "m" && input[1] == "a" && input[3] == "w" then candidates << ["hmz", input[2], input[4]] end #["m", "a", x, "w", x] (hmz)
+      candidates << ["hmz", input[1], input[2]] if ( input[0] == "a" && %w[n t w].include?(input[3]) && input[4] == "aa" ) #["a", x, x, "?", "aa"] (hmz) - HAMZATED-INITIAL
+      candidates << ["hmz", input[1], input[2]] if ( input[0] == "a" && input[3] == "t" && %w[n m].include?(input[4]) ) #["a", x, x, "t", "?"] (hmz) - HAMZATED-INITIAL
+      candidates << ["hmz", input[2], input[3]] if ( %w[t y].include?(input[0]) && input[1] == "a" && %w[aa n].include?(input[4]) ) #["?", "a", x, x, "?"] (hmz) - HAMZATED-INITIAL
+      candidates << ["hmz", input[2], input[3]] if ( input[0] == "t" && input[1] == "a" && input[4] == "y" ) #["t", "a", x, x, "t"] (hmz) - HAMZATED-INITIAL
+      candidates << ["hmz", input[2], input[4]] if ( input[0] == "m" && input[1] == "a" && input[3] == "w" ) #["m", "a", x, "w", x] (hmz) - HAMZATED-INITIAL
 
-      # HAMZATED-MEDIAL
-      if input[0] == "t" && input[2] == "a" && input[4] == "n" then candidates << [input[1], "hmz", input[3]] end #["t", x, "a", x, "n"] (hmz)
-      if input[0] == "y" && input[2] == "a" && input[4] == "n" then candidates << [input[1], "hmz", input[3]] end #["y", x, "a", x, "n"] (hmz)
-      if input[0] == "t" && input[2] == "a" && input[4] == "y" then candidates << [input[1], "hmz", input[3]] end #["t", x, "a", x, "y"] (hmz)
-      if input[0] == "t" && input[2] == "a" && input[4] == "aa" then candidates << [input[1], "hmz", input[3]] end #["t", x, "a", x, "aa"] (hmz)
-      if input[0] == "y" && input[2] == "a" && input[4] == "aa" then candidates << [input[1], "hmz", input[3]] end #["y", x, "a", x, "aa"] (hmz)
-      if input[0] == "aa" && input[2] == "a" && input[4] == "y" then candidates << [input[1], "hmz", input[3]] end #["aa", x, "a", x, "y"] (hmz)
-      if input[0] == "aa" && input[2] == "a" && input[4] == "aa" then candidates << [input[1], "hmz", input[3]] end #["aa", x, "a", x, "aa"] (hmz)
-      if input[0] == "aa" && input[2] == "a" && input[4] == "n" then candidates << [input[1], "hmz", input[3]] end #["aa", x, "a", x, "n"] (hmz)
-      if input[1] == "a" && input[3] == "n" && input[4] == "aa" then candidates << [input[0], "hmz", input[2]] end #[x, "a", x, "n", "aa"] (hmz)
-      if input[1] == "a" && input[3] == "t" && input[4] == "m" then candidates << [input[0], "hmz", input[2]] end #[x, "a", x, "t", "m"] (hmz)
-      if input[1] == "a" && input[3] == "w" && input[4] == "aa" then candidates << [input[0], "hmz", input[2]] end #[x, "a", x, "w", "aa"] (hmz)
-      if input[1] == "a" && input[3] == "t" && input[4] == "aa" then candidates << [input[0], "hmz", input[2]] end #[x, "a", x, "t", "aa"] (hmz)
-      if input[0] == "m" && input[2] == "hw" && input[3] == "w" then candidates << [input[1], "hmz", input[4]] end #["m", x, "hw", "w", x] (hmz)
+      candidates << [input[0], "hmz", input[2]] if ( input[1] == "a" && %w[n w].include?(input[3]) && input[4] == "aa" ) #[x, "a", x, "?", "aa"] (hmz) - HAMZATED-MEDIAL
+      candidates << [input[0], "hmz", input[2]] if ( input[1] == "a" && input[3] == "t" && %w[aa m].include?(input[4]) ) #[x, "a", x, "t", "?"] (hmz) - HAMZATED-MEDIAL
+      candidates << [input[1], "hmz", input[3]] if ( %[t y].include?(input[0]) && input[2] == "a" && %[aa n].include?(input[4]) ) #["?", x, "a", x, "?"] (hmz) - HAMZATED-MEDIAL
+      candidates << [input[1], "hmz", input[3]] if ( input[0] == "t" && input[2] == "a" && input[4] == "y" ) #["t", x, "a", x, "y"] (hmz) - HAMZATED-MEDIAL
+      candidates << [input[1], "hmz", input[3]] if ( input[0] == "aa" && input[2] == "a" && %w[aa n y].include?(input[4]) ) #["aa", x, "a", x, "?"] (hmz) - HAMZATED-MEDIAL
+      candidates << [input[1], "hmz", input[4]] if ( input[0] == "m" && input[2] == "hw" && input[3] == "w" ) #["m", x, "hw", "w", x] (hmz) - HAMZATED-MEDIAL
 
-      # HAMZATED-FINAL
-      if input[0] == "t" && input[3] == "a" && input[4] == "n" then candidates << [input[1], input[2], "hmz"] end #["t", x, x, "a", "n"] (hmz)
-      if input[0] == "y" && input[3] == "a" && input[4] == "n" then candidates << [input[1], input[2], "hmz"] end #["y", x, x, "a", "n"] (hmz)
-      if input[0] == "t" && input[3] == "amd" && input[4] == "n" then candidates << [input[1], input[2], "hmz"] end #["t", x, x, "amd", "n"] (hmz)
-      if input[0] == "y" && input[3] == "amd" && input[4] == "n" then candidates << [input[1], input[2], "hmz"] end #["y", x, x, "amd", "n"] (hmz)
-      if input[0] == "t" && input[3] == "hy" && input[4] == "y" then candidates << [input[1], input[2], "hmz"] end #["t", x, x, "hy", "y"] (hmz)
-      if input[0] == "aa" && input[3] == "hy" && input[4] == "y" then candidates << [input[1], input[2], "hmz"] end #["aa", x, x, "hy", "y"] (hmz)
-      if input[0] == "aa" && input[3] == "a" && input[4] == "n" then candidates << [input[1], input[2], "hmz"] end #["aa", x, x, "a", "n"] (hmz)
-      if input[2] == "a" && input[3] == "n" && input[4] == "aa" then candidates << [input[0], input[1], "hmz"] end #[x, x, "a", "n", "aa"] (hmz)
-      if input[2] == "a" && input[3] == "t" && input[4] == "m" then candidates << [input[0], input[1], "hmz"] end #[x, x, "a", "t", "m"] (hmz)
-      if input[2] == "a" && input[3] == "t" && input[4] == "n" then candidates << [input[0], input[1], "hmz"] end #[x, x, "a", "t", "n"] (hmz)
-      if input[2] == "hw" && input[3] == "w" && input[4] == "aa" then candidates << [input[0], input[1], "hmz"] end #[x, x, "a", "w", "aa"] (hmz)
-      if input[2] == "a" && input[3] == "t" && input[4] == "aa" then candidates << [input[0], input[1], "hmz"] end #[x, x, "a", "t", "aa"] (hmz)
+      candidates << [input[0], input[1], "hmz"] if ( input[2] == "a" && %w[n t w].include?(input[3]) && input[4] == "aa") #[x, x, "a", "?", "aa"] (hmz) - HAMZATED-FINAL
+      candidates << [input[0], input[1], "hmz"] if ( input[2] == "hw" && input[3] == "w" && input[4] == "aa") #[x, x, "hw", "w", "aa"] (hmz) - HAMZATED-FINAL
+      candidates << [input[0], input[1], "hmz"] if ( input[2] == "a" && input[3] == "t" && %w[n m].include?(input[4]) ) #[x, x, "a", "t", "?"] (hmz) - HAMZATED-FINAL
+      candidates << [input[1], input[2], "hmz"] if ( %w[t y].include?(input[0]) && %w[a amd].include?(input[3]) && input[4] == "n") #["?", x, x, "?", "n"] (hmz) - HAMZATED-FINAL
+      candidates << [input[1], input[2], "hmz"] if ( input[0] == "aa" && input[3] == "a" && input[4] == "n") #["aa", x, x, "a", "n"] (hmz) - HAMZATED-FINAL
+      candidates << [input[1], input[2], "hmz"] if ( %w[aa t].include?(input[0]) && input[3] == "hy" && input[4] == "y") #["?", x, x, "hy", "y"] (hmz) - HAMZATED-FINAL
+      candidates << [input[1], input[2], "hmz"] if ( %w[t y].include?(input[0]) && %w[a amd].include?(input[3]) && input[4] == "n") #["?", x, x, "?", "n"] (hmz) - HAMZATED-FINAL
 
-      # HOLLOW
-      if input[1] == "aa" && input[3] == "w" && input[4] == "aa" then candidates << [input[0], "w", input[2]] end #[x, "aa", x, "w", "aa"] (w)
-      if input[1] == "aa" && input[3] == "w" && input[4] == "aa" then candidates << [input[0], "y", input[2]] end #[x, "aa", x, "w", "aa"] (y)
-      if input[2] == "t" && input[3] == "m" && input[4] == "aa" then candidates << [input[0], "w", input[1]] end #[x, x, "t", "m", "aa"] (w)
-      if input[2] == "t" && input[3] == "m" && input[4] == "aa" then candidates << [input[0], "y", input[1]] end #[x, x, "t", "m", "aa"] (y)
-      if input[1] == "aa" && input[3] == "t" && input[4] == "aa" then candidates << [input[0], "w", input[2]] end #[x, "aa", x, "t", "aa"] (w)
-      if input[1] == "aa" && input[3] == "t" && input[4] == "aa" then candidates << [input[0], "y", input[2]] end #[x, "aa", x, "t", "aa"] (y)
+      candidates << [input[0], "w", input[1]] if ( input[2] == "t" && input[3] == "m" && input[4] == "aa" ) #[x, x, "t", "m", "aa"] (w) - HOLLOW
+      candidates << [input[0], "y", input[1]] if ( input[2] == "t" && input[3] == "m" && input[4] == "aa" ) #[x, x, "t", "m", "aa"] (y) - HOLLOW
+      candidates << [input[0], "w", input[2]] if ( input[1] == "aa" && %w[t w].include?(input[3]) && input[4] == "aa" ) #[x, "aa", x, "?", "aa"] (w) - HOLLOW
+      candidates << [input[0], "y", input[2]] if ( input[1] == "aa" && %w[t w].include?(input[3]) && input[4] == "aa" ) #[x, "aa", x, "?", "aa"] (y) - HOLLOW
+      candidates << [input[1], "w", input[3]] if ( %w[t y].include?(input[0]) && input[2] == "aa" && input[4] == "aa" ) #["?", x, "aa", x, "aa"] (w.aa) - HOLLOW
+      candidates << [input[1], "w", input[3]] if ( input[0] == "t" && input[2] == "aa" && input[4] == "y" ) #["t", x, "aa", x, "y"] (w.aa) - HOLLOW
 
-      # HOLLOW-AA
-      if input[0] == "t" && input[2] == "aa" && input[4] == "y" then candidates << [input[1], "w", input[3]] end #["t", x, "aa", x, "y"] (w)
-      if input[0] == "t" && input[2] == "aa" && input[4] == "aa" then candidates << [input[1], "w", input[3]] end #["t", x, "aa", x, "aa"] (w)
-      if input[0] == "y" && input[2] == "aa" && input[4] == "aa" then candidates << [input[1], "w", input[3]] end #["y", x, "aa", x, "aa"] (w)
+      candidates << [input[1], input[2], input[2]] if ( input[0] == "t" && input[3] == "y" && input[4] == "n") #["t", x, x, "y", "n"] (dd) - DOUBLED
+      candidates << [input[1], input[2], input[2]] if ( %w[t y].include?(input[0]) && %w[aa w].include?(input[3]) && input[4] == "n") #["?", x, x, "?", "n"] (dd) - DOUBLED
+      candidates << [input[1], input[2], input[2]] if ( %w[t y].include?(input[0]) && input[3] == "w" && input[4] == "aa") #["?", x, x, "w", "aa"] (dd) - DOUBLED
 
-      # DOUBLED
-      if input[0] == "t" && input[3] == "y" && input[4] == "n" then candidates << [input[1], input[2], input[2]] end #["t", x, x, "y", "n"] (dd)
-      if input[0] == "t" && input[3] == "w" && input[4] == "n" then candidates << [input[1], input[2], input[2]] end #["t", x, x, "w", "n"] (dd)
-      if input[0] == "y" && input[3] == "w" && input[4] == "n" then candidates << [input[1], input[2], input[2]] end #["y", x, x, "w", "n"] (dd)
-      if input[0] == "t" && input[3] == "aa" && input[4] == "n" then candidates << [input[1], input[2], input[2]] end #["t", x, x, "aa", "n"] (dd)
-      if input[0] == "y" && input[3] == "aa" && input[4] == "n" then candidates << [input[1], input[2], input[2]] end #["y", x, x, "aa", "n"] (dd)
-      if input[0] == "t" && input[3] == "w" && input[4] == "aa" then candidates << [input[1], input[2], input[2]] end #["t", x, x, "w", "aa"] (dd)
-      if input[0] == "y" && input[3] == "w" && input[4] == "aa" then candidates << [input[1], input[2], input[2]] end #["y", x, x, "w", "aa"] (dd)
-
-      # DEFECTIVE
-      if input[0] == "t" && input[3] == "y" && input[4] == "n" then candidates << [input[1], input[2], "w"] end #["t", x, x, "y", "n"] (w)
-      if input[0] == "t" && input[3] == "w" && input[4] == "n" then candidates << [input[1], input[2], "y"] end #["t", x, x, "w", "n"] (y)
-      if input[0] == "y" && input[3] == "w" && input[4] == "n" then candidates << [input[1], input[2], "y"] end #["y", x, x, "w", "n"] (y)
-      if input[0] == "t" && input[3] == "w" && input[4] == "aa" then candidates << [input[1], input[2], "y"] end #["t", x, x, "w", "aa"] (y)
-      if input[0] == "y" && input[3] == "w" && input[4] == "aa" then candidates << [input[1], input[2], "y"] end #["y", x, x, "w", "aa"] (y)
-      if input[0] == "aa" && input[3] == "w" && input[4] == "aa" then candidates << [input[1], input[2], "y"] end #["aa", x, x, "w", "aa"] (y)
+      candidates << [input[1], input[2], "w"] if ( input[0] == "t" && input[3] == "y" && input[4] == "n" ) #["t", x, x, "y", "n"] (w) - DEFECTIVE
+      candidates << [input[1], input[2], "y"] if ( %[t y].include?(input[0]) && input[3] == "w" && %w[aa n].include?(input[4]) ) #["?", x, x, "w", "n"] (y) - DEFECTIVE
+      candidates << [input[1], input[2], "y"] if ( input[0] == "aa" && input[3] == "w" && input[4] == "aa" ) #["aa", x, x, "w", "aa"] (y) - DEFECTIVE
     end
 
     if input.length == 6
