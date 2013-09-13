@@ -1,11 +1,11 @@
 class StemParser
-  BIG5_CONJUGATION_PREFIXES = %w[a t y n]
 
   def self.parse_stem(input)
     parsed_input = ArabicTranslator.arabic_to_english_symbol_array(input)
     remove_short_vowels(parsed_input)
 
     candidates = self.guess_root(parsed_input)
+    candidates = self.clean_candidates(candidates)
     candidates.map! { |root| OpenStruct.new(root: root) }
     return candidates
   end
@@ -200,4 +200,13 @@ private
     input.delete("an")
     input.delete("on")
   end
+
+  def self.clean_candidates(candidates)
+    clean_candidates = []
+    candidates.each do |candidate|
+      clean_candidates << candidate unless (candidate.include?("aa") || candidate.include?("hw") || candidate.include?("a") || candidate.include?("i") || candidate.include?("hy"))
+    end
+    return clean_candidates
+  end
+
 end

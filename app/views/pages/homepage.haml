@@ -1,39 +1,43 @@
+= form_tag parse_stem_url do
+  = text_field_tag :arabic_word, nil, class: "word-to-parse", autocomplete: "off"
+  = submit_tag "Submit", class: "submit-button"
+
 / = form_tag parse_word_url, class: "conjugate-root-form" do
-= form_tag parse_subform_url, remote: true, class: "conjugate-root-form" do
-	= text_field_tag :word, nil, class: "word-to-parse", autocomplete: "off"
-	= submit_tag "Submit", class: "parse-word-submit-button"
+/ = form_tag parse_subform_url, remote: true, class: "conjugate-root-form" do
+/   = text_field_tag :word, nil, class: "word-to-parse", autocomplete: "off"
+/   = submit_tag "Submit", class: "parse-word-submit-button"
 
-- perspectives = [ ["ana", "انا"], ["enta", "انتَ"], ["enti", "انتِ"], ["hooa", "هو"], ["heea", "هي"], ["nahn", "نحن"], ["entum", "انتم"], ["entun", "انتن"], ["hoom", "هم"], ["hoon", "هن"] ]
+/ - perspectives = [ ["ana", "انا"], ["enta", "انتَ"], ["enti", "انتِ"], ["hooa", "هو"], ["heea", "هي"], ["nahn", "نحن"], ["entum", "انتم"], ["entun", "انتن"], ["hoom", "هم"], ["hoon", "هن"] ]
 
-.information-modules
-	.root-information-module
-		.word-root.row
-			%span.word-root1field ROOT1
-			%span.word-root2field ROOT2
-			%span.word-root3field ROOT3
-		.word-form.row
-			%span.word-form-field FORM
-		.word-subform.row
-			%span.word-subform-field SUBFORM
+/ .information-modules
+/   .root-information-module
+/     .word-root.row
+/       %span.word-root1field ROOT1
+/       %span.word-root2field ROOT2
+/       %span.word-root3field ROOT3
+/     .word-form.row
+/       %span.word-form-field FORM
+/     .word-subform.row
+/       %span.word-subform-field SUBFORM
 
-	.root-participles-module
-		.word-participle.row
-			%span.word-active-participle-field
-		.word-participle.row
-			%span.word-passive-participle-field
-		.word-participle.row
-			%span.word-verbal-noun-field
+/   .root-participles-module
+/     .word-participle.row
+/       %span.word-active-participle-field
+/     .word-participle.row
+/       %span.word-passive-participle-field
+/     .word-participle.row
+/       %span.word-verbal-noun-field
 
-.conjugation-table-module
-	%table.conjugation-table
-		%thead
-			%tr
-				%th
-				%th PRESENT
-				%th PAST
-		%tbody
-			- perspectives.each do |perspective|
-				%tr{data: {perspective: perspective[0]} }
-					%td.conjugation.perspective= perspective[1]
-					%td.conjugation.present-tense-conjugation conjugation
-					%td.conjugation.past-tense-conjugation conjugation
+/ .conjugation-table-module
+/   %table.conjugation-table
+/     %thead
+/       %tr
+/         %th
+/         %th PRESENT
+/         %th PAST
+/     %tbody
+/       - perspectives.each do |perspective|
+/         %tr{data: {perspective: perspective[0]} }
+/           %td.conjugation.perspective= perspective[1]
+/           %td.conjugation.present-tense-conjugation conjugation
+/           %td.conjugation.past-tense-conjugation conjugation

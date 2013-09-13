@@ -3,10 +3,15 @@ class PagesController < ApplicationController
 	def homepage
 	end
 
+	def parse_stem
+		arabic_word = params[:arabic_word]
+		candidates = StemParser.parse_stem(arabic_word)
+		render json: candidates
+	end
+
 	def parse_word
 		character_array = params[:word].split("")
 		ascii_array = character_array.map { |letter| letter.ord }
-		raise ascii_array.inspect
 	end
 
 	def parse_subform
