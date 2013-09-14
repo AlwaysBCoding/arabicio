@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130720040559) do
+ActiveRecord::Schema.define(version: 20130914005139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,14 @@ ActiveRecord::Schema.define(version: 20130720040559) do
     t.hstore   "vocalization"
     t.string   "verbal_nouns", default: [], array: true
     t.text     "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "english_meanings", force: true do |t|
+    t.integer  "arabic_stem_id"
+    t.text     "meaning"
+    t.string   "measure"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

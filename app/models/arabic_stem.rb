@@ -1,5 +1,6 @@
 class ArabicStem < ActiveRecord::Base
 # ASSOCIATIONS
+  has_many :english_meanings
 
 # VALIDATIONS
 	validates :root, uniqueness: {scope: :vocalization}, length: {mininum: 3, maximum: 4}
