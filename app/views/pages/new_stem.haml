@@ -1,75 +1,91 @@
-/ %p.last-root= "LAST STEM: #{ArabicStem.last.root.map { |letter| ArabicLetter.find_by_english_symbol(letter).ascii_value.to_i.chr }.join(' - ')} ( #{ArabicStem.last.measures.join(' - ')} )"
+%p.last-root= "LAST STEM: #{ArabicStem.last.root.map { |letter| ArabicLetter.find_by_english_symbol(letter).ascii_value.to_i.chr }.join(' - ')} ( #{ArabicStem.last.measures.join(' - ')} )"
 
 = form_tag create_stem_url do
-	%fieldset
-		= label_tag :root1, "Root 1"
-		= text_field_tag :root1, nil, autocomplete: "off"
-	%fieldset
-		= label_tag :root2, "Root 2"
-		= text_field_tag :root2, nil, autocomplete: "off"
-	%fieldset
-		= label_tag :root3, "Root 3"
-		= text_field_tag :root3, nil, autocomplete: "off"
-	%fieldset
-		= label_tag :root4, "Root 4"
-		= text_field_tag :root4, nil, autocomplete: "off"
+	%section
+		%h3 Root
+		%fieldset
+			= label_tag :root1, "Root 1"
+			= text_field_tag :root1, nil, autocomplete: "off"
+		%fieldset
+			= label_tag :root2, "Root 2"
+			= text_field_tag :root2, nil, autocomplete: "off"
+		%fieldset
+			= label_tag :root3, "Root 3"
+			= text_field_tag :root3, nil, autocomplete: "off"
+		%fieldset
+			= label_tag :root4, "Root 4"
+			= text_field_tag :root4, nil, autocomplete: "off"
+	%hr
+
+	%section
+		%h3 Perfect Kicker
+		%fieldset
+			= label_tag "perfect_kicker", "fatha"
+			= radio_button_tag "perfect_kicker", "fa"
+			= label_tag "perfect_kicker", "damma"
+			= radio_button_tag "perfect_kicker", "da"
+			= label_tag "perfect_kicker", "kasra"
+			= radio_button_tag "perfect_kicker", "ka"
+		%h3 Imperfect Kicker
+		%fieldset
+			= label_tag "imperfect_kicker", "fatha"
+			= radio_button_tag "imperfect_kicker", "fa"
+			= label_tag "imperfect_kicker", "damma"
+			= radio_button_tag "imperfect_kicker", "da"
+			= label_tag "imperfect_kicker", "kasra"
+			= radio_button_tag "imperfect_kicker", "ka"
 
 	%hr
 
-	%fieldset
-		= label_tag "measure", "I"
-		= check_box_tag "measure[1]", "I"
-		= label_tag "measure[2]", "II"
-		= check_box_tag "measure[2]", "II"
-	%fieldset
-		= label_tag "measure[3]", "III"
-		= check_box_tag "measure[3]", "III"
-		= label_tag "measure[4]", "IV"
-		= check_box_tag "measure[4]", "IV"
-	%fieldset
-		= label_tag "measure[5]", "V"
-		= check_box_tag "measure[5]", "V"
-		= label_tag "measure[6]", "VI"
-		= check_box_tag "measure[6]", "VI"
-	%fieldset
-		= label_tag "measure[7]", "VII"
-		= check_box_tag "measure[7]", "VII"
-		= label_tag "measure[8]", "VIII"
-		= check_box_tag "measure[8]", "VIII"
-	%fieldset
-		= label_tag "measure[9]", "IX"
-		= check_box_tag "measure[9]", "IX"
-		= label_tag "measure[10]", "X"
-		= check_box_tag "measure[10]", "X"
+	%section
+		%h3 Verbal Nouns
+		%fieldset
+			= label_tag :verbal_nouns, "Verbal Nouns ( separated by comma )"
+			= text_field_tag :verbal_nouns
 
 	%hr
 
-	%fieldset
-		= label_tag "perfect-kicker", "aa"
-		= radio_button_tag "perfect-kicker", "aa"
-		= label_tag "perfect-kicker", "w"
-		= radio_button_tag "perfect-kicker", "w"
-		= label_tag "perfect-kicker", "y"
-		= radio_button_tag "perfect-kicker", "y"
-	%fieldset
-		= label_tag "imperfect-kicker", "aa"
-		= radio_button_tag "imperfect-kicker", "aa"
-		= label_tag "imperfect-kicker", "w"
-		= radio_button_tag "imperfect-kicker", "w"
-		= label_tag "imperfect-kicker", "y"
-		= radio_button_tag "imperfect-kicker", "y"
+	%section
+		%h3 Meanings
+		%fieldset
+			= label_tag "meaning[I]", "Measure I"
+			= text_area_tag "meaning[I]", nil, class: "meaning-text-area"
+		%fieldset
+			= label_tag "meaning[II]", "Measure II"
+			= text_area_tag "meaning[II]", nil, class: "meaning-text-area"
+		%fieldset
+			= label_tag "meaning[III]", "Measure III"
+			= text_area_tag "meaning[III]", nil, class: "meaning-text-area"
+		%fieldset
+			= label_tag "meaning[IV]", "Measure IV"
+			= text_area_tag "meaning[IV]", nil, class: "meaning-text-area"
+		%fieldset
+			= label_tag "meaning[V]", "Measure V"
+			= text_area_tag "meaning[V]", nil, class: "meaning-text-area"
+		%fieldset
+			= label_tag "meaning[VI]", "Measure VI"
+			= text_area_tag "meaning[VI]", nil, class: "meaning-text-area"
+		%fieldset
+			= label_tag "meaning[VII]", "Measure VII"
+			= text_area_tag "meaning[VII]", nil, class: "meaning-text-area"
+		%fieldset
+			= label_tag "meaning[VIII]", "Measure VIII"
+			= text_area_tag "meaning[VIII]", nil, class: "meaning-text-area"
+		%fieldset
+			= label_tag "meaning[IX]", "Measure IX"
+			= text_area_tag "meaning[IX]", nil, class: "meaning-text-area"
+		%fieldset
+			= label_tag "meaning[X]", "Measure X"
+			= text_area_tag "meaning[X]", nil, class: "meaning-text-area"
+
 
 	%hr
 
-	%fieldset
-		= label_tag :verbal_nouns, "Verbal Nouns ( separated by comma )"
-		= text_field_tag :verbal_nouns
-
-	%hr
-
-	%fieldset
-		= label_tag :notes
-		= text_area_tag :notes
+	%section
+		%h3 Notes
+		%fieldset
+			= label_tag :notes
+			= text_area_tag :notes
 
 	= submit_tag "Submit"
 
@@ -79,3 +95,6 @@
 	last-root
 		font-weight: bold
 		font-size: 16px
+	.meaning-text-area
+		width: 600px
+		height: 60px
