@@ -33,7 +33,8 @@ class PagesController < ApplicationController
 			stem.root = [ params[:root1].strip, params[:root2].strip, params[:root3].strip ]
 		end
 
-		stem.vocalization = { perfect_kicker: params[:perfect_kicker], imperfect_kicker: params[:imperfect_kicker] }
+		stem.perfect_kicker = params[:perfect_kicker]
+		stem.imperfect_kicker = params[:imperfect_kicker]
 		stem.verbal_nouns = params[:verbal_nouns].gsub(/[^a-zA-z,]/, "").split(",")
 
 		stem.notes = params[:notes] if params[:notes].present?

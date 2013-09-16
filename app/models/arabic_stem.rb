@@ -3,7 +3,7 @@ class ArabicStem < ActiveRecord::Base
   has_many :english_meanings, dependent: :destroy
 
 # VALIDATIONS
-	validates :root, uniqueness: {scope: :vocalization}, length: {mininum: 3, maximum: 4}
+	validates :root, uniqueness: {scope: [:perfect_kicker, :imperfect_kicker]}, length: {mininum: 3, maximum: 4}
 
 # SPECIAL FEATURES
 

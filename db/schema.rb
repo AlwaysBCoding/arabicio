@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 20130914005139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "hstore"
 
   create_table "arabic_letters", force: true do |t|
     t.string   "ascii_value"
@@ -27,10 +26,11 @@ ActiveRecord::Schema.define(version: 20130914005139) do
   end
 
   create_table "arabic_stems", force: true do |t|
-    t.string   "root",         default: [], array: true
-    t.string   "measures",     default: [], array: true
-    t.hstore   "vocalization"
-    t.string   "verbal_nouns", default: [], array: true
+    t.string   "root",             default: [], array: true
+    t.string   "measures",         default: [], array: true
+    t.string   "perfect_kicker"
+    t.string   "imperfect_kicker"
+    t.string   "verbal_nouns",     default: [], array: true
     t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
