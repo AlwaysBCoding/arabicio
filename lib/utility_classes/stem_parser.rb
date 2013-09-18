@@ -6,6 +6,8 @@ class StemParser
 
     candidates = self.guess_root(parsed_input)
     candidates = self.clean_candidates(candidates)
+    # candidates = self.valid_candidates(candidates)
+    # candidates = self.existing_candidates(candidates)
     candidates.map! { |root| OpenStruct.new(root: root) }
     return candidates
   end
@@ -202,11 +204,17 @@ private
   end
 
   def self.clean_candidates(candidates)
-    clean_candidates = []
-    candidates.each do |candidate|
-      clean_candidates << candidate unless (candidate.include?("aa") || candidate.include?("hw") || candidate.include?("a") || candidate.include?("i") || candidate.include?("hy"))
-    end
-    return clean_candidates
+    candidates.collect { |candidate| candidate unless (candidate.include?("aa") || candidate.include?("hw") || candidate.include?("a") || candidate.include?("i") || candidate.include?("hy")) }.compact!
+  end
+
+  def self.valid_candidates(candidates)
+    ### WHERE CANDIDATE IS AN ARABIC ROOT THAT HAS AN EXISTING STEM IN THE DATABASE
+    # candidates.collect { |candidate| candidate ArabicStem.where(root: candidate) }.compact!
+  end
+
+  def self.valid_candidates(candidates)
+    ### WHERE THE STEM HAS A VALID ENGLISH MEANING IN THE MEASURE OF THE CANDIDATE
+    # candidates.collect { |candidate| candidate ArabicStem.where(root: candidate) }.compact!
   end
 
 end
