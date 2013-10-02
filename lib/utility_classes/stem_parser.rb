@@ -204,7 +204,8 @@ private
   end
 
   def self.clean_candidates(candidates)
-    candidates.collect { |candidate| candidate unless (candidate.include?("aa") || candidate.include?("hw") || candidate.include?("a") || candidate.include?("i") || candidate.include?("hy")) }.compact!
+    return candidates
+    # candidates.collect { |candidate| candidate unless (candidate.include?("aa") || candidate.include?("hw") || candidate.include?("a") || candidate.include?("i") || candidate.include?("hy")) }.compact!
   end
 
   def self.valid_candidates(candidates)
