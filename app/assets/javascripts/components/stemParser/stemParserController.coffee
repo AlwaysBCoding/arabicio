@@ -1,11 +1,18 @@
 App.controller "StemParserController",
 [
-  "$scope"
+  "$scope",
+  "$http"
 (
-  $scope
+  $scope,
+  $http
 ) ->
 
   $scope.parseWord = (word) ->
-    alert word
-
+    $http
+      method: "GET"
+      url: "/api/v1/analyze_word?word=#{word}"
+    .success (data, status, headers, config) ->
+      $scope.stems = data.arabic_stems
+    .error (data, status, headers, config) ->
+      alert status
 ]

@@ -5,6 +5,7 @@ root to: "pages#homepage"
   namespace :api do
     namespace :v1 do
       resources :arabic_stems, only: [:show], defaults: {format: "json"}
+      get "analyze_word" => "arabic_stems#analyze_word", defaults: {format: "json"}
     end
   end
 

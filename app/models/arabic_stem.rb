@@ -1,26 +1,20 @@
 class ArabicStem < ActiveRecord::Base
+
 # ASSOCIATIONS
   has_many :english_meanings, dependent: :destroy
 
 # VALIDATIONS
 	validates :root, uniqueness: {scope: [:perfect_kicker, :imperfect_kicker]}, length: {mininum: 3, maximum: 4}
 
-# SPECIAL FEATURES
-
-# SCOPES
-
 # DELEGATIONS
   def measures
     self.english_meanings.map(&:measure)
   end
 
-# CALLBACKS
-
-# CONFIG METHODS
-	def to_s
-	end
-
 # CLASS METHODS
+  def self.stem_for_root(root)
+    ArabicStem.where("root[1] = ? AND root[2] = ? AND root[3] = ?", root[0], root[1], root[2]).first
+  end
 
 # INSTANCE METHODS
   def conjugations_in_measure(measure)
@@ -47,8 +41,5 @@ class ArabicStem < ActiveRecord::Base
   def exists_in_measure?(measure)
     return true if self.measures.include?(measure)
   end
-
-# PRIVATE METHODS
-private
 
 end

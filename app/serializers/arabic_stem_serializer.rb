@@ -1,6 +1,8 @@
 class ArabicStemSerializer < ActiveModel::Serializer
   attributes :root, :measures, :perfect_kicker, :imperfect_kicker, :verbal_nouns, :notes
 
+  has_many :english_meanings, serializer: EnglishMeaningSerializer
+
 # API DISPLAY METHODS
   def perfect_kicker
     case object.perfect_kicker
