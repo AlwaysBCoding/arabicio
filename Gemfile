@@ -23,14 +23,6 @@ ruby '2.0.0'
 	gem 'turbolinks'
 	gem 'jquery-turbolinks'
 
-# USER MANAGEMENT
-	# gem 'devise'
-
-# FILE UPLOADS
-	# gem 'carrierwave'
-	# gem 'fog'
-	# gem 'rmagick'
-
 # DEBUGGER
 	gem 'pry-rails'
 
@@ -53,6 +45,9 @@ ruby '2.0.0'
 		gem 'shoulda-matchers'
 		gem 'capybara'
 	end
+
+# SERIALIZERS
+	gem "active_model_serializers"
 
 # MISC
 	# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

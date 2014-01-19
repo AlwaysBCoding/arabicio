@@ -49,7 +49,25 @@ class PagesController < ApplicationController
 			flash[:error] = "STEM WAS NOT SAVED"
 		end
 		redirect_to new_stem_url
-
 	end
 
+	def generate_parcel
+		word = params[:word]
+		response = generate_sample_response
+		render json: response
+	end
+
+private
+	def generate_sample_response
+		{
+			core_data: {
+				root: ["b", "r", "j"],
+				perfect_kicker: "fatha",
+				imperfect_kicker: "fatha"
+			},
+			conjugations: StemConjugator.conjugations_for_stem_in_measure(ArabicStem.find(242), "I"),
+			definitions: ArabicStem.find(242).english_meanings
+		}
+	end
 end
+
