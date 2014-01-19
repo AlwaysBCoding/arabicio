@@ -211,9 +211,6 @@ private
   def self.valid_candidates(candidates)
     ### WHERE CANDIDATE IS AN ARABIC ROOT THAT HAS AN EXISTING STEM IN THE DATABASE
     # candidates.collect { |candidate| candidate ArabicStem.where(root: candidate) }.compact!
-  end
-
-  def self.valid_candidates(candidates)
     ### WHERE THE STEM HAS A VALID ENGLISH MEANING IN THE MEASURE OF THE CANDIDATE
     # candidates.collect { |candidate| candidate ArabicStem.where(root: candidate) }.compact!
   end

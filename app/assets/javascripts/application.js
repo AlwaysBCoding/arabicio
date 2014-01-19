@@ -10,9 +10,14 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery.turbolinks
-//= require jquery_ujs
-//= require turbolinks
+
 //= require underscore
-//= require main_scripts
+//= require angular
+//= require angularjs/rails/resource
+
+//= require Arabicio
+//= require_tree ./components
+//= require_tree ./runners
+//= require_tree ./services
+
+//= require hamlcoffee

@@ -4,7 +4,7 @@ root to: "pages#homepage"
 
   namespace :api do
     namespace :v1 do
-      resources :arabic_stems, only: [:show]
+      resources :arabic_stems, only: [:show], defaults: {format: "json"}
     end
   end
 

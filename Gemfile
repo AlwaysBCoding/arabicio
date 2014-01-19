@@ -15,13 +15,19 @@ ruby '2.0.0'
 	gem 'uglifier', '>= 1.3.0'
 	gem 'coffee-rails', '~> 4.0.0'
 	gem 'haml-rails'
+	gem 'haml_coffee_assets'
 	gem 'neat'
 
 # ASSETS - FEATURES
-	gem 'jquery-rails'
 	gem 'underscore-rails'
-	gem 'turbolinks'
-	gem 'jquery-turbolinks'
+
+# ANGULAR
+	gem "angularjs-rails"
+	gem 'angularjs-rails-resource'
+	gem 'angular-rails-templates'
+
+# SERIALIZERS
+	gem "active_model_serializers"
 
 # DEBUGGER
 	gem 'pry-rails'
@@ -46,8 +52,6 @@ ruby '2.0.0'
 		gem 'capybara'
 	end
 
-# SERIALIZERS
-	gem "active_model_serializers"
 
 # MISC
 	# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

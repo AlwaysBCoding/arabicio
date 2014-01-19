@@ -1,11 +1,17 @@
 !!!
-%html
-	%head
-		%title Arabicio
-		= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
-		= javascript_include_tag "application", "data-turbolinks-track" => true
-		= csrf_meta_tags
-	%body
-		.wrapper{class: "#{controller.controller_name}-#{controller.action_name}"}
-			= render "shared/notifications"
-			= yield
+%html(ng-app = "Arabicio")
+
+  %head
+    %title Arabicio
+    = stylesheet_link_tag    "application", media: "all"
+    = csrf_meta_tags
+
+  %body
+    .wrapper{class: "#{controller.controller_name}-#{controller.action_name}"}
+      = render "shared/notifications"
+
+      %div(ng-controller="StemParserController")
+        %stem-parser
+
+    .footer-javascripts
+      = javascript_include_tag "application"
