@@ -15,9 +15,16 @@ App.directive "stemParser", [ () ->
                   <pre>NOTES: {{stem.notes}}</pre>
                   <pre>MEASURE I VERBAL NOUNS: {{stem.verbal_nouns}}</pre>
                   <ul class="meanings">
+                    <pre>MEANINGS</pre>
                     <li ng-repeat="meaning in stem.english_meanings">
                       <pre>MEASURE: {{meaning.measure}}</pre>
                       <pre>{{meaning.meaning}}</pre>
+                    </li>
+                  </ul>
+                  <ul class="conjugations">
+                    <pre>CONJUGATIONS</pre>
+                    <li ng-repeat="conjugation in stem.conjugations">
+                      <pre>{{conjugation}}</pre>
                     </li>
                   </ul>
                 </li>

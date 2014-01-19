@@ -1,5 +1,5 @@
 class ArabicStemSerializer < ActiveModel::Serializer
-  attributes :root, :measures, :perfect_kicker, :imperfect_kicker, :verbal_nouns, :notes
+  attributes :root, :measures, :perfect_kicker, :imperfect_kicker, :verbal_nouns, :notes, :conjugations
 
   has_many :english_meanings, serializer: EnglishMeaningSerializer
 
@@ -18,6 +18,10 @@ class ArabicStemSerializer < ActiveModel::Serializer
     when "ka" then return "KASRA" ;
     when "da" then return "DAMMA" ;
     end
+  end
+
+  def conjugations
+    StemConjugator.conjugations_for_stem_in_measure(object, "I")
   end
 
 end
