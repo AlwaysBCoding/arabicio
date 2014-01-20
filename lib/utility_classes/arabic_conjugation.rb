@@ -7,10 +7,8 @@ class ArabicConjugation
 		@tense = tense
 		@consonants = consonants
 		@vowels = vowels
+    @unvocalized_arabic = consonants.flatten.compact.map { |letter| ArabicLetter.find_by_english_symbol(letter).ascii_value.to_i.chr }.join("")
+    @vocalized_arabic = consonants.zip(vowels).flatten.compact.map { |letter| ArabicLetter.find_by_english_symbol(letter).ascii_value.to_i.chr }.join("")
 	end
-
-  def to_arabic
-    consonants.zip(vowels).flatten.compact.map { |letter| ArabicLetter.find_by_english_symbol(letter).ascii_value.to_i.chr }.join("")
-  end
 
 end

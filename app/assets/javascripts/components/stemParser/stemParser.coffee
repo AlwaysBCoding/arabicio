@@ -17,14 +17,15 @@ App.directive "stemParser", [ () ->
                   <ul class="meanings">
                     <pre>MEANINGS</pre>
                     <li ng-repeat="meaning in stem.english_meanings">
-                      <pre>MEASURE: {{meaning.measure}}</pre>
+                      <pre ng-class="{highlight: meaning.measure == 'I'}">MEASURE: {{meaning.measure}}</pre>
                       <pre>{{meaning.meaning}}</pre>
                     </li>
                   </ul>
+                  <pre> ARABIC: {{stem.arabic_conjugations}}</pre>
                   <ul class="conjugations">
                     <pre>CONJUGATIONS</pre>
                     <li ng-repeat="conjugation in stem.conjugations">
-                      <pre>{{conjugation}}</pre>
+                      <pre ng-class="{highlight: conjugation.unvocalized_arabic == arabicWord}">{{conjugation.perspective}}-{{conjugation.tense}}: {{conjugation.unvocalized_arabic}}</pre>
                     </li>
                   </ul>
                 </li>

@@ -7,6 +7,7 @@ class StemConjugator
 			case StemCategorizer.categorize(stem)
 			when {root_category: "sound", root_subcategory: nil}, {root_category: "assimilated", root_subcategory: "assimilated-y"}, {root_category: "assimilated", root_subcategory: "assimilated-concatenation"}
 
+				imperative_prefix, imperative_vowel = "aa", "fa"
 				imperative_prefix, imperative_vowel = "aa", "ka" if stem.imperfect_kicker == "fa"
 				imperative_prefix, imperative_vowel = "aa", "ka" if stem.imperfect_kicker == "ka"
 				imperative_prefix, imperative_vowel = "aa", "da" if stem.imperfect_kicker == "da"
@@ -214,6 +215,7 @@ class StemConjugator
 				]
 			when {root_category: "hamzated", root_subcategory: "hamzated-medial"}
 
+				imperative_prefix, imperative_vowel = "aa", "fa"
 				imperative_prefix, imperative_vowel = "aa", "ka" if stem.imperfect_kicker == "fa"
 				imperative_prefix, imperative_vowel = "aa", "ka" if stem.imperfect_kicker == "ka"
 				imperative_prefix, imperative_vowel = "aa", "da" if stem.imperfect_kicker == "da"
@@ -286,6 +288,7 @@ class StemConjugator
 				]
 			when {root_category: "hamzated", root_subcategory: "hamzated-final"}
 
+				imperative_prefix, imperative_vowel = "aa", "fa"
 				imperative_prefix, imperative_vowel = "aa", "ka" if stem.imperfect_kicker == "fa"
 				imperative_prefix, imperative_vowel = "aa", "ka" if stem.imperfect_kicker == "ka"
 				imperative_prefix, imperative_vowel = "aa", "da" if stem.imperfect_kicker == "da"
@@ -358,7 +361,7 @@ class StemConjugator
 				]
 			when {root_category: "hollow", root_subcategory: "hollow-w"}, {root_category: "hollow", root_subcategory: "hollow-y"}, {root_category: "hollow", root_subcategory: "hollow-aa"}
 
-				hollow_vowel, perfect_kicker_vowel = nil, nil
+				hollow_vowel, perfect_kicker_vowel = "fa", "fa"
 				if stem.imperfect_kicker == "fa" then hollow_vowel = "aa" end
 				if stem.imperfect_kicker == "da" then hollow_vowel = "w" end
 				if stem.imperfect_kicker == "ka" then hollow_vowel = "y" end

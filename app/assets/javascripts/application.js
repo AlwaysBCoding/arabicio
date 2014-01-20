@@ -16,6 +16,7 @@
 //= require angularjs/rails/resource
 
 //= require Arabicio
+//= require_tree ./filters
 //= require_tree ./components
 //= require_tree ./runners
 //= require_tree ./services
