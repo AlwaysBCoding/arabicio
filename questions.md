@@ -4,3 +4,6 @@
 2. What the fuck is going on with "r", "hmz", "y" ( to see ) on page 368
 
 3. How can I represent a shadda on top of a short vowel? Perhaps there are unicode characters for it and I'm just unaware of it atm
+  - Do people normally write shadda's in news articles? Even when they're present?
+
+4. Multiple verbal nouns for form 1 verbs? What is the difference, how do they differ?
