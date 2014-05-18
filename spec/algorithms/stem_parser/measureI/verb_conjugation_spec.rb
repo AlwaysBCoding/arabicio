@@ -11,8 +11,8 @@ describe StemParser do
           stem = create(:sound) # "d", "r", "s"
           conjugations = stem.conjugations_in_measure("I")
           conjugations.each do |conjugation|
-            candidates = StemParser.parse_stem(conjugation.to_arabic)
-            candidates.map(&:root).should include(["d", "r", "s"])
+            candidates = StemParser.parse_stem(conjugation.unvocalized_arabic)
+            candidates.should include(["d", "r", "s"])
           end
         end
       end
@@ -25,8 +25,8 @@ describe StemParser do
           stem = create(:doubled) # "d", "l", "l"
           conjugations = stem.conjugations_in_measure("I")
           conjugations.each do |conjugation|
-            candidates = StemParser.parse_stem(conjugation.to_arabic)
-            candidates.map(&:root).should include(["d", "l", "l"])
+            candidates = StemParser.parse_stem(conjugation.unvocalized_arabic)
+            candidates.should include(["d", "l", "l"])
           end
         end
       end
@@ -38,8 +38,8 @@ describe StemParser do
           stem = create(:assimilated_with_y_at_root0) # "y", "q", "DH"
           conjugations = stem.conjugations_in_measure("I")
           conjugations.each do |conjugation|
-            candidates = StemParser.parse_stem(conjugation.to_arabic)
-            candidates.map(&:root).should include(["y", "q", "DH"])
+            candidates = StemParser.parse_stem(conjugation.unvocalized_arabic)
+            candidates.should include(["y", "q", "DH"])
           end
         end
       end
@@ -49,8 +49,8 @@ describe StemParser do
           stem = create(:assimilated_with_w_at_root0_perfect_kicker_ka) # "w", "j", "3"
           conjugations = stem.conjugations_in_measure("I")
           conjugations.each do |conjugation|
-            candidates = StemParser.parse_stem(conjugation.to_arabic)
-            candidates.map(&:root).should include(["w", "j", "3"])
+            candidates = StemParser.parse_stem(conjugation.unvocalized_arabic)
+            candidates.should include(["w", "j", "3"])
           end
         end
       end
@@ -60,8 +60,8 @@ describe StemParser do
           stem = create(:assimilated_with_w_at_root0_perfect_kicker_fa) # "w", "S", "l"
           conjugations = stem.conjugations_in_measure("I")
           conjugations.each do |conjugation|
-            candidates = StemParser.parse_stem(conjugation.to_arabic)
-            candidates.map(&:root).should include(["w", "S", "l"])
+            candidates = StemParser.parse_stem(conjugation.unvocalized_arabic)
+            candidates.should include(["w", "S", "l"])
           end
         end
       end
@@ -73,8 +73,8 @@ describe StemParser do
           stem = create(:hollow_with_w_at_root1_imperfect_kicker_da) # "z", "w", "r"
           conjugations = stem.conjugations_in_measure("I")
           conjugations.each do |conjugation|
-            candidates = StemParser.parse_stem(conjugation.to_arabic)
-            candidates.map(&:root).should include(["z", "w", "r"])
+            candidates = StemParser.parse_stem(conjugation.unvocalized_arabic)
+            candidates.should include(["z", "w", "r"])
           end
         end
       end
@@ -84,8 +84,8 @@ describe StemParser do
           stem = create(:hollow_with_y_at_root1_imperfect_kicker_ka) # "b", "y", "3"
           conjugations = stem.conjugations_in_measure("I")
           conjugations.each do |conjugation|
-            candidates = StemParser.parse_stem(conjugation.to_arabic)
-            candidates.map(&:root).should include(["b", "y", "3"])
+            candidates = StemParser.parse_stem(conjugation.unvocalized_arabic)
+            candidates.should include(["b", "y", "3"])
           end
         end
 
@@ -94,8 +94,8 @@ describe StemParser do
             stem = create(:hollow_with_w_at_root1_imperfect_kicker_fa) # "kh", "w", "f"
             conjugations = stem.conjugations_in_measure("I")
             conjugations.each do |conjugation|
-              candidates = StemParser.parse_stem(conjugation.to_arabic)
-              candidates.map(&:root).should include(["kh", "w", "f"])
+              candidates = StemParser.parse_stem(conjugation.unvocalized_arabic)
+              candidates.should include(["kh", "w", "f"])
             end
           end
         end
@@ -109,8 +109,8 @@ describe StemParser do
           stem = create(:defective_with_w_at_root2)
           conjugations = stem.conjugations_in_measure("I")
           conjugations.each do |conjugation|
-            candidates = StemParser.parse_stem(conjugation.to_arabic)
-            candidates.map(&:root).should include(["d", "3", "w"])
+            candidates = StemParser.parse_stem(conjugation.unvocalized_arabic)
+            candidates.should include(["d", "3", "w"])
           end
         end
       end
@@ -120,8 +120,8 @@ describe StemParser do
           stem = create(:defective_with_y_at_root2_vocalization_fa_ka)
           conjugations = stem.conjugations_in_measure("I")
           conjugations.each do |conjugation|
-            candidates = StemParser.parse_stem(conjugation.to_arabic)
-            candidates.map(&:root).should include(["b", "n", "y"])
+            candidates = StemParser.parse_stem(conjugation.unvocalized_arabic)
+            candidates.should include(["b", "n", "y"])
           end
         end
       end
@@ -131,8 +131,8 @@ describe StemParser do
           stem = create(:defective_with_y_at_root2_vocalization_ka_fa)
           conjugations = stem.conjugations_in_measure("I")
           conjugations.each do |conjugation|
-            candidates = StemParser.parse_stem(conjugation.to_arabic)
-            candidates.map(&:root).should include(["n", "s", "y"])
+            candidates = StemParser.parse_stem(conjugation.unvocalized_arabic)
+            candidates.should include(["n", "s", "y"])
           end
         end
       end
@@ -144,8 +144,8 @@ describe StemParser do
           stem = create(:hamzated_with_hmz_at_root0) # "hmz", "k", "l"
           conjugations = stem.conjugations_in_measure("I")
           conjugations.each do |conjugation|
-            candidates = StemParser.parse_stem(conjugation.to_arabic)
-            candidates.map(&:root).should include(["hmz", "k", "l"])
+            candidates = StemParser.parse_stem(conjugation.unvocalized_arabic)
+            candidates.should include(["hmz", "k", "l"])
           end
         end
       end
@@ -155,8 +155,8 @@ describe StemParser do
           stem = create(:hamzated_with_hmz_at_root1) # "s", "hmz", "l"
           conjugations = stem.conjugations_in_measure("I")
           conjugations.each do |conjugation|
-            candidates = StemParser.parse_stem(conjugation.to_arabic)
-            candidates.map(&:root).should include(["s", "hmz", "l"])
+            candidates = StemParser.parse_stem(conjugation.unvocalized_arabic)
+            candidates.should include(["s", "hmz", "l"])
           end
         end
       end
@@ -166,8 +166,8 @@ describe StemParser do
           stem = create(:hamzated_with_hmz_at_root2) # "q", "r", "hmz"
           conjugations = stem.conjugations_in_measure("I")
           conjugations.each do |conjugation|
-            candidates = StemParser.parse_stem(conjugation.to_arabic)
-            candidates.map(&:root).should include(["q", "r", "hmz"])
+            candidates = StemParser.parse_stem(conjugation.unvocalized_arabic)
+            candidates.should include(["q", "r", "hmz"])
           end
         end
       end
